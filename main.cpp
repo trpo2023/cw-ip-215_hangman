@@ -239,17 +239,52 @@ int main()
             Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 cout << "Po x:" << position.x << endl;
-                cout << "Po y:" << position.y << endl;
+                //cout << "Po y:" << position.y << endl;
 
                 int pos_x = position.x; //сохраняем координаты мышки по x
                 int pos_y = position.y; //сохраняем координаты мышки по y
 
                 //Проверка на какую букву нажали на первом ряду
-                if ((pos_x >= 150 && pos_x <= 180) && (pos_y >= 590 && pos_y <= 625)) {
-                    cout << "Bykva: А" << endl;
-                }
-                else if (((pos_x >= 620 && pos_x <= 652) && (pos_y >= 760 && pos_y <= 800))) {
-
+                if (pos_y >= 590 && pos_y <= 625) {
+                    //Буква А
+                    if (pos_x >= 150 && pos_x <= 180)
+                        cout << "Буква: A" << endl;
+                    //Буква Б
+                    if (pos_x >= 215 && pos_x <= 245)
+                        cout << "Буква: Б" << endl;
+                    //Буква В
+                    if (pos_x >= 280 && pos_x <= 310)
+                        cout << "Буква: В" << endl;
+                    //Буква Г
+                    if (pos_x >= 345 && pos_x <= 375)
+                        cout << "Буква: Г" << endl;
+                    //Буква Д
+                    if (pos_x >= 390 && pos_x <= 425)
+                        cout << "Буква: Д" << endl;
+                    //Буква Е
+                    if (pos_x >= 455 && pos_x <= 480)
+                        cout << "Буква: Е" << endl;
+                    //Буква Ж
+                    if (pos_x >= 505 && pos_x <= 550)
+                        cout << "Буква: Ж" << endl;
+                    //Буква З
+                    if (pos_x >= 575 && pos_x <= 600)
+                        cout << "Буква: З" << endl;
+                    //Буква И
+                    if (pos_x >= 630 && pos_x <= 660)
+                        cout << "Буква: И" << endl;
+                    //Буква Й
+                    if (pos_x >= 692 && pos_x <= 720)
+                        cout << "Буква: Й" << endl;
+                    //Буква К
+                    if (pos_x >= 755 && pos_x <= 785)
+                        cout << "Буква: К" << endl;
+                    //Буква Л
+                    if (pos_x >= 810 && pos_x <= 842)
+                        cout << "Буква: Л" << endl;
+                    //Буква М
+                    if (pos_x >= 870 && pos_x <= 905)
+                        cout << "Буква: М" << endl;
                 }
             }
             
