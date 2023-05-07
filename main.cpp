@@ -233,7 +233,16 @@ int main()
             window.draw(letter11);
             window.draw(letter12);
 
-            
+            Vector2i position = Mouse::getPosition();
+            if (Mouse::isButtonPressed(Mouse::Left)) {
+                cout << "Po x:" << position.x << endl;
+                cout << "Po y:" << position.y << endl;
+                int pos_x = position.x;
+                int pos_y = position.y;
+                if ((pos_x >= 620 && pos_x <= 652) && (pos_y >= 760 && pos_y <= 800)) {
+                    cout << "Bykva: À" << endl;
+                }
+            }
             
 
             window.display();
