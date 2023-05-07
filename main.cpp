@@ -78,6 +78,7 @@ int main()
         letter0.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
+
         // загружаем букву Б
         Texture letter1Texture;
         letter1Texture.loadFromFile("alphabet/Б.png");
@@ -235,14 +236,20 @@ int main()
 
 
             // Проверка нажатия на нужную букву
-            Vector2i position = Mouse::getPosition();
+            Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 cout << "Po x:" << position.x << endl;
                 cout << "Po y:" << position.y << endl;
-                int pos_x = position.x;
-                int pos_y = position.y;
-                if ((pos_x >= 620 && pos_x <= 652) && (pos_y >= 760 && pos_y <= 800)) {
+
+                int pos_x = position.x; //сохраняем координаты мышки по x
+                int pos_y = position.y; //сохраняем координаты мышки по y
+
+                //Проверка на какую букву нажали на первом ряду
+                if ((pos_x >= 150 && pos_x <= 180) && (pos_y >= 590 && pos_y <= 625)) {
                     cout << "Bykva: А" << endl;
+                }
+                else if (((pos_x >= 620 && pos_x <= 652) && (pos_y >= 760 && pos_y <= 800))) {
+
                 }
             }
             
