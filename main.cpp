@@ -1,15 +1,34 @@
-﻿#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <clocale>
+﻿#include <SFML/Graphics.hpp> //для рисования
+#include <iostream> //основа
+#include <clocale> //для кирилицы
+#include <string> //для строк
 
 
 using namespace sf;
 using namespace std;
 
 
+
+
+void check_byk_v_slove(string Bykva, string slovo, int len);
+
 int main()
 {
     setlocale(LC_CTYPE, "rus");
+    const int slov_v_spiske = 3;
+    string spisok[slov_v_spiske] = { "ЛАВА", "ВИЗГ", "АЙДА"};
+    string slovo;
+
+    //Пусть мы рандомно выбрали слово "ЛАВА"
+    slovo = spisok[0];
+    
+    //Посчитаем длину слова
+    int len = 0;
+    while (slovo[len] != NULL) {
+        len++;
+    }
+    
+
     RenderWindow window(VideoMode(1000, 800), L"Висилица", Style::Default);
     window.setFramerateLimit(60);
 
@@ -191,6 +210,7 @@ int main()
         CircleShape shape(50.f);
         shape.setFillColor(Color(100, 250, 50));
 
+        int temp_len = 0; //Хранит в себе временную длину;
         
         Event event;
         while (window.pollEvent(event))
@@ -205,7 +225,6 @@ int main()
                 default:
                     break;
             }
-
             window.clear(Color(217, 217, 217));
             //рисуем виселицу
             window.draw(line1);
@@ -234,11 +253,11 @@ int main()
             window.draw(letter11);
             window.draw(letter12);
 
-
+            string Bykva;
             // Проверка нажатия на нужную букву
             Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
-                cout << "Po x:" << position.x << endl;
+                //cout << "Po x:" << position.x << endl;
                 //cout << "Po y:" << position.y << endl;
 
                 int pos_x = position.x; //сохраняем координаты мышки по x
@@ -247,14 +266,23 @@ int main()
                 //Проверка на какую букву нажали на первом ряду
                 if (pos_y >= 590 && pos_y <= 625) {
                     //Буква А
-                    if (pos_x >= 150 && pos_x <= 180)
+                    if (pos_x >= 150 && pos_x <= 180) {
                         cout << "Буква: A" << endl;
+                        Bykva = "А";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }   
                     //Буква Б
-                    if (pos_x >= 215 && pos_x <= 245)
+                    if (pos_x >= 215 && pos_x <= 245) {
                         cout << "Буква: Б" << endl;
+                        Bykva = "Б";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
                     //Буква В
-                    if (pos_x >= 280 && pos_x <= 310)
+                    if (pos_x >= 280 && pos_x <= 310) {
                         cout << "Буква: В" << endl;
+                        Bykva = "В";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
                     //Буква Г
                     if (pos_x >= 345 && pos_x <= 375)
                         cout << "Буква: Г" << endl;
@@ -295,4 +323,20 @@ int main()
         
     }
     return 0;
+}
+
+void check_byk_v_slove(string Bykva, string slovo, int len) {
+    bool flag = 0;
+    for (int i = 0; i < len; i++) {
+        if (slovo[i] == Bykva) {
+            flag = 1;
+        }
+    }
+    if (flag) {
+        cout << "Такая буква есть" << endl;
+    }
+    else {
+        cout << "Такой буквы нет" << endl;
+    }
+
 }
