@@ -233,6 +233,8 @@ int main()
             window.draw(letter11);
             window.draw(letter12);
 
+
+            // Проверка нажатия на нужную букву
             Vector2i position = Mouse::getPosition();
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 cout << "Po x:" << position.x << endl;
