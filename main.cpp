@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+п»ї#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <clocale>
 
@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     setlocale(LC_CTYPE, "rus");
-    RenderWindow window(VideoMode(1000, 800), L"Висилица", Style::Default);
+    RenderWindow window(VideoMode(1000, 800), L"Р’РёСЃРёР»РёС†Р°", Style::Default);
     window.setFramerateLimit(60);
 
     window.setVerticalSyncEnabled(true);
@@ -69,117 +69,117 @@ int main()
         float padding = 60;
         float aplhabetX = 140;
 
-        // загружаем букву А
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Рђ
         Texture letter0Texture;
-        letter0Texture.loadFromFile("alphabet/А.png");
+        letter0Texture.loadFromFile("alphabet/Рђ.png");
 
         Sprite letter0;
         letter0.setTexture(letter0Texture);
         letter0.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву Б
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р‘
         Texture letter1Texture;
-        letter1Texture.loadFromFile("alphabet/Б.png");
+        letter1Texture.loadFromFile("alphabet/Р‘.png");
 
         Sprite letter1;
         letter1.setTexture(letter1Texture);
         letter1.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву В
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р’
         Texture letter2Texture;
-        letter2Texture.loadFromFile("alphabet/В.png");
+        letter2Texture.loadFromFile("alphabet/Р’.png");
 
         Sprite letter2;
         letter2.setTexture(letter2Texture);
         letter2.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву Г
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р“
         Texture letter3Texture;
-        letter3Texture.loadFromFile("alphabet/Г.png");
+        letter3Texture.loadFromFile("alphabet/Р“.png");
 
         Sprite letter3;
         letter3.setTexture(letter3Texture);
         letter3.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву Д
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р”
         Texture letter4Texture;
-        letter4Texture.loadFromFile("alphabet/Д.png");
+        letter4Texture.loadFromFile("alphabet/Р”.png");
 
         Sprite letter4;
         letter4.setTexture(letter4Texture);
         letter4.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву Е
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р•
         Texture letter5Texture;
-        letter5Texture.loadFromFile("alphabet/Е.png");
+        letter5Texture.loadFromFile("alphabet/Р•.png");
 
         Sprite letter5;
         letter5.setTexture(letter5Texture);
         letter5.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву Ж
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р–
         Texture letter6Texture;
-        letter6Texture.loadFromFile("alphabet/Ж.png");
+        letter6Texture.loadFromFile("alphabet/Р–.png");
 
         Sprite letter6;
         letter6.setTexture(letter6Texture);
         letter6.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву З
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р—
         Texture letter7Texture;
-        letter7Texture.loadFromFile("alphabet/З.png");
+        letter7Texture.loadFromFile("alphabet/Р—.png");
 
         Sprite letter7;
         letter7.setTexture(letter7Texture);
         letter7.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву И
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р
         Texture letter8Texture;
-        letter8Texture.loadFromFile("alphabet/И.png");
+        letter8Texture.loadFromFile("alphabet/Р.png");
 
         Sprite letter8;
         letter8.setTexture(letter8Texture);
         letter8.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву Й
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р™
         Texture letter9Texture;
-        letter9Texture.loadFromFile("alphabet/Й.png");
+        letter9Texture.loadFromFile("alphabet/Р™.png");
 
         Sprite letter9;
         letter9.setTexture(letter9Texture);
         letter9.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву К
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Рљ
         Texture letter10Texture;
-        letter10Texture.loadFromFile("alphabet/К.png");
+        letter10Texture.loadFromFile("alphabet/Рљ.png");
 
         Sprite letter10;
         letter10.setTexture(letter10Texture);
         letter10.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву Л
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Р›
         Texture letter11Texture;
-        letter11Texture.loadFromFile("alphabet/Л.png");
+        letter11Texture.loadFromFile("alphabet/Р›.png");
 
         Sprite letter11;
         letter11.setTexture(letter11Texture);
         letter11.setPosition(aplhabetX, 580);
         aplhabetX += padding;
 
-        // загружаем букву М
+        // Р·Р°РіСЂСѓР¶Р°РµРј Р±СѓРєРІСѓ Рњ
         Texture letter12Texture;
-        letter12Texture.loadFromFile("alphabet/М.png");
+        letter12Texture.loadFromFile("alphabet/Рњ.png");
 
         Sprite letter12;
         letter12.setTexture(letter12Texture);
@@ -206,7 +206,7 @@ int main()
             }
 
             window.clear(Color(217, 217, 217));
-            //рисуем виселицу
+            //СЂРёСЃСѓРµРј РІРёСЃРµР»РёС†Сѓ
             window.draw(line1);
             window.draw(line2);
             window.draw(line3);
@@ -218,7 +218,7 @@ int main()
             window.draw(rightLeg);
             window.draw(leftLeg);
 
-            //рисуем 1 ряд алфавита
+            //СЂРёСЃСѓРµРј 1 СЂСЏРґ Р°Р»С„Р°РІРёС‚Р°
             window.draw(letter0);
             window.draw(letter1);
             window.draw(letter2);
@@ -234,7 +234,7 @@ int main()
             window.draw(letter12);
 
 
-            // Проверка нажатия на нужную букву
+            // РџСЂРѕРІРµСЂРєР° РЅР°Р¶Р°С‚РёСЏ РЅР° РЅСѓР¶РЅСѓСЋ Р±СѓРєРІСѓ
             Vector2i position = Mouse::getPosition();
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 cout << "Po x:" << position.x << endl;
@@ -242,7 +242,7 @@ int main()
                 int pos_x = position.x;
                 int pos_y = position.y;
                 if ((pos_x >= 620 && pos_x <= 652) && (pos_y >= 760 && pos_y <= 800)) {
-                    cout << "Bykva: А" << endl;
+                    cout << "Bykva: Рђ" << endl;
                 }
             }
             
