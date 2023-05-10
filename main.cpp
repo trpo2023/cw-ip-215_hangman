@@ -19,8 +19,8 @@ int main()
     string spisok[slov_v_spiske] = { "ЛАВА", "ВИЗГ", "АЙДА"};
     string slovo;
 
-    //Пусть мы рандомно выбрали слово "ЛАВА"
-    slovo = spisok[0];
+    //Рандомно выбираем слово из списка
+    slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
     int len = 0;
