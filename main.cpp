@@ -1,4 +1,4 @@
-﻿#include <SFML/Graphics.hpp> //для рисования
+﻿#include <SFML/Graphics.hpp>
 #include <iostream> //основа
 #include <clocale> //для кирилицы
 #include <string> //для строк
@@ -85,126 +85,14 @@ int main()
         leftLeg.setPosition(500, 356);
         leftLeg.setFillColor(Color::Black);
 
-        float padding = 60;
-        float aplhabetX = 140;
+        //Алфавит одной картинкой
+        Texture alphabetTexture;
+        alphabetTexture.loadFromFile("alphabet/Alphabet.png");
 
-        // загружаем букву А
-        Texture letter0Texture;
-        letter0Texture.loadFromFile("alphabet/А.png");
+        Sprite alphabet;
+        alphabet.setTexture(alphabetTexture);
+        alphabet.setPosition(143, 570);
 
-        Sprite letter0;
-        letter0.setTexture(letter0Texture);
-        letter0.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-
-        // загружаем букву Б
-        Texture letter1Texture;
-        letter1Texture.loadFromFile("alphabet/Б.png");
-
-        Sprite letter1;
-        letter1.setTexture(letter1Texture);
-        letter1.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву В
-        Texture letter2Texture;
-        letter2Texture.loadFromFile("alphabet/В.png");
-
-        Sprite letter2;
-        letter2.setTexture(letter2Texture);
-        letter2.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву Г
-        Texture letter3Texture;
-        letter3Texture.loadFromFile("alphabet/Г.png");
-
-        Sprite letter3;
-        letter3.setTexture(letter3Texture);
-        letter3.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву Д
-        Texture letter4Texture;
-        letter4Texture.loadFromFile("alphabet/Д.png");
-
-        Sprite letter4;
-        letter4.setTexture(letter4Texture);
-        letter4.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву Е
-        Texture letter5Texture;
-        letter5Texture.loadFromFile("alphabet/Е.png");
-
-        Sprite letter5;
-        letter5.setTexture(letter5Texture);
-        letter5.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву Ж
-        Texture letter6Texture;
-        letter6Texture.loadFromFile("alphabet/Ж.png");
-
-        Sprite letter6;
-        letter6.setTexture(letter6Texture);
-        letter6.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву З
-        Texture letter7Texture;
-        letter7Texture.loadFromFile("alphabet/З.png");
-
-        Sprite letter7;
-        letter7.setTexture(letter7Texture);
-        letter7.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву И
-        Texture letter8Texture;
-        letter8Texture.loadFromFile("alphabet/И.png");
-
-        Sprite letter8;
-        letter8.setTexture(letter8Texture);
-        letter8.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву Й
-        Texture letter9Texture;
-        letter9Texture.loadFromFile("alphabet/Й.png");
-
-        Sprite letter9;
-        letter9.setTexture(letter9Texture);
-        letter9.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву К
-        Texture letter10Texture;
-        letter10Texture.loadFromFile("alphabet/К.png");
-
-        Sprite letter10;
-        letter10.setTexture(letter10Texture);
-        letter10.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву Л
-        Texture letter11Texture;
-        letter11Texture.loadFromFile("alphabet/Л.png");
-
-        Sprite letter11;
-        letter11.setTexture(letter11Texture);
-        letter11.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
-
-        // загружаем букву М
-        Texture letter12Texture;
-        letter12Texture.loadFromFile("alphabet/М.png");
-
-        Sprite letter12;
-        letter12.setTexture(letter12Texture);
-        letter12.setPosition(aplhabetX, 580);
-        aplhabetX += padding;
 
 
         CircleShape shape(50.f);
@@ -239,7 +127,7 @@ int main()
             window.draw(leftLeg);
 
             //рисуем 1 ряд алфавита
-            window.draw(letter0);
+            /*window.draw(letter0);
             window.draw(letter1);
             window.draw(letter2);
             window.draw(letter3);
@@ -251,67 +139,69 @@ int main()
             window.draw(letter9);
             window.draw(letter10);
             window.draw(letter11);
-            window.draw(letter12);
+            window.draw(letter12);*/
+
+            window.draw(alphabet);
 
             string Bykva;
             // Проверка нажатия на нужную букву
             Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
-                //cout << "Po x:" << position.x << endl;
-                //cout << "Po y:" << position.y << endl;
+                cout << "Po x:" << position.x << endl;
+                cout << "Po y:" << position.y << endl;
 
                 int pos_x = position.x; //сохраняем координаты мышки по x
                 int pos_y = position.y; //сохраняем координаты мышки по y
 
                 //Проверка на какую букву нажали на первом ряду
-                if (pos_y >= 590 && pos_y <= 625) {
+                if (pos_y >= 580 && pos_y <= 615) {
                     //Буква А
-                    if (pos_x >= 150 && pos_x <= 180) {
+                    if (pos_x >= 155 && pos_x <= 185) {
                         cout << "Буква: A" << endl;
                         Bykva = "А";
                         check_byk_v_slove(Bykva, slovo, len);
                     }   
                     //Буква Б
-                    if (pos_x >= 215 && pos_x <= 245) {
+                    if (pos_x >= 210 && pos_x <= 240) {
                         cout << "Буква: Б" << endl;
                         Bykva = "Б";
                         check_byk_v_slove(Bykva, slovo, len);
                     }
                     //Буква В
-                    if (pos_x >= 280 && pos_x <= 310) {
+                    if (pos_x >= 265 && pos_x <= 295) {
                         cout << "Буква: В" << endl;
                         Bykva = "В";
                         check_byk_v_slove(Bykva, slovo, len);
                     }
                     //Буква Г
-                    if (pos_x >= 345 && pos_x <= 375)
+                    if (pos_x >= 325 && pos_x <= 350)
                         cout << "Буква: Г" << endl;
                     //Буква Д
-                    if (pos_x >= 390 && pos_x <= 425)
+                    if (pos_x >= 370 && pos_x <= 410)
                         cout << "Буква: Д" << endl;
                     //Буква Е
-                    if (pos_x >= 455 && pos_x <= 480)
+                    if (pos_x >= 435 && pos_x <= 460)
                         cout << "Буква: Е" << endl;
                     //Буква Ж
-                    if (pos_x >= 505 && pos_x <= 550)
+                    if (pos_x >= 477 && pos_x <= 522)
                         cout << "Буква: Ж" << endl;
                     //Буква З
-                    if (pos_x >= 575 && pos_x <= 600)
+                    if (pos_x >= 540 && pos_x <= 566)
                         cout << "Буква: З" << endl;
                     //Буква И
-                    if (pos_x >= 630 && pos_x <= 660)
+                    if (pos_x >= 595 && pos_x <= 624)
                         cout << "Буква: И" << endl;
                     //Буква Й
-                    if (pos_x >= 692 && pos_x <= 720)
+                    if (pos_x >= 650 && pos_x <= 678)
                         cout << "Буква: Й" << endl;
                     //Буква К
-                    if (pos_x >= 755 && pos_x <= 785)
+                    if (pos_x >= 708 && pos_x <= 735)
                         cout << "Буква: К" << endl;
                     //Буква Л
-                    if (pos_x >= 810 && pos_x <= 842)
+                    if (pos_x >= 758 && pos_x <= 790)
                         cout << "Буква: Л" << endl;
                     //Буква М
-                    if (pos_x >= 870 && pos_x <= 905)
+                    if (pos_x >= 812 && pos_x <= 848)
                         cout << "Буква: М" << endl;
                 }
             }
