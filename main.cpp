@@ -174,35 +174,75 @@ int main()
                         check_byk_v_slove(Bykva, slovo, len);
                     }
                     //Буква Г
-                    if (pos_x >= 325 && pos_x <= 350)
+                    if (pos_x >= 325 && pos_x <= 350) {
                         cout << "Буква: Г" << endl;
+                        Bykva = "Г";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква Д
-                    if (pos_x >= 370 && pos_x <= 410)
+                    if (pos_x >= 370 && pos_x <= 410) {
                         cout << "Буква: Д" << endl;
+                        Bykva = "Д";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква Е
-                    if (pos_x >= 435 && pos_x <= 460)
+                    if (pos_x >= 435 && pos_x <= 460) {
                         cout << "Буква: Е" << endl;
+                        Bykva = "Е";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква Ж
-                    if (pos_x >= 477 && pos_x <= 522)
+                    if (pos_x >= 477 && pos_x <= 522) {
                         cout << "Буква: Ж" << endl;
+                        Bykva = "Ж";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква З
-                    if (pos_x >= 540 && pos_x <= 566)
+                    if (pos_x >= 540 && pos_x <= 566) {
                         cout << "Буква: З" << endl;
+                        Bykva = "З";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква И
-                    if (pos_x >= 595 && pos_x <= 624)
+                    if (pos_x >= 595 && pos_x <= 624) {
                         cout << "Буква: И" << endl;
+                        Bykva = "И";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква Й
-                    if (pos_x >= 650 && pos_x <= 678)
+                    if (pos_x >= 650 && pos_x <= 678) {
                         cout << "Буква: Й" << endl;
+                        Bykva = "Й";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква К
-                    if (pos_x >= 708 && pos_x <= 735)
+                    if (pos_x >= 708 && pos_x <= 735) {
                         cout << "Буква: К" << endl;
+                        Bykva = "К";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква Л
-                    if (pos_x >= 758 && pos_x <= 790)
+                    if (pos_x >= 758 && pos_x <= 790) {
                         cout << "Буква: Л" << endl;
+                        Bykva = "Л";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                     //Буква М
-                    if (pos_x >= 812 && pos_x <= 848)
+                    if (pos_x >= 812 && pos_x <= 848) {
                         cout << "Буква: М" << endl;
+                        Bykva = "М";
+                        check_byk_v_slove(Bykva, slovo, len);
+                    }
+                        
                 }
             }
             
