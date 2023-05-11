@@ -34,69 +34,70 @@ int main()
 
     window.setVerticalSyncEnabled(true);
     int flag = 0;
+
+    RectangleShape line1(Vector2f(157.f, 7.f));
+    line1.setFillColor(Color::Black);
+    line1.setPosition(663, 456);
+
+    RectangleShape line2(Vector2f(366.f, 7.f));
+    line2.rotate(90.f);
+    line2.setFillColor(Color::Black);
+    line2.setPosition(745, 90);
+
+    RectangleShape line3(Vector2f(295.f, 7.f));
+    line3.setFillColor(Color::Black);
+    line3.setPosition(450, 90);
+
+    RectangleShape line4(Vector2f(55.f, 2.f));
+    line4.rotate(90.f);
+    line4.setFillColor(Color::Black);
+    line4.setPosition(500, 90);
+
+    CircleShape head(41.f);
+    head.setPosition(459, 145);
+    head.setFillColor(Color(217, 217, 217));
+    head.setOutlineThickness(3.f);
+    head.setOutlineColor(Color::Black);
+
+    RectangleShape body(Vector2f(130.f, 3.f));
+    body.rotate(90.f);
+    body.setPosition(500, 228);
+    body.setFillColor(Color::Black);
+
+    RectangleShape rightHand(Vector2f(70.f, 3.f));
+    rightHand.rotate(45.f);
+    rightHand.setPosition(500, 256);
+    rightHand.setFillColor(Color::Black);
+
+    RectangleShape leftHand(Vector2f(70.f, 3.f));
+    leftHand.rotate(135.f);
+    leftHand.setPosition(500, 256);
+    leftHand.setFillColor(Color::Black);
+
+    RectangleShape rightLeg(Vector2f(70.f, 3.f));
+    rightLeg.rotate(45.f);
+    rightLeg.setPosition(500, 356);
+    rightLeg.setFillColor(Color::Black);
+
+    RectangleShape leftLeg(Vector2f(70.f, 3.f));
+    leftLeg.rotate(135.f);
+    leftLeg.setPosition(500, 356);
+    leftLeg.setFillColor(Color::Black);
+
+    //Алфавит одной картинкой
+    Texture alphabetTexture;
+    alphabetTexture.loadFromFile("alphabet/Alphabet.png");
+
+    Sprite alphabet;
+    alphabet.setTexture(alphabetTexture);
+    alphabet.setPosition(143, 570);
+
     while (window.isOpen())
     {
-        RectangleShape line1(Vector2f(157.f, 7.f));
-        line1.setFillColor(Color::Black);
-        line1.setPosition(663, 456);
+        
 
-        RectangleShape line2(Vector2f(366.f, 7.f));
-        line2.rotate(90.f);
-        line2.setFillColor(Color::Black);
-        line2.setPosition(745, 90);
-
-        RectangleShape line3(Vector2f(295.f, 7.f));
-        line3.setFillColor(Color::Black);
-        line3.setPosition(450, 90);
-
-        RectangleShape line4(Vector2f(55.f, 2.f));
-        line4.rotate(90.f);
-        line4.setFillColor(Color::Black);
-        line4.setPosition(500, 90);
-
-        CircleShape head(41.f);
-        head.setPosition(459, 145);
-        head.setFillColor(Color(217, 217, 217));
-        head.setOutlineThickness(3.f);
-        head.setOutlineColor(Color::Black);
-
-        RectangleShape body(Vector2f(130.f, 3.f));
-        body.rotate(90.f);
-        body.setPosition(500, 228);
-        body.setFillColor(Color::Black);
-
-        RectangleShape rightHand(Vector2f(70.f, 3.f));
-        rightHand.rotate(45.f);
-        rightHand.setPosition(500, 256);
-        rightHand.setFillColor(Color::Black);
-
-        RectangleShape leftHand(Vector2f(70.f, 3.f));
-        leftHand.rotate(135.f);
-        leftHand.setPosition(500, 256);
-        leftHand.setFillColor(Color::Black);
-
-        RectangleShape rightLeg(Vector2f(70.f, 3.f));
-        rightLeg.rotate(45.f);
-        rightLeg.setPosition(500, 356);
-        rightLeg.setFillColor(Color::Black);
-
-        RectangleShape leftLeg(Vector2f(70.f, 3.f));
-        leftLeg.rotate(135.f);
-        leftLeg.setPosition(500, 356);
-        leftLeg.setFillColor(Color::Black);
-
-        //Алфавит одной картинкой
-        Texture alphabetTexture;
-        alphabetTexture.loadFromFile("alphabet/Alphabet.png");
-
-        Sprite alphabet;
-        alphabet.setTexture(alphabetTexture);
-        alphabet.setPosition(143, 570);
-
-
-
-        CircleShape shape(50.f);
-        shape.setFillColor(Color(100, 250, 50));
+        //CircleShape shape(50.f);
+        //shape.setFillColor(Color(100, 250, 50));
 
         int temp_len = 0; //Хранит в себе временную длину;
         
