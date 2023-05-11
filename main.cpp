@@ -16,6 +16,13 @@ struct matrix_alp
 
 void check_byk_v_slove(char Bykva, string slovo, int len);
 
+int main()
+{
+    setlocale(LC_CTYPE, "rus");
+    const int slov_v_spiske = 3;
+    string array_alp = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
+    matrix_alp array_flags[32];
+    char Bykva{};
 
 void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& line2, RectangleShape& line3,
     RectangleShape& line4, CircleShape& head,RectangleShape& body, RectangleShape& rightHand,
@@ -297,12 +304,15 @@ int main()
                     
                 }
 
-            }
-            
+            }   
 
             window.display();
         }
 
+        if (Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            window.close();
+        }
         
     }
     return 0;
