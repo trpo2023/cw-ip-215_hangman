@@ -9,7 +9,7 @@ using namespace std;
 
 struct matrix_alp
 {
-    string bukva;
+    char bukva;
     bool flag;
 };
 
@@ -22,18 +22,17 @@ int main()
     const int slov_v_spiske = 3;
     string array_alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     matrix_alp array_flags[33];
-    string Bykva;
+    char Bykva;
     for (int i = 0; i < 33; i++)
     {
         array_flags[i].bukva = array_alp[i];
         array_flags[i].flag = 0;
         cout << array_flags[i].bukva << " " << array_flags[i].flag << endl;
     }
-    string spisok[slov_v_spiske] = { "ЛАВА", "ВИЗГ", "АЙДА"};
-    string slovo;
+    string spisok[slov_v_spiske] = { "лава", "визг", "айда"};
 
     //Рандомно выбираем слово из списка
-    slovo = spisok[0]; // потом поменять на случайное слово
+    string slovo = spisok[0]; // потом поменять на случайное слово
     //slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
@@ -41,7 +40,6 @@ int main()
     while (slovo[len] != NULL) {
         len++;
     }
-    
 
     RenderWindow window(VideoMode(1000, 800), L"Висилица", Style::Default);
     window.setFramerateLimit(60);
@@ -115,13 +113,6 @@ int main()
 
     while (window.isOpen())
     {
-        
-
-        //CircleShape shape(50.f);
-        //shape.setFillColor(Color(100, 250, 50));
-
-        int temp_len = 0; //Хранит в себе временную длину;
-        
         Event event;
         while (window.pollEvent(event))
         {
@@ -137,6 +128,7 @@ int main()
             }
             window.clear(Color(217, 217, 217));
             //рисуем виселицу
+
             window.draw(line1);
             window.draw(line2);
             window.draw(line3);
@@ -150,16 +142,23 @@ int main()
 
 
             window.draw(alphabet);
+
+            // Зачеркиваем букву, у которой флаг 1, т.е она уже ранее нажималась
             for (int i = 0; i < 33; i++)
             {
                 if (array_flags[i].flag == 1)
                 {
-                    if (i == 0)
-                    {
-                        cout << "flag = " << array_flags[i].flag << endl;
-                        cross.setPosition(580, 155);
-                        window.draw(cross);
+                    switch (i) {
+                        case(0):
+                            cross.setPosition(152, 580);
+                            window.draw(cross);
+                            break;
+
+                        default:
+                            break;
                     }
+                        
+                    
                 }
             }
 
@@ -177,22 +176,7 @@ int main()
                 if (pos_y >= 580 && pos_y <= 615) {
                     //Буква А
                     if (pos_x >= 155 && pos_x <= 185) {
-                        //cout << "Буква: A" << endl;
-                        Bykva = 'a';
-                        cout << Bykva << endl;
-                        //check_byk_v_slove(Bykva, slovo, len);
-
-
-                        for (int i = 0; i < 33; i++)
-                        {
-                            cout << array_flags[i].bukva << " & " << Bykva << " & " << array_flags[i].flag << endl;
-                            string temp = array_flags[i].bukva;
-                            if (temp == Bykva) {
-                                array_flags[i].flag = 1;
-                                cout << "yes" << endl;
-                            }
-
-                        }
+                        Bykva = 'а';                       
                     }   
                     ////Буква Б
                     //if (pos_x >= 210 && pos_x <= 240) {
@@ -275,18 +259,18 @@ int main()
                     //    Bykva = "М";
                     //    check_byk_v_slove(Bykva, slovo, len);
                     //}
+                   
                         
                 }
 
-                //for (int i = 0; i < 33; i++)
-                //{
-                //    cout << array_flags[i].bukva << " & " << Bykva << " & " << array_flags[i].flag << endl;
-                //    if (array_flags[i].bukva == Bykva) {
-                //        array_flags[i].flag = 1;
-                //        cout << "yes" << endl;
-                //    }
-                //    
-                //}
+                //Меняем флаг буквы, если она была нажата
+                for (int i = 0; i < 33; i++)
+                {
+                    if (array_flags[i].bukva == Bykva) {
+                        array_flags[i].flag = 1;
+                    }
+                    
+                }
 
             }
             
