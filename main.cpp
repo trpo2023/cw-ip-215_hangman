@@ -20,7 +20,8 @@ int main()
     string slovo;
 
     //Рандомно выбираем слово из списка
-    slovo = spisok[rand() % 3];
+    slovo = spisok[0];
+    //slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
     int len = 0;
@@ -92,6 +93,13 @@ int main()
     alphabet.setTexture(alphabetTexture);
     alphabet.setPosition(143, 570);
 
+    Texture cross_texture;
+    cross_texture.loadFromFile("alphabet/Cross.png");
+
+    Sprite cross;
+    cross.setTexture(cross_texture);
+
+
     while (window.isOpen())
     {
         
@@ -127,20 +135,6 @@ int main()
             window.draw(rightLeg);
             window.draw(leftLeg);
 
-            //рисуем 1 ряд алфавита
-            /*window.draw(letter0);
-            window.draw(letter1);
-            window.draw(letter2);
-            window.draw(letter3);
-            window.draw(letter4);
-            window.draw(letter5);
-            window.draw(letter6);
-            window.draw(letter7);
-            window.draw(letter8);
-            window.draw(letter9);
-            window.draw(letter10);
-            window.draw(letter11);
-            window.draw(letter12);*/
 
             window.draw(alphabet);
 
@@ -148,18 +142,20 @@ int main()
             // Проверка нажатия на нужную букву
             Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
-                cout << "Po x:" << position.x << endl;
-                cout << "Po y:" << position.y << endl;
 
                 int pos_x = position.x; //сохраняем координаты мышки по x
                 int pos_y = position.y; //сохраняем координаты мышки по y
+
+                cout << "Po x:" << position.x << endl;
+                cout << "Po y:" << position.y << endl;
 
                 //Проверка на какую букву нажали на первом ряду
                 if (pos_y >= 580 && pos_y <= 615) {
                     //Буква А
                     if (pos_x >= 155 && pos_x <= 185) {
-                        cout << "Буква: A" << endl;
+                        //cout << "Буква: A" << endl;
                         Bykva = "А";
+                        cout << Bykva << endl;
                         check_byk_v_slove(Bykva, slovo, len);
                     }   
                     //Буква Б
@@ -263,7 +259,7 @@ void check_byk_v_slove(string Bykva, string slovo, int len) {
             flag = 1;
         }
     }
-    if (flag) {
+    if (flag != 0) {
         cout << "Такая буква есть" << endl;
     }
     else {
