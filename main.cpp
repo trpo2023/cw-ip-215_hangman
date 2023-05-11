@@ -23,11 +23,12 @@ int main()
     string array_alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     matrix_alp array_flags[33];
     char Bykva;
+
+    //Заполнение массива флагов буквами и флагами
     for (int i = 0; i < 33; i++)
     {
         array_flags[i].bukva = array_alp[i];
         array_flags[i].flag = 0;
-        cout << array_flags[i].bukva << " " << array_flags[i].flag << endl;
     }
     string spisok[slov_v_spiske] = { "лава", "визг", "айда"};
 
@@ -110,7 +111,6 @@ int main()
     Sprite cross;
     cross.setTexture(cross_texture);
 
-
     while (window.isOpen())
     {
         Event event;
@@ -126,9 +126,10 @@ int main()
                 default:
                     break;
             }
+            //очищаем окно и заливаем нужным цветом;
             window.clear(Color(217, 217, 217));
-            //рисуем виселицу
 
+            //рисуем виселицу
             window.draw(line1);
             window.draw(line2);
             window.draw(line3);
@@ -153,12 +154,9 @@ int main()
                             cross.setPosition(152, 580);
                             window.draw(cross);
                             break;
-
                         default:
                             break;
                     }
-                        
-                    
                 }
             }
 
@@ -174,93 +172,59 @@ int main()
 
                 //Проверка на какую букву нажали на первом ряду
                 if (pos_y >= 580 && pos_y <= 615) {
-                    //Буква А
-                    if (pos_x >= 155 && pos_x <= 185) {
-                        Bykva = 'а';                       
-                    }   
-                    ////Буква Б
-                    //if (pos_x >= 210 && pos_x <= 240) {
-                    //    cout << "Буква: Б" << endl;
-                    //    Bykva = "Б";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    ////Буква В
-                    //if (pos_x >= 265 && pos_x <= 295) {
-                    //    cout << "Буква: В" << endl;
-                    //    Bykva = "В";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    ////Буква Г
-                    //if (pos_x >= 325 && pos_x <= 350) {
-                    //    cout << "Буква: Г" << endl;
-                    //    Bykva = "Г";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква Д
-                    //if (pos_x >= 370 && pos_x <= 410) {
-                    //    cout << "Буква: Д" << endl;
-                    //    Bykva = "Д";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква Е
-                    //if (pos_x >= 435 && pos_x <= 460) {
-                    //    cout << "Буква: Е" << endl;
-                    //    Bykva = "Е";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква Ж
-                    //if (pos_x >= 477 && pos_x <= 522) {
-                    //    cout << "Буква: Ж" << endl;
-                    //    Bykva = "Ж";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква З
-                    //if (pos_x >= 540 && pos_x <= 566) {
-                    //    cout << "Буква: З" << endl;
-                    //    Bykva = "З";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква И
-                    //if (pos_x >= 595 && pos_x <= 624) {
-                    //    cout << "Буква: И" << endl;
-                    //    Bykva = "И";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква Й
-                    //if (pos_x >= 650 && pos_x <= 678) {
-                    //    cout << "Буква: Й" << endl;
-                    //    Bykva = "Й";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква К
-                    //if (pos_x >= 708 && pos_x <= 735) {
-                    //    cout << "Буква: К" << endl;
-                    //    Bykva = "К";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква Л
-                    //if (pos_x >= 758 && pos_x <= 790) {
-                    //    cout << "Буква: Л" << endl;
-                    //    Bykva = "Л";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                    //    
-                    ////Буква М
-                    //if (pos_x >= 812 && pos_x <= 848) {
-                    //    cout << "Буква: М" << endl;
-                    //    Bykva = "М";
-                    //    check_byk_v_slove(Bykva, slovo, len);
-                    //}
-                   
-                        
+
+                    if (pos_x >= 155 && pos_x <= 185)
+                    {
+                        Bykva = 'а';
+                    }
+                    if (pos_x >= 210 && pos_x <= 240) 
+                    {
+                        Bykva = 'б';
+                    }
+                    if (pos_x >= 265 && pos_x <= 295) 
+                    {
+                        Bykva = 'в';
+                    }
+                    if (pos_x >= 325 && pos_x <= 350)
+                    {
+                        Bykva = 'г';
+                    }
+                    if (pos_x >= 370 && pos_x <= 410)
+                    {
+                        Bykva = 'д';
+                    }
+                    if (pos_x >= 435 && pos_x <= 460)
+                    {
+                        Bykva = 'е';
+                    }
+                    if (pos_x >= 477 && pos_x <= 522)
+                    {
+                        Bykva = 'ж';
+                    }
+                    if (pos_x >= 540 && pos_x <= 566)
+                    {
+                        Bykva = 'з';
+                    }
+                    if (pos_x >= 595 && pos_x <= 624)
+                    {
+                        Bykva = 'и';
+                    }
+                    if (pos_x >= 650 && pos_x <= 678)
+                    {
+                        Bykva = 'й';
+                    }
+                    if (pos_x >= 708 && pos_x <= 735)
+                    {
+                        Bykva = 'к';
+                    }
+                    if (pos_x >= 758 && pos_x <= 790)
+                    {
+                        Bykva = 'л';
+                    }
+                    if (pos_x >= 812 && pos_x <= 848)
+                    {
+                        Bykva = 'м';
+                    }    
                 }
 
                 //Меняем флаг буквы, если она была нажата
@@ -273,8 +237,6 @@ int main()
                 }
 
             }
-            
-
             window.display();
         }
 
