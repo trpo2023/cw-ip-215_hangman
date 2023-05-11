@@ -20,12 +20,12 @@ int main()
 {
     setlocale(LC_CTYPE, "rus");
     const int slov_v_spiske = 3;
-    string array_alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-    matrix_alp array_flags[33];
+    string array_alp = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
+    matrix_alp array_flags[32];
     char Bykva;
 
     //Заполнение массива флагов буквами и флагами
-    for (int i = 0; i < 33; i++)
+    for (int i = 0; i < 32; i++)
     {
         array_flags[i].bukva = array_alp[i];
         array_flags[i].flag = 0;
@@ -145,13 +145,61 @@ int main()
             window.draw(alphabet);
 
             // Зачеркиваем букву, у которой флаг 1, т.е она уже ранее нажималась
-            for (int i = 0; i < 33; i++)
+            for (int i = 0; i < 32; i++)
             {
                 if (array_flags[i].flag == 1)
                 {
                     switch (i) {
-                        case(0):
+                        case(0): //а
                             cross.setPosition(152, 580);
+                            window.draw(cross);
+                            break;
+                        case(1): //б
+                            cross.setPosition(210, 580);
+                            window.draw(cross);
+                            break;
+                        case(2): //в
+                            cross.setPosition(262, 580);
+                            window.draw(cross);
+                            break;
+                        case(3): //г
+                            cross.setPosition(315, 580);
+                            window.draw(cross);
+                            break;
+                        case(4): //д
+                            cross.setPosition(372, 580);
+                            window.draw(cross);
+                            break;
+                        case(5): //е
+                            cross.setPosition(427, 580);
+                            window.draw(cross);
+                            break;
+                        case(6): //ж
+                            cross.setPosition(482, 580);
+                            window.draw(cross);
+                            break;
+                        case(7): //з
+                            cross.setPosition(539, 580);
+                            window.draw(cross);
+                            break;
+                        case(8): //и
+                            cross.setPosition(593, 580);
+                            window.draw(cross);
+                            break;
+                        case(9): //й
+                            cross.setPosition(647, 580);
+                            window.draw(cross);
+                            break;
+                        case(10): //к
+                            cross.setPosition(700, 580);
+                            window.draw(cross);
+                            break;
+                        case(11): //л
+                            cross.setPosition(757, 580);
+                            window.draw(cross);
+                            break;
+                        case(12): //м
+                            cross.setPosition(812, 580);
                             window.draw(cross);
                             break;
                         default:
@@ -226,10 +274,12 @@ int main()
                         Bykva = 'м';
                     }    
                 }
+                cout << Bykva;
 
                 //Меняем флаг буквы, если она была нажата
-                for (int i = 0; i < 33; i++)
+                for (int i = 0; i < 32; i++)
                 {
+                    
                     if (array_flags[i].bukva == Bykva) {
                         array_flags[i].flag = 1;
                     }
@@ -237,6 +287,8 @@ int main()
                 }
 
             }
+            
+
             window.display();
         }
 
