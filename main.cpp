@@ -7,20 +7,33 @@
 using namespace sf;
 using namespace std;
 
+struct matrix_alp
+{
+    string bukva;
+    bool flag;
+};
 
 
-
-void check_byk_v_slove(string Bykva, string slovo, int len);
+void check_byk_v_slove(char Bykva, string slovo, int len);
 
 int main()
 {
     setlocale(LC_CTYPE, "rus");
     const int slov_v_spiske = 3;
+    string array_alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    matrix_alp array_flags[33];
+    string Bykva;
+    for (int i = 0; i < 33; i++)
+    {
+        array_flags[i].bukva = array_alp[i];
+        array_flags[i].flag = 0;
+        cout << array_flags[i].bukva << " " << array_flags[i].flag << endl;
+    }
     string spisok[slov_v_spiske] = { "ЛАВА", "ВИЗГ", "АЙДА"};
     string slovo;
 
     //Рандомно выбираем слово из списка
-    slovo = spisok[0];
+    slovo = spisok[0]; // потом поменять на случайное слово
     //slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
@@ -137,8 +150,19 @@ int main()
 
 
             window.draw(alphabet);
+            for (int i = 0; i < 33; i++)
+            {
+                if (array_flags[i].flag == 1)
+                {
+                    if (i == 0)
+                    {
+                        cout << "flag = " << array_flags[i].flag << endl;
+                        cross.setPosition(580, 155);
+                        window.draw(cross);
+                    }
+                }
+            }
 
-            string Bykva;
             // Проверка нажатия на нужную букву
             Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
@@ -154,93 +178,116 @@ int main()
                     //Буква А
                     if (pos_x >= 155 && pos_x <= 185) {
                         //cout << "Буква: A" << endl;
-                        Bykva = "А";
+                        Bykva = 'a';
                         cout << Bykva << endl;
-                        check_byk_v_slove(Bykva, slovo, len);
+                        //check_byk_v_slove(Bykva, slovo, len);
+
+
+                        for (int i = 0; i < 33; i++)
+                        {
+                            cout << array_flags[i].bukva << " & " << Bykva << " & " << array_flags[i].flag << endl;
+                            string temp = array_flags[i].bukva;
+                            if (temp == Bykva) {
+                                array_flags[i].flag = 1;
+                                cout << "yes" << endl;
+                            }
+
+                        }
                     }   
-                    //Буква Б
-                    if (pos_x >= 210 && pos_x <= 240) {
-                        cout << "Буква: Б" << endl;
-                        Bykva = "Б";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                    //Буква В
-                    if (pos_x >= 265 && pos_x <= 295) {
-                        cout << "Буква: В" << endl;
-                        Bykva = "В";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                    //Буква Г
-                    if (pos_x >= 325 && pos_x <= 350) {
-                        cout << "Буква: Г" << endl;
-                        Bykva = "Г";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква Д
-                    if (pos_x >= 370 && pos_x <= 410) {
-                        cout << "Буква: Д" << endl;
-                        Bykva = "Д";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква Е
-                    if (pos_x >= 435 && pos_x <= 460) {
-                        cout << "Буква: Е" << endl;
-                        Bykva = "Е";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква Ж
-                    if (pos_x >= 477 && pos_x <= 522) {
-                        cout << "Буква: Ж" << endl;
-                        Bykva = "Ж";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква З
-                    if (pos_x >= 540 && pos_x <= 566) {
-                        cout << "Буква: З" << endl;
-                        Bykva = "З";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква И
-                    if (pos_x >= 595 && pos_x <= 624) {
-                        cout << "Буква: И" << endl;
-                        Bykva = "И";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква Й
-                    if (pos_x >= 650 && pos_x <= 678) {
-                        cout << "Буква: Й" << endl;
-                        Bykva = "Й";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква К
-                    if (pos_x >= 708 && pos_x <= 735) {
-                        cout << "Буква: К" << endl;
-                        Bykva = "К";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква Л
-                    if (pos_x >= 758 && pos_x <= 790) {
-                        cout << "Буква: Л" << endl;
-                        Bykva = "Л";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
-                        
-                    //Буква М
-                    if (pos_x >= 812 && pos_x <= 848) {
-                        cout << "Буква: М" << endl;
-                        Bykva = "М";
-                        check_byk_v_slove(Bykva, slovo, len);
-                    }
+                    ////Буква Б
+                    //if (pos_x >= 210 && pos_x <= 240) {
+                    //    cout << "Буква: Б" << endl;
+                    //    Bykva = "Б";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    ////Буква В
+                    //if (pos_x >= 265 && pos_x <= 295) {
+                    //    cout << "Буква: В" << endl;
+                    //    Bykva = "В";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    ////Буква Г
+                    //if (pos_x >= 325 && pos_x <= 350) {
+                    //    cout << "Буква: Г" << endl;
+                    //    Bykva = "Г";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква Д
+                    //if (pos_x >= 370 && pos_x <= 410) {
+                    //    cout << "Буква: Д" << endl;
+                    //    Bykva = "Д";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква Е
+                    //if (pos_x >= 435 && pos_x <= 460) {
+                    //    cout << "Буква: Е" << endl;
+                    //    Bykva = "Е";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква Ж
+                    //if (pos_x >= 477 && pos_x <= 522) {
+                    //    cout << "Буква: Ж" << endl;
+                    //    Bykva = "Ж";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква З
+                    //if (pos_x >= 540 && pos_x <= 566) {
+                    //    cout << "Буква: З" << endl;
+                    //    Bykva = "З";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква И
+                    //if (pos_x >= 595 && pos_x <= 624) {
+                    //    cout << "Буква: И" << endl;
+                    //    Bykva = "И";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква Й
+                    //if (pos_x >= 650 && pos_x <= 678) {
+                    //    cout << "Буква: Й" << endl;
+                    //    Bykva = "Й";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква К
+                    //if (pos_x >= 708 && pos_x <= 735) {
+                    //    cout << "Буква: К" << endl;
+                    //    Bykva = "К";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква Л
+                    //if (pos_x >= 758 && pos_x <= 790) {
+                    //    cout << "Буква: Л" << endl;
+                    //    Bykva = "Л";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
+                    //    
+                    ////Буква М
+                    //if (pos_x >= 812 && pos_x <= 848) {
+                    //    cout << "Буква: М" << endl;
+                    //    Bykva = "М";
+                    //    check_byk_v_slove(Bykva, slovo, len);
+                    //}
                         
                 }
+
+                //for (int i = 0; i < 33; i++)
+                //{
+                //    cout << array_flags[i].bukva << " & " << Bykva << " & " << array_flags[i].flag << endl;
+                //    if (array_flags[i].bukva == Bykva) {
+                //        array_flags[i].flag = 1;
+                //        cout << "yes" << endl;
+                //    }
+                //    
+                //}
+
             }
             
 
@@ -252,7 +299,7 @@ int main()
     return 0;
 }
 
-void check_byk_v_slove(string Bykva, string slovo, int len) {
+void check_byk_v_slove(char Bykva, string slovo, int len) {
     bool flag = 0;
     for (int i = 0; i < len; i++) {
         if (slovo[i] == Bykva) {
