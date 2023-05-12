@@ -14,13 +14,20 @@ struct matrix_alp
 };
 
 
-void check_byk_v_slove(char Bykva, string slovo, int len);
+void check_byk_v_slove(char Bykva, string slovo, int len, string nerazg_slovo[]) {
+    for (int i = 0; i < len; i++) {
+        if (slovo[i] == Bykva) {
+            nerazg_slovo[i] = Bykva;
+        }
+    }
+    for (int i = 0; i < len; i++) {
+        cout << nerazg_slovo[i] << " ";
+    }
+}
 
 
-void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& line2, RectangleShape& line3,
-    RectangleShape& line4, CircleShape& head,RectangleShape& body, RectangleShape& rightHand,
-    RectangleShape& leftHand, RectangleShape& rightLeg, RectangleShape& leftLeg, Texture& alphabetTexture,
-    Sprite& alphabet, Texture& cross_texture, Sprite& cross) {
+void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& line2, RectangleShape& line3, RectangleShape& line4, CircleShape& head,RectangleShape& body, RectangleShape& rightHand, RectangleShape& leftHand, RectangleShape& rightLeg, RectangleShape& leftLeg, Texture& alphabetTexture, Sprite& alphabet, Texture& cross_texture, Sprite& cross) {
+
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
 
@@ -76,10 +83,13 @@ void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& li
 
 int main()
 {
+    //русский в консоли
     setlocale(LC_CTYPE, "rus");
     const int slov_v_spiske = 3;
-    string array_alp = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
+    const int max_len_slov = 10;
+    const string array_alp = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
     matrix_alp array_flags[32];
+
     char Bykva = '0';
 
     //Заполнение массива флагов буквами и флагами
@@ -98,6 +108,12 @@ int main()
     int len = 0;
     while (slovo[len] != NULL) {
         len++;
+    }
+
+    //массив
+    string nerazg_slovo[max_len_slov];
+    for (int i = 0; i < len; i++) {
+        nerazg_slovo[i] = "_";
     }
 
     RenderWindow window(VideoMode(1000, 800), L"Висилица", Style::Default);
@@ -285,17 +301,17 @@ int main()
                         Bykva = 'м';
                     }    
                 }
-                cout << Bykva;
 
                 //Меняем флаг буквы, если она была нажата
                 for (int i = 0; i < 32; i++)
                 {
-                    
                     if (array_flags[i].bukva == Bykva) {
                         array_flags[i].flag = 1;
                     }
                     
                 }
+                //проверка буквы в слове
+                check_byk_v_slove(Bykva, slovo, len, nerazg_slovo);
 
             }
             
@@ -308,18 +324,3 @@ int main()
     return 0;
 }
 
-void check_byk_v_slove(char Bykva, string slovo, int len) {
-    bool flag = 0;
-    for (int i = 0; i < len; i++) {
-        if (slovo[i] == Bykva) {
-            flag = 1;
-        }
-    }
-    if (flag != 0) {
-        cout << "Такая буква есть" << endl;
-    }
-    else {
-        cout << "Такой буквы нет" << endl;
-    }
-
-}
