@@ -14,15 +14,17 @@ struct matrix_alp
 };
 
 
-void check_byk_v_slove(char Bykva, string slovo, int len, string nerazg_slovo[]) {
+void check_byk_v_slove(char Bykva, string slovo, int len, string nerazg_slovo[], bool &flag) {
     for (int i = 0; i < len; i++) {
         if (slovo[i] == Bykva) {
             nerazg_slovo[i] = Bykva;
+            flag = 1;
         }
     }
     for (int i = 0; i < len; i++) {
         cout << nerazg_slovo[i] << " ";
     }
+    cout << endl;
 }
 
 
@@ -91,6 +93,8 @@ int main()
     matrix_alp array_flags[32];
 
     char Bykva = '0';
+    int attempt = 0;
+    
 
     //Заполнение массива флагов буквами и флагами
     for (int i = 0; i < 32; i++)
@@ -115,8 +119,7 @@ int main()
     for (int i = 0; i < len; i++) {
         nerazg_slovo[i] = "_";
     }
-
-    RenderWindow window(VideoMode(1000, 800), L"Висилица", Style::Default);
+    RenderWindow window(VideoMode(1000, 800), L"Виселица", Style::Default);
     RectangleShape line1(Vector2f(157.f, 7.f));
     RectangleShape line2(Vector2f(366.f, 7.f));
     RectangleShape line3(Vector2f(295.f, 7.f));
@@ -156,18 +159,74 @@ int main()
             //очищаем окно и заливаем нужным цветом;
             window.clear(Color(217, 217, 217));
 
-            //рисуем виселицу
-            window.draw(line1);
-            window.draw(line2);
-            window.draw(line3);
-            window.draw(line4);
-            window.draw(head);
-            window.draw(body);
-            window.draw(rightHand);
-            window.draw(leftHand);
-            window.draw(rightLeg);
-            window.draw(leftLeg);
-
+            //рисуем виселицу в зависимости от попытки
+            switch (attempt)
+            {
+            case(0):
+                break;
+            case(1):
+                window.draw(line1);
+                window.draw(line2);
+                window.draw(line3);
+                break;
+            case(2):
+                window.draw(line1);
+                window.draw(line2);
+                window.draw(line3);
+                window.draw(line4);
+                window.draw(head);
+                break;
+            case(3):
+                window.draw(line1);
+                window.draw(line2);
+                window.draw(line3);
+                window.draw(line4);
+                window.draw(head);
+                window.draw(body);
+                break;
+            case(4):
+                window.draw(line1);
+                window.draw(line2);
+                window.draw(line3);
+                window.draw(line4);
+                window.draw(head);
+                window.draw(body);
+                window.draw(rightHand);
+                break;
+            case(5):
+                window.draw(line1);
+                window.draw(line2);
+                window.draw(line3);
+                window.draw(line4);
+                window.draw(head);
+                window.draw(body);
+                window.draw(rightHand);
+                window.draw(leftHand);
+                break;
+            case(6):
+                window.draw(line1);
+                window.draw(line2);
+                window.draw(line3);
+                window.draw(line4);
+                window.draw(head);
+                window.draw(body);
+                window.draw(rightHand);
+                window.draw(leftHand);
+                window.draw(rightLeg);
+                break;
+            default:
+                window.draw(line1);
+                window.draw(line2);
+                window.draw(line3);
+                window.draw(line4);
+                window.draw(head);
+                window.draw(body);
+                window.draw(rightHand);
+                window.draw(leftHand);
+                window.draw(rightLeg);
+                window.draw(leftLeg);
+                break;
+            }
 
             window.draw(alphabet);
 
@@ -238,12 +297,14 @@ int main()
             // Проверка нажатия на нужную букву
             Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
-
                 int pos_x = position.x; //сохраняем координаты мышки по x
                 int pos_y = position.y; //сохраняем координаты мышки по y
 
-                cout << "Po x:" << position.x << endl;
-                cout << "Po y:" << position.y << endl;
+                //обнуление проверки буквы в слове
+                bool flag = 0;
+
+                /*cout << "Po x:" << position.x << endl;
+                cout << "Po y:" << position.y << endl;*/
 
                 //Проверка на какую букву нажали на первом ряду
                 if (pos_y >= 580 && pos_y <= 615) {
@@ -311,7 +372,12 @@ int main()
                     
                 }
                 //проверка буквы в слове
-                check_byk_v_slove(Bykva, slovo, len, nerazg_slovo);
+                check_byk_v_slove(Bykva, slovo, len, nerazg_slovo, flag);
+
+                //если буквы нет, то количество попыток увеличивоется
+                if (flag==0) {
+                    attempt++;
+                }
 
             }
             
