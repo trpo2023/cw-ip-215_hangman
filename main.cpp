@@ -16,13 +16,71 @@ struct matrix_alp
 
 void check_byk_v_slove(char Bykva, string slovo, int len);
 
+
+void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& line2, RectangleShape& line3,
+    RectangleShape& line4, CircleShape& head,RectangleShape& body, RectangleShape& rightHand,
+    RectangleShape& leftHand, RectangleShape& rightLeg, RectangleShape& leftLeg, Texture& alphabetTexture,
+    Sprite& alphabet, Texture& cross_texture, Sprite& cross) {
+    window.setFramerateLimit(60);
+    window.setVerticalSyncEnabled(true);
+
+    line1.setFillColor(Color::Black);
+    line1.setPosition(663, 456);
+
+    line2.rotate(90.f);
+    line2.setFillColor(Color::Black);
+    line2.setPosition(745, 90);
+
+    line3.setFillColor(Color::Black);
+    line3.setPosition(450, 90);
+
+    line4.rotate(90.f);
+    line4.setFillColor(Color::Black);
+    line4.setPosition(500, 90);
+
+    head.setPosition(459, 145);
+    head.setFillColor(Color(217, 217, 217));
+    head.setOutlineThickness(3.f);
+    head.setOutlineColor(Color::Black);
+
+    body.rotate(90.f);
+    body.setPosition(500, 228);
+    body.setFillColor(Color::Black);
+
+    rightHand.rotate(45.f);
+    rightHand.setPosition(500, 256);
+    rightHand.setFillColor(Color::Black);
+
+    leftHand.rotate(135.f);
+    leftHand.setPosition(500, 256);
+    leftHand.setFillColor(Color::Black);
+
+    rightLeg.rotate(45.f);
+    rightLeg.setPosition(500, 356);
+    rightLeg.setFillColor(Color::Black);
+
+    leftLeg.rotate(135.f);
+    leftLeg.setPosition(500, 356);
+    leftLeg.setFillColor(Color::Black);
+
+    alphabetTexture.loadFromFile("alphabet/Alphabet.png");
+
+    alphabet.setTexture(alphabetTexture);
+    alphabet.setPosition(143, 570);
+
+    cross_texture.loadFromFile("alphabet/Cross.png");
+
+    cross.setTexture(cross_texture);
+
+}
+
 int main()
 {
     setlocale(LC_CTYPE, "rus");
     const int slov_v_spiske = 3;
     string array_alp = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
     matrix_alp array_flags[32];
-    char Bykva;
+    char Bykva = '0';
 
     //Заполнение массива флагов буквами и флагами
     for (int i = 0; i < 32; i++)
@@ -43,73 +101,26 @@ int main()
     }
 
     RenderWindow window(VideoMode(1000, 800), L"Висилица", Style::Default);
-    window.setFramerateLimit(60);
-
-    window.setVerticalSyncEnabled(true);
-    int flag = 0;
-
     RectangleShape line1(Vector2f(157.f, 7.f));
-    line1.setFillColor(Color::Black);
-    line1.setPosition(663, 456);
-
     RectangleShape line2(Vector2f(366.f, 7.f));
-    line2.rotate(90.f);
-    line2.setFillColor(Color::Black);
-    line2.setPosition(745, 90);
-
     RectangleShape line3(Vector2f(295.f, 7.f));
-    line3.setFillColor(Color::Black);
-    line3.setPosition(450, 90);
-
     RectangleShape line4(Vector2f(55.f, 2.f));
-    line4.rotate(90.f);
-    line4.setFillColor(Color::Black);
-    line4.setPosition(500, 90);
-
-    CircleShape head(41.f);
-    head.setPosition(459, 145);
-    head.setFillColor(Color(217, 217, 217));
-    head.setOutlineThickness(3.f);
-    head.setOutlineColor(Color::Black);
-
+    CircleShape head(41.f); 
     RectangleShape body(Vector2f(130.f, 3.f));
-    body.rotate(90.f);
-    body.setPosition(500, 228);
-    body.setFillColor(Color::Black);
-
     RectangleShape rightHand(Vector2f(70.f, 3.f));
-    rightHand.rotate(45.f);
-    rightHand.setPosition(500, 256);
-    rightHand.setFillColor(Color::Black);
-
     RectangleShape leftHand(Vector2f(70.f, 3.f));
-    leftHand.rotate(135.f);
-    leftHand.setPosition(500, 256);
-    leftHand.setFillColor(Color::Black);
-
     RectangleShape rightLeg(Vector2f(70.f, 3.f));
-    rightLeg.rotate(45.f);
-    rightLeg.setPosition(500, 356);
-    rightLeg.setFillColor(Color::Black);
-
     RectangleShape leftLeg(Vector2f(70.f, 3.f));
-    leftLeg.rotate(135.f);
-    leftLeg.setPosition(500, 356);
-    leftLeg.setFillColor(Color::Black);
-
     //Алфавит одной картинкой
     Texture alphabetTexture;
-    alphabetTexture.loadFromFile("alphabet/Alphabet.png");
-
     Sprite alphabet;
-    alphabet.setTexture(alphabetTexture);
-    alphabet.setPosition(143, 570);
-
+    //крестик
     Texture cross_texture;
-    cross_texture.loadFromFile("alphabet/Cross.png");
-
     Sprite cross;
-    cross.setTexture(cross_texture);
+
+    load_textur(window, line1, line2, line3, line4, head, body, rightHand, 
+        leftHand, rightLeg, leftLeg, alphabetTexture , alphabet, cross_texture, cross);
+
 
     while (window.isOpen())
     {
