@@ -302,6 +302,7 @@ int main()
 
                 //обнуление проверки буквы в слове
                 bool flag = 0;
+                bool flag_click = 0;
 
                 /*cout << "Po x:" << position.x << endl;
                 cout << "Po y:" << position.y << endl;*/
@@ -363,19 +364,27 @@ int main()
                     }    
                 }
 
+                //Чтобы висилица не рисовалась при нажатии на зачеркнутую букву
+                for (int i = 0; i < 32; i++)
+                {
+                    if (array_flags[i].bukva == Bykva && array_flags[i].flag == 1) {
+                        flag_click = 1;
+                    }
+                }
+
                 //Меняем флаг буквы, если она была нажата
                 for (int i = 0; i < 32; i++)
                 {
                     if (array_flags[i].bukva == Bykva) {
                         array_flags[i].flag = 1;
-                    }
-                    
+                    } 
                 }
+
                 //проверка буквы в слове
                 check_byk_v_slove(Bykva, slovo, len, nerazg_slovo, flag);
 
-                //если буквы нет, то количество попыток увеличивоется
-                if (flag==0) {
+                //если буквы нет и она раньше не нажималась, то количество попыток увеличивоется
+                if (flag==0 and flag_click==0) {
                     attempt++;
                 }
 
