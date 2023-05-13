@@ -13,6 +13,11 @@ struct matrix_alp
     bool flag;
 };
 
+struct TextureLatterStruct
+{
+    Texture letterTexture;
+    Sprite letter;
+};
 
 void check_byk_v_slove(char Bykva, string slovo, int len, string nerazg_slovo[], bool &flag) {
     for (int i = 0; i < len; i++) {
@@ -94,6 +99,17 @@ int main()
 
     char Bykva = '0';
     int attempt = 0; //номер попытки
+
+    TextureLatterStruct alph[12];
+    string path = "alphabet/А.png";
+
+    for (int i = 0; i < 12; i++) {
+        alph[i].letterTexture;
+        alph[i].letterTexture.loadFromFile(path);
+        alph[i].letter;
+        alph[i].letter.setTexture(alph[i].letterTexture);
+        alph[i].letter.setPosition(300, 300);
+    }
 
 
     //Заполнение массива флагов буквами и флагами
@@ -252,6 +268,8 @@ int main()
             if (attempt >= 7) {
                 window.draw(leftLeg);
             }
+
+            window.draw(alph[0].letter);
 
             window.draw(alphabet);
 
