@@ -98,18 +98,19 @@ int main()
 {
     //русский в консоли
     setlocale(LC_CTYPE, "rus");
-    const int slov_v_spiske = 3;
-    const int max_len_slov = 10;
-    const string array_alp = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
-    matrix_alp array_flags[32];
+    const int slov_v_spiske = 3; //слов в списке
+    const int max_len_slov = 10; //максимальная длина слова
+    const string array_alp = "абвгдежзийклмнопрстуфхцчшщъыьэюя"; //алфавит
+    matrix_alp array_flags[32]; //массив структуры с буквами и флагами, для зачеркивания
 
     char Bykva = '0';
+
     int attempt = 0; //номер попытки
 
-    bool flag = 0;
-    bool flag_click = 0;
+    bool flag = 0; //есть ли буква в слове
+    bool flag_click = 0; //нажималась ли ранее буква
 
-    TextureLatterStruct NeSlovo[max_len_slov];
+    //Пути до картинок с буквами (в дальнейшем расширить до 32)
     string path[13] = {
         "alphabet/А.png",
         "alphabet/Б.png",
@@ -145,34 +146,31 @@ int main()
         len++;
     }
 
-    for (int i = 0; i < len; i++) {
-
-    }
-
-    //массив неразгаданного слова
+    //Создаем массив неразгаданного слова
     nerazg_slovo nr_slovo[max_len_slov];
     for (int i = 0, k=200; i < len; i++) {
         k += 60;
         nr_slovo[i].byk = '_';
-        nr_slovo[i].cord_x = k;
-        nr_slovo[i].cord_y = 450;
     }
 
-    //Указываем, какая буква
+    //Маасив структуры слова, которая будет выводиться на экран
+    TextureLatterStruct NeSlovo[max_len_slov];
+
+    //Записываем буквы нашего слова, чтобы подом загрузить их как текстуру и вывести на экран
     for (int i = 0; i < len; i++)
     {
         NeSlovo[i].bykva = slovo[i];
     }
 
-    //Загружаем спрайт для каждой буквы
+    //Загружаем спрайт буквы, которая есть у нас в слове
     for (int i = 0; i < len; i++) {
         int j = 0;
         while (j <33)
         {
             if (NeSlovo[i].bykva == array_alp[j]) {
-                NeSlovo[i].letterTexture.loadFromFile(path[j]);
+                NeSlovo[i].letterTexture.loadFromFile(path[j]); //загружаем букву из картинки
                 NeSlovo[i].letter.setTexture(NeSlovo[i].letterTexture);
-                NeSlovo[i].flag = 0;
+                NeSlovo[i].flag = 0; //Чтобы не выводились буквы, котрые еще не нажимались
                 break;
             }
             j++;
@@ -246,14 +244,15 @@ int main()
                 window.draw(leftLeg);
             }
 
+            //рисуем алфавит
             window.draw(alphabet);
 
+            //рисуем уже нажатые правильные буквы
             for (int i = 0; i < len; i++) {
                 if (NeSlovo[i].flag == 1) {
                     window.draw(NeSlovo[i].letter);
                 }
             }
-
 
             // Зачеркиваем букву, у которой флаг 1, т.е она уже ранее нажималась
             for (int i = 0; i < 32; i++)
@@ -413,8 +412,9 @@ int main()
                     attempt++;
                 }
 
-                int cord_y = 430;
+                const int cord_y = 430; //координаты риющихся букв по y
 
+                //Если буква есть в слове, то мы даем координаты в следующем цикле она нарисуется
                 if (flag==1 && flag_click==0) {
                     for (int i = 0, cord_x=350; i < len; i++) {
                         if (NeSlovo[i].bykva == Bykva) {
