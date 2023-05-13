@@ -93,8 +93,8 @@ int main()
     matrix_alp array_flags[32];
 
     char Bykva = '0';
-    int attempt = 0;
-    
+    int attempt = 0; //номер попытки
+
 
     //Заполнение массива флагов буквами и флагами
     for (int i = 0; i < 32; i++)
@@ -159,73 +159,98 @@ int main()
             //очищаем окно и заливаем нужным цветом;
             window.clear(Color(217, 217, 217));
 
+            //switch (attempt)
+            //{
+            //case(0):
+            //    break;
+            //case(1):
+            //    window.draw(line1);
+            //    window.draw(line2);
+            //    window.draw(line3);
+            //    break;
+            //case(2):
+            //    window.draw(line1);
+            //    window.draw(line2);
+            //    window.draw(line3);
+            //    window.draw(line4);
+            //    window.draw(head);
+            //    break;
+            //case(3):
+            //    window.draw(line1);
+            //    window.draw(line2);
+            //    window.draw(line3);
+            //    window.draw(line4);
+            //    window.draw(head);
+            //    window.draw(body);
+            //    break;
+            //case(4):
+            //    window.draw(line1);
+            //    window.draw(line2);
+            //    window.draw(line3);
+            //    window.draw(line4);
+            //    window.draw(head);
+            //    window.draw(body);
+            //    window.draw(rightHand);
+            //    break;
+            //case(5):
+            //    window.draw(line1);
+            //    window.draw(line2);
+            //    window.draw(line3);
+            //    window.draw(line4);
+            //    window.draw(head);
+            //    window.draw(body);
+            //    window.draw(rightHand);
+            //    window.draw(leftHand);
+            //    break;
+            //case(6):
+            //    window.draw(line1);
+            //    window.draw(line2);
+            //    window.draw(line3);
+            //    window.draw(line4);
+            //    window.draw(head);
+            //    window.draw(body);
+            //    window.draw(rightHand);
+            //    window.draw(leftHand);
+            //    window.draw(rightLeg);
+            //    break;
+            //default:
+            //    window.draw(line1);
+            //    window.draw(line2);
+            //    window.draw(line3);
+            //    window.draw(line4);
+            //    window.draw(head);
+            //    window.draw(body);
+            //    window.draw(rightHand);
+            //    window.draw(leftHand);
+            //    window.draw(rightLeg);
+            //    window.draw(leftLeg);
+            //    break;
+            //}
+
             //рисуем виселицу в зависимости от попытки
-            switch (attempt)
-            {
-            case(0):
-                break;
-            case(1):
+            if (attempt >= 1) {
                 window.draw(line1);
                 window.draw(line2);
                 window.draw(line3);
-                break;
-            case(2):
-                window.draw(line1);
-                window.draw(line2);
-                window.draw(line3);
-                window.draw(line4);
+            }
+            if (attempt >= 2) {
                 window.draw(head);
-                break;
-            case(3):
-                window.draw(line1);
-                window.draw(line2);
-                window.draw(line3);
                 window.draw(line4);
-                window.draw(head);
+            }
+            if (attempt >= 3) {
                 window.draw(body);
-                break;
-            case(4):
-                window.draw(line1);
-                window.draw(line2);
-                window.draw(line3);
-                window.draw(line4);
-                window.draw(head);
-                window.draw(body);
+            }
+            if (attempt >= 4) {
                 window.draw(rightHand);
-                break;
-            case(5):
-                window.draw(line1);
-                window.draw(line2);
-                window.draw(line3);
-                window.draw(line4);
-                window.draw(head);
-                window.draw(body);
-                window.draw(rightHand);
+            }
+            if (attempt >= 5) {
                 window.draw(leftHand);
-                break;
-            case(6):
-                window.draw(line1);
-                window.draw(line2);
-                window.draw(line3);
-                window.draw(line4);
-                window.draw(head);
-                window.draw(body);
-                window.draw(rightHand);
-                window.draw(leftHand);
+            }
+            if (attempt >= 6) {
                 window.draw(rightLeg);
-                break;
-            default:
-                window.draw(line1);
-                window.draw(line2);
-                window.draw(line3);
-                window.draw(line4);
-                window.draw(head);
-                window.draw(body);
-                window.draw(rightHand);
-                window.draw(leftHand);
-                window.draw(rightLeg);
+            }
+            if (attempt >= 7) {
                 window.draw(leftLeg);
-                break;
             }
 
             window.draw(alphabet);
@@ -384,17 +409,14 @@ int main()
                 check_byk_v_slove(Bykva, slovo, len, nerazg_slovo, flag);
 
                 //если буквы нет и она раньше не нажималась, то количество попыток увеличивоется
-                if (flag==0 and flag_click==0) {
+                if (flag==0 && flag_click==0 && Bykva!='0') {
                     attempt++;
                 }
 
+                
             }
-            
-
             window.display();
         }
-
-        
     }
     return 0;
 }
