@@ -23,6 +23,9 @@ struct TextureLatterStruct
 
 struct nerazg_slovo {
     char byk;
+    int cord_y = 480;
+    Texture letterTexture;
+    Sprite letter;
 };
 
 
@@ -147,16 +150,18 @@ int main()
     }
 
     //Создаем массив неразгаданного слова
-    nerazg_slovo nr_slovo[max_len_slov];
-    for (int i = 0, k=200; i < len; i++) {
-        k += 60;
+    nerazg_slovo nr_slovo[max_len_slov], underline;
+    for (int i = 0; i < len; i++) {
         nr_slovo[i].byk = '_';
     }
+    underline.letterTexture.loadFromFile("alphabet/underine.png");
+    underline.letter.setTexture(underline.letterTexture);
 
-    //Маасив структуры слова, которая будет выводиться на экран
+
+    //Массив структуры слова, которая будет выводиться на экран
     TextureLatterStruct NeSlovo[max_len_slov];
 
-    //Записываем буквы нашего слова, чтобы подом загрузить их как текстуру и вывести на экран
+    //Записываем буквы нашего слова, чтобы потом загрузить их как текстуру и вывести на экран
     for (int i = 0; i < len; i++)
     {
         NeSlovo[i].bykva = slovo[i];
@@ -248,7 +253,11 @@ int main()
             window.draw(alphabet);
 
             //рисуем уже нажатые правильные буквы
-            for (int i = 0; i < len; i++) {
+            for (int i = 0, cordx = 360; i < len; i++) 
+            {
+                underline.letter.setPosition(cordx,underline.cord_y);
+                window.draw(underline.letter);
+                cordx += 60;
                 if (NeSlovo[i].flag == 1) {
                     window.draw(NeSlovo[i].letter);
                 }
@@ -328,8 +337,8 @@ int main()
                 flag = 0;
                 flag_click = 0;
 
-                /*cout << "Po x:" << position.x << endl;
-                cout << "Po y:" << position.y << endl;*/
+                cout << "Po x:" << position.x << endl;
+                cout << "Po y:" << position.y << endl;
 
                 //Проверка на какую букву нажали на первом ряду
                 if (pos_y >= 580 && pos_y <= 615) {
@@ -412,7 +421,7 @@ int main()
                     attempt++;
                 }
 
-                const int cord_y = 430; //координаты риющихся букв по y
+                const int cord_y = 430; //координаты рисующихся букв по y
 
                 //Если буква есть в слове, то мы даем координаты в следующем цикле она нарисуется
                 if (flag==1 && flag_click==0) {
