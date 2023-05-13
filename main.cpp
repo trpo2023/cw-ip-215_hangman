@@ -437,6 +437,10 @@ int main()
             }
             window.display();
         }
+        if (Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            window.close();
+        }
     }
     return 0;
 }
