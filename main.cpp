@@ -15,23 +15,29 @@ struct matrix_alp
 
 struct TextureLatterStruct
 {
+    char bykva;
+    bool flag;
     Texture letterTexture;
     Sprite letter;
 };
 
-void check_byk_v_slove(char Bykva, string slovo, int len, string nerazg_slovo[], bool &flag) {
+struct nerazg_slovo {
+    char byk;
+};
+
+
+void check_byk_v_slove(char Bykva, string slovo, int len, nerazg_slovo nr_slovo[], bool& flag) {
     for (int i = 0; i < len; i++) {
         if (slovo[i] == Bykva) {
-            nerazg_slovo[i] = Bykva;
+            nr_slovo[i].byk = Bykva;
             flag = 1;
         }
     }
     for (int i = 0; i < len; i++) {
-        cout << nerazg_slovo[i] << " ";
+        cout << nr_slovo[i].byk << " ";
     }
     cout << endl;
 }
-
 
 void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& line2, RectangleShape& line3, RectangleShape& line4, CircleShape& head,RectangleShape& body, RectangleShape& rightHand, RectangleShape& leftHand, RectangleShape& rightLeg, RectangleShape& leftLeg, Texture& alphabetTexture, Sprite& alphabet, Texture& cross_texture, Sprite& cross) {
 
@@ -100,17 +106,25 @@ int main()
     char Bykva = '0';
     int attempt = 0; //номер попытки
 
-    TextureLatterStruct alph[12];
-    string path = "alphabet/А.png";
+    bool flag = 0;
+    bool flag_click = 0;
 
-    for (int i = 0; i < 12; i++) {
-        alph[i].letterTexture;
-        alph[i].letterTexture.loadFromFile(path);
-        alph[i].letter;
-        alph[i].letter.setTexture(alph[i].letterTexture);
-        alph[i].letter.setPosition(300, 300);
-    }
-
+    TextureLatterStruct NeSlovo[max_len_slov];
+    string path[13] = {
+        "alphabet/А.png",
+        "alphabet/Б.png",
+        "alphabet/В.png",
+        "alphabet/Г.png",
+        "alphabet/Д.png",
+        "alphabet/Е.png",
+        "alphabet/Ж.png",
+        "alphabet/З.png",
+        "alphabet/И.png",
+        "alphabet/Й.png",
+        "alphabet/К.png",
+        "alphabet/Л.png",
+        "alphabet/М.png"
+    };
 
     //Заполнение массива флагов буквами и флагами
     for (int i = 0; i < 32; i++)
@@ -118,10 +132,11 @@ int main()
         array_flags[i].bukva = array_alp[i];
         array_flags[i].flag = 0;
     }
+
     string spisok[slov_v_spiske] = { "лава", "визг", "айда"};
 
     //Рандомно выбираем слово из списка
-    string slovo = spisok[0]; // потом поменять на случайное слово
+    string slovo = spisok[1]; // потом поменять на случайное слово
     //slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
@@ -130,11 +145,41 @@ int main()
         len++;
     }
 
-    //массив
-    string nerazg_slovo[max_len_slov];
     for (int i = 0; i < len; i++) {
-        nerazg_slovo[i] = "_";
+
     }
+
+    //массив неразгаданного слова
+    nerazg_slovo nr_slovo[max_len_slov];
+    for (int i = 0, k=200; i < len; i++) {
+        k += 60;
+        nr_slovo[i].byk = '_';
+        nr_slovo[i].cord_x = k;
+        nr_slovo[i].cord_y = 450;
+    }
+
+    //Указываем, какая буква
+    for (int i = 0; i < len; i++)
+    {
+        NeSlovo[i].bykva = slovo[i];
+    }
+
+    //Загружаем спрайт для каждой буквы
+    for (int i = 0; i < len; i++) {
+        int j = 0;
+        while (j <33)
+        {
+            if (NeSlovo[i].bykva == array_alp[j]) {
+                NeSlovo[i].letterTexture.loadFromFile(path[j]);
+                NeSlovo[i].letter.setTexture(NeSlovo[i].letterTexture);
+                NeSlovo[i].flag = 0;
+                break;
+            }
+            j++;
+        }
+        
+    }
+
     RenderWindow window(VideoMode(1000, 800), L"Виселица", Style::Default);
     RectangleShape line1(Vector2f(157.f, 7.f));
     RectangleShape line2(Vector2f(366.f, 7.f));
@@ -175,74 +220,6 @@ int main()
             //очищаем окно и заливаем нужным цветом;
             window.clear(Color(217, 217, 217));
 
-            //switch (attempt)
-            //{
-            //case(0):
-            //    break;
-            //case(1):
-            //    window.draw(line1);
-            //    window.draw(line2);
-            //    window.draw(line3);
-            //    break;
-            //case(2):
-            //    window.draw(line1);
-            //    window.draw(line2);
-            //    window.draw(line3);
-            //    window.draw(line4);
-            //    window.draw(head);
-            //    break;
-            //case(3):
-            //    window.draw(line1);
-            //    window.draw(line2);
-            //    window.draw(line3);
-            //    window.draw(line4);
-            //    window.draw(head);
-            //    window.draw(body);
-            //    break;
-            //case(4):
-            //    window.draw(line1);
-            //    window.draw(line2);
-            //    window.draw(line3);
-            //    window.draw(line4);
-            //    window.draw(head);
-            //    window.draw(body);
-            //    window.draw(rightHand);
-            //    break;
-            //case(5):
-            //    window.draw(line1);
-            //    window.draw(line2);
-            //    window.draw(line3);
-            //    window.draw(line4);
-            //    window.draw(head);
-            //    window.draw(body);
-            //    window.draw(rightHand);
-            //    window.draw(leftHand);
-            //    break;
-            //case(6):
-            //    window.draw(line1);
-            //    window.draw(line2);
-            //    window.draw(line3);
-            //    window.draw(line4);
-            //    window.draw(head);
-            //    window.draw(body);
-            //    window.draw(rightHand);
-            //    window.draw(leftHand);
-            //    window.draw(rightLeg);
-            //    break;
-            //default:
-            //    window.draw(line1);
-            //    window.draw(line2);
-            //    window.draw(line3);
-            //    window.draw(line4);
-            //    window.draw(head);
-            //    window.draw(body);
-            //    window.draw(rightHand);
-            //    window.draw(leftHand);
-            //    window.draw(rightLeg);
-            //    window.draw(leftLeg);
-            //    break;
-            //}
-
             //рисуем виселицу в зависимости от попытки
             if (attempt >= 1) {
                 window.draw(line1);
@@ -269,9 +246,14 @@ int main()
                 window.draw(leftLeg);
             }
 
-            window.draw(alph[0].letter);
-
             window.draw(alphabet);
+
+            for (int i = 0; i < len; i++) {
+                if (NeSlovo[i].flag == 1) {
+                    window.draw(NeSlovo[i].letter);
+                }
+            }
+
 
             // Зачеркиваем букву, у которой флаг 1, т.е она уже ранее нажималась
             for (int i = 0; i < 32; i++)
@@ -344,8 +326,8 @@ int main()
                 int pos_y = position.y; //сохраняем координаты мышки по y
 
                 //обнуление проверки буквы в слове
-                bool flag = 0;
-                bool flag_click = 0;
+                flag = 0;
+                flag_click = 0;
 
                 /*cout << "Po x:" << position.x << endl;
                 cout << "Po y:" << position.y << endl;*/
@@ -424,13 +406,24 @@ int main()
                 }
 
                 //проверка буквы в слове
-                check_byk_v_slove(Bykva, slovo, len, nerazg_slovo, flag);
+                check_byk_v_slove(Bykva, slovo, len, nr_slovo, flag);
 
                 //если буквы нет и она раньше не нажималась, то количество попыток увеличивоется
                 if (flag==0 && flag_click==0 && Bykva!='0') {
                     attempt++;
                 }
 
+                int cord_y = 430;
+
+                if (flag==1 && flag_click==0) {
+                    for (int i = 0, cord_x=350; i < len; i++) {
+                        if (NeSlovo[i].bykva == Bykva) {
+                            NeSlovo[i].letter.setPosition(cord_x, cord_y);
+                            NeSlovo[i].flag = 1;
+                        }
+                        cord_x += 60;
+                    }
+                }
                 
             }
             window.display();
