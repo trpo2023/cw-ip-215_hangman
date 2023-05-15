@@ -48,42 +48,42 @@ void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& li
     window.setVerticalSyncEnabled(true);
 
     line1.setFillColor(Color::Black);
-    line1.setPosition(663, 456);
+    line1.setPosition(663, 416);
 
     line2.rotate(90.f);
     line2.setFillColor(Color::Black);
-    line2.setPosition(745, 90);
+    line2.setPosition(745, 50);
 
     line3.setFillColor(Color::Black);
-    line3.setPosition(450, 90);
+    line3.setPosition(450, 50);
 
     line4.rotate(90.f);
     line4.setFillColor(Color::Black);
-    line4.setPosition(500, 90);
+    line4.setPosition(500, 50);
 
-    head.setPosition(459, 145);
+    head.setPosition(459, 105);
     head.setFillColor(Color(217, 217, 217));
     head.setOutlineThickness(3.f);
     head.setOutlineColor(Color::Black);
 
     body.rotate(90.f);
-    body.setPosition(500, 228);
+    body.setPosition(500, 188);
     body.setFillColor(Color::Black);
 
     rightHand.rotate(45.f);
-    rightHand.setPosition(500, 256);
+    rightHand.setPosition(500, 216);
     rightHand.setFillColor(Color::Black);
 
     leftHand.rotate(135.f);
-    leftHand.setPosition(500, 256);
+    leftHand.setPosition(500, 216);
     leftHand.setFillColor(Color::Black);
 
     rightLeg.rotate(45.f);
-    rightLeg.setPosition(500, 356);
+    rightLeg.setPosition(500, 316);
     rightLeg.setFillColor(Color::Black);
 
     leftLeg.rotate(135.f);
-    leftLeg.setPosition(500, 356);
+    leftLeg.setPosition(500, 316);
     leftLeg.setFillColor(Color::Black);
 
     alphabetTexture.loadFromFile("alphabet/Alphabet.png");
