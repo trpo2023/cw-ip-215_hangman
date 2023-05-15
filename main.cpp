@@ -134,7 +134,7 @@ int main()
     bool flag = 0; //есть ли буква в слове
     bool flag_click = 0; //нажималась ли ранее буква
 
-    //Пути до картинок с буквами (в дальнейшем расширить до 32)
+    //Пути до картинок с буквами
     string path[32] = {
         "alphabet/А.png",
         "alphabet/Б.png",
@@ -148,7 +148,26 @@ int main()
         "alphabet/Й.png",
         "alphabet/К.png",
         "alphabet/Л.png",
-        "alphabet/М.png"
+        "alphabet/М.png",
+        "alphabet/Н.png",
+        "alphabet/О.png",
+        "alphabet/П.png",
+        "alphabet/Р.png",
+        "alphabet/С.png",
+        "alphabet/Т.png",
+        "alphabet/У.png",
+        "alphabet/Ф.png",
+        "alphabet/Х.png",
+        "alphabet/Ц.png",
+        "alphabet/Ч.png",
+        "alphabet/Ш.png",
+        "alphabet/Щ.png",
+        "alphabet/Ъ.png",
+        "alphabet/Ы.png",
+        "alphabet/Ь.png",
+        "alphabet/Э.png",
+        "alphabet/Ю.png",
+        "alphabet/Я.png"
     };
 
     //Заполнение массива флагов буквами и флагами
@@ -158,7 +177,7 @@ int main()
         array_flags[i].flag = 0;
     }
 
-    string spisok[slov_v_spiske] = { "лава", "визг", "айдамввв"};
+    string spisok[slov_v_spiske] = { "лаваш", "визг", "айдамввв"};
 
     //Рандомно выбираем слово из списка
     string slovo = spisok[0]; // потом поменять на случайное слово
@@ -425,6 +444,87 @@ int main()
                         Bykva = 'м';
                     }    
                 }
+                else if (pos_y >= 640 && pos_y <= 677) {
+                    if (pos_x >= 155 && pos_x <= 185)
+                    {
+                        Bykva = 'н';
+                    }
+                    if (pos_x >= 205 && pos_x <= 240)
+                    {
+                        Bykva = 'о';
+                    }
+                    if (pos_x >= 265 && pos_x <= 295)
+                    {
+                        Bykva = 'п';
+                    }
+                    if (pos_x >= 320 && pos_x <= 350)
+                    {
+                        Bykva = 'р';
+                    }
+                    if (pos_x >= 372 && pos_x <= 405)
+                    {
+                        Bykva = 'с';
+                    }
+                    if (pos_x >= 430 && pos_x <= 460)
+                    {
+                        Bykva = 'т';
+                    }
+                    if (pos_x >= 483 && pos_x <= 512)
+                    {
+                        Bykva = 'у';
+                    }
+                    if (pos_x >= 535 && pos_x <= 573)
+                    {
+                        Bykva = 'ф';
+                    }
+                    if (pos_x >= 595 && pos_x <= 623)
+                    {
+                        Bykva = 'х';
+                    }
+                    if (pos_x >= 650 && pos_x <= 680)
+                    {
+                        Bykva = 'ц';
+                    }
+                    if (pos_x >= 702 && pos_x <= 731)
+                    {
+                        Bykva = 'ч';
+                    }
+                    if (pos_x >= 751 && pos_x <= 793)
+                    {
+                        Bykva = 'ш';
+                    }
+                    if (pos_x >= 807 && pos_x <= 853)
+                    {
+                        Bykva = 'щ';
+                    }
+                }
+                else if (pos_y >= 700 && pos_y <= 736) {
+                    if (pos_x >= 348 && pos_x <= 376)
+                    {
+                        Bykva = 'ь';
+                    }
+                    if (pos_x >= 395 && pos_x <= 435)
+                    {
+                        Bykva = 'ы';
+                    }
+                    if (pos_x >= 450 && pos_x <= 490)
+                    {
+                        Bykva = 'ъ';
+                    }
+                    if (pos_x >= 510 && pos_x <= 541)
+                    {
+                        Bykva = 'э';
+                    }
+                    if (pos_x >= 561 && pos_x <= 606)
+                    {
+                        Bykva = 'ю';
+                    }
+                    if (pos_x >= 623 && pos_x <= 648)
+                    {
+                        Bykva = 'я';
+                    }
+                }
+                cout << Bykva;
 
                 //Чтобы висилица не рисовалась при нажатии на зачеркнутую букву
                 for (int i = 0; i < 32; i++)
