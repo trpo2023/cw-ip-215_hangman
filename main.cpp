@@ -97,6 +97,27 @@ void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& li
 
 }
 
+void set_cord_slova(int len, int &slovo_cord_x) {
+    if (len == 2)
+        slovo_cord_x = 435;
+    if (len == 3)
+        slovo_cord_x = 405;
+    if (len == 4)
+        slovo_cord_x = 375;
+    if (len == 5)
+        slovo_cord_x = 345;
+    if (len == 6)
+        slovo_cord_x = 315;
+    if (len == 7)
+        slovo_cord_x = 285;
+    if (len == 8)
+        slovo_cord_x = 255;
+    if (len == 9)
+        slovo_cord_x = 225;
+    if (len == 10)
+        slovo_cord_x = 195;
+}
+
 int main()
 {
     //русский в консоли
@@ -137,10 +158,10 @@ int main()
         array_flags[i].flag = 0;
     }
 
-    string spisok[slov_v_spiske] = { "лава", "визг", "айдамввввв"};
+    string spisok[slov_v_spiske] = { "лава", "визг", "айдамввв"};
 
     //Рандомно выбираем слово из списка
-    string slovo = spisok[2]; // потом поменять на случайное слово
+    string slovo = spisok[0]; // потом поменять на случайное слово
     //slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
@@ -153,42 +174,9 @@ int main()
         return 1;
     }
 
-    int slovo_cord_x;
-
-    switch (len) {
-    case(2):
-        slovo_cord_x = 435;
-        break;
-    case(3):
-        slovo_cord_x = 405;
-        break;
-    case(4):
-        slovo_cord_x = 375;
-        break;
-    case(5):
-        slovo_cord_x = 345;
-        break;
-    case(6):
-        slovo_cord_x = 315;
-        break;
-    case(7):
-        slovo_cord_x = 285;
-        break;
-    case(8):
-        slovo_cord_x = 255;
-        break;
-    case(9):
-        slovo_cord_x = 225;
-        break;
-    case(10):
-        slovo_cord_x = 195;
-        break;
-    default:
-        cout << "СЛИШКОМ БОЛШОЕ СЛОВО!!!!";
-        return 1;
-        break;
-    }
-
+    int slovo_cord_x=0;
+    //устанавливаем начальные координаты для выводимого слова
+    set_cord_slova(len, slovo_cord_x);
 
     //Создаем массив неразгаданного слова
     nerazg_slovo nr_slovo[max_len_slov], underline;
