@@ -23,7 +23,7 @@ struct TextureLatterStruct
 
 struct nerazg_slovo {
     char byk;
-    int cord_y = 480;
+    int cord_y = 510;
     Texture letterTexture;
     Sprite letter;
 };
@@ -114,7 +114,7 @@ int main()
     bool flag_click = 0; //нажималась ли ранее буква
 
     //Пути до картинок с буквами (в дальнейшем расширить до 32)
-    string path[13] = {
+    string path[32] = {
         "alphabet/А.png",
         "alphabet/Б.png",
         "alphabet/В.png",
@@ -137,10 +137,10 @@ int main()
         array_flags[i].flag = 0;
     }
 
-    string spisok[slov_v_spiske] = { "лава", "визг", "айда"};
+    string spisok[slov_v_spiske] = { "лава", "визг", "айдамввввв"};
 
     //Рандомно выбираем слово из списка
-    string slovo = spisok[1]; // потом поменять на случайное слово
+    string slovo = spisok[2]; // потом поменять на случайное слово
     //slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
@@ -148,6 +148,47 @@ int main()
     while (slovo[len] != NULL) {
         len++;
     }
+
+    if (len > 12) {
+        return 1;
+    }
+
+    int slovo_cord_x;
+
+    switch (len) {
+    case(2):
+        slovo_cord_x = 435;
+        break;
+    case(3):
+        slovo_cord_x = 405;
+        break;
+    case(4):
+        slovo_cord_x = 375;
+        break;
+    case(5):
+        slovo_cord_x = 345;
+        break;
+    case(6):
+        slovo_cord_x = 315;
+        break;
+    case(7):
+        slovo_cord_x = 285;
+        break;
+    case(8):
+        slovo_cord_x = 255;
+        break;
+    case(9):
+        slovo_cord_x = 225;
+        break;
+    case(10):
+        slovo_cord_x = 195;
+        break;
+    default:
+        cout << "СЛИШКОМ БОЛШОЕ СЛОВО!!!!";
+        return 1;
+        break;
+    }
+
 
     //Создаем массив неразгаданного слова
     nerazg_slovo nr_slovo[max_len_slov], underline;
@@ -253,7 +294,7 @@ int main()
             window.draw(alphabet);
 
             //рисуем уже нажатые правильные буквы
-            for (int i = 0, cordx = 360; i < len; i++) 
+            for (int i = 0, cordx = slovo_cord_x; i < len; i++)
             {
                 underline.letter.setPosition(cordx,underline.cord_y);
                 window.draw(underline.letter);
@@ -421,11 +462,11 @@ int main()
                     attempt++;
                 }
 
-                const int cord_y = 430; //координаты рисующихся букв по y
+                const int cord_y = 460; //координаты рисующихся букв по y
 
                 //Если буква есть в слове, то мы даем координаты в следующем цикле она нарисуется
                 if (flag==1 && flag_click==0) {
-                    for (int i = 0, cord_x=350; i < len; i++) {
+                    for (int i = 0, cord_x= slovo_cord_x-10; i < len; i++) {
                         if (NeSlovo[i].bykva == Bykva) {
                             NeSlovo[i].letter.setPosition(cord_x, cord_y);
                             NeSlovo[i].flag = 1;
