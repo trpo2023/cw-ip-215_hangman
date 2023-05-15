@@ -118,6 +118,143 @@ void set_cord_slova(int len, int &slovo_cord_x) {
         slovo_cord_x = 195;
 }
 
+void check_byk_cord(int pos_x, int pos_y, char &Bykva) {
+    if (pos_y >= 580 && pos_y <= 615) {
+
+        if (pos_x >= 155 && pos_x <= 185)
+        {
+            Bykva = 'а';
+        }
+        if (pos_x >= 210 && pos_x <= 240)
+        {
+            Bykva = 'б';
+        }
+        if (pos_x >= 265 && pos_x <= 295)
+        {
+            Bykva = 'в';
+        }
+        if (pos_x >= 325 && pos_x <= 350)
+        {
+            Bykva = 'г';
+        }
+        if (pos_x >= 370 && pos_x <= 410)
+        {
+            Bykva = 'д';
+        }
+        if (pos_x >= 435 && pos_x <= 460)
+        {
+            Bykva = 'е';
+        }
+        if (pos_x >= 477 && pos_x <= 522)
+        {
+            Bykva = 'ж';
+        }
+        if (pos_x >= 540 && pos_x <= 566)
+        {
+            Bykva = 'з';
+        }
+        if (pos_x >= 595 && pos_x <= 624)
+        {
+            Bykva = 'и';
+        }
+        if (pos_x >= 650 && pos_x <= 678)
+        {
+            Bykva = 'й';
+        }
+        if (pos_x >= 708 && pos_x <= 735)
+        {
+            Bykva = 'к';
+        }
+        if (pos_x >= 758 && pos_x <= 790)
+        {
+            Bykva = 'л';
+        }
+        if (pos_x >= 812 && pos_x <= 848)
+        {
+            Bykva = 'м';
+        }
+    }
+    else if (pos_y >= 640 && pos_y <= 677) {
+        if (pos_x >= 155 && pos_x <= 185)
+        {
+            Bykva = 'н';
+        }
+        if (pos_x >= 205 && pos_x <= 240)
+        {
+            Bykva = 'о';
+        }
+        if (pos_x >= 265 && pos_x <= 295)
+        {
+            Bykva = 'п';
+        }
+        if (pos_x >= 320 && pos_x <= 350)
+        {
+            Bykva = 'р';
+        }
+        if (pos_x >= 372 && pos_x <= 405)
+        {
+            Bykva = 'с';
+        }
+        if (pos_x >= 430 && pos_x <= 460)
+        {
+            Bykva = 'т';
+        }
+        if (pos_x >= 483 && pos_x <= 512)
+        {
+            Bykva = 'у';
+        }
+        if (pos_x >= 535 && pos_x <= 573)
+        {
+            Bykva = 'ф';
+        }
+        if (pos_x >= 595 && pos_x <= 623)
+        {
+            Bykva = 'х';
+        }
+        if (pos_x >= 650 && pos_x <= 680)
+        {
+            Bykva = 'ц';
+        }
+        if (pos_x >= 702 && pos_x <= 731)
+        {
+            Bykva = 'ч';
+        }
+        if (pos_x >= 751 && pos_x <= 793)
+        {
+            Bykva = 'ш';
+        }
+        if (pos_x >= 807 && pos_x <= 853)
+        {
+            Bykva = 'щ';
+        }
+    }
+    else if (pos_y >= 700 && pos_y <= 736) {
+        if (pos_x >= 348 && pos_x <= 376)
+        {
+            Bykva = 'ь';
+        }
+        if (pos_x >= 395 && pos_x <= 435)
+        {
+            Bykva = 'ы';
+        }
+        if (pos_x >= 450 && pos_x <= 490)
+        {
+            Bykva = 'ъ';
+        }
+        if (pos_x >= 510 && pos_x <= 541)
+        {
+            Bykva = 'э';
+        }
+        if (pos_x >= 561 && pos_x <= 606)
+        {
+            Bykva = 'ю';
+        }
+        if (pos_x >= 623 && pos_x <= 648)
+        {
+            Bykva = 'я';
+        }
+    }
+}
 int main()
 {
     //русский в консоли
@@ -389,142 +526,8 @@ int main()
                 cout << "Po y:" << position.y << endl;
 
                 //Проверка на какую букву нажали на первом ряду
-                if (pos_y >= 580 && pos_y <= 615) {
 
-                    if (pos_x >= 155 && pos_x <= 185)
-                    {
-                        Bykva = 'а';
-                    }
-                    if (pos_x >= 210 && pos_x <= 240) 
-                    {
-                        Bykva = 'б';
-                    }
-                    if (pos_x >= 265 && pos_x <= 295) 
-                    {
-                        Bykva = 'в';
-                    }
-                    if (pos_x >= 325 && pos_x <= 350)
-                    {
-                        Bykva = 'г';
-                    }
-                    if (pos_x >= 370 && pos_x <= 410)
-                    {
-                        Bykva = 'д';
-                    }
-                    if (pos_x >= 435 && pos_x <= 460)
-                    {
-                        Bykva = 'е';
-                    }
-                    if (pos_x >= 477 && pos_x <= 522)
-                    {
-                        Bykva = 'ж';
-                    }
-                    if (pos_x >= 540 && pos_x <= 566)
-                    {
-                        Bykva = 'з';
-                    }
-                    if (pos_x >= 595 && pos_x <= 624)
-                    {
-                        Bykva = 'и';
-                    }
-                    if (pos_x >= 650 && pos_x <= 678)
-                    {
-                        Bykva = 'й';
-                    }
-                    if (pos_x >= 708 && pos_x <= 735)
-                    {
-                        Bykva = 'к';
-                    }
-                    if (pos_x >= 758 && pos_x <= 790)
-                    {
-                        Bykva = 'л';
-                    }
-                    if (pos_x >= 812 && pos_x <= 848)
-                    {
-                        Bykva = 'м';
-                    }    
-                }
-                else if (pos_y >= 640 && pos_y <= 677) {
-                    if (pos_x >= 155 && pos_x <= 185)
-                    {
-                        Bykva = 'н';
-                    }
-                    if (pos_x >= 205 && pos_x <= 240)
-                    {
-                        Bykva = 'о';
-                    }
-                    if (pos_x >= 265 && pos_x <= 295)
-                    {
-                        Bykva = 'п';
-                    }
-                    if (pos_x >= 320 && pos_x <= 350)
-                    {
-                        Bykva = 'р';
-                    }
-                    if (pos_x >= 372 && pos_x <= 405)
-                    {
-                        Bykva = 'с';
-                    }
-                    if (pos_x >= 430 && pos_x <= 460)
-                    {
-                        Bykva = 'т';
-                    }
-                    if (pos_x >= 483 && pos_x <= 512)
-                    {
-                        Bykva = 'у';
-                    }
-                    if (pos_x >= 535 && pos_x <= 573)
-                    {
-                        Bykva = 'ф';
-                    }
-                    if (pos_x >= 595 && pos_x <= 623)
-                    {
-                        Bykva = 'х';
-                    }
-                    if (pos_x >= 650 && pos_x <= 680)
-                    {
-                        Bykva = 'ц';
-                    }
-                    if (pos_x >= 702 && pos_x <= 731)
-                    {
-                        Bykva = 'ч';
-                    }
-                    if (pos_x >= 751 && pos_x <= 793)
-                    {
-                        Bykva = 'ш';
-                    }
-                    if (pos_x >= 807 && pos_x <= 853)
-                    {
-                        Bykva = 'щ';
-                    }
-                }
-                else if (pos_y >= 700 && pos_y <= 736) {
-                    if (pos_x >= 348 && pos_x <= 376)
-                    {
-                        Bykva = 'ь';
-                    }
-                    if (pos_x >= 395 && pos_x <= 435)
-                    {
-                        Bykva = 'ы';
-                    }
-                    if (pos_x >= 450 && pos_x <= 490)
-                    {
-                        Bykva = 'ъ';
-                    }
-                    if (pos_x >= 510 && pos_x <= 541)
-                    {
-                        Bykva = 'э';
-                    }
-                    if (pos_x >= 561 && pos_x <= 606)
-                    {
-                        Bykva = 'ю';
-                    }
-                    if (pos_x >= 623 && pos_x <= 648)
-                    {
-                        Bykva = 'я';
-                    }
-                }
-                cout << Bykva;
+                check_byk_cord(pos_x, pos_y, Bykva);
 
                 //Чтобы висилица не рисовалась при нажатии на зачеркнутую букву
                 for (int i = 0; i < 32; i++)
