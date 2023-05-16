@@ -255,6 +255,144 @@ void check_byk_cord(int pos_x, int pos_y, char &Bykva) {
         }
     }
 }
+
+void draw_cross(int i, RenderWindow& window, Sprite &cross) {
+    switch (i) {
+    case(0): //а
+        cross.setPosition(152, 580);
+        window.draw(cross);
+        break;
+    case(1): //б
+        cross.setPosition(210, 580);
+        window.draw(cross);
+        break;
+    case(2): //в
+        cross.setPosition(262, 580);
+        window.draw(cross);
+        break;
+    case(3): //г
+        cross.setPosition(315, 580);
+        window.draw(cross);
+        break;
+    case(4): //д
+        cross.setPosition(372, 580);
+        window.draw(cross);
+        break;
+    case(5): //е
+        cross.setPosition(427, 580);
+        window.draw(cross);
+        break;
+    case(6): //ж
+        cross.setPosition(482, 580);
+        window.draw(cross);
+        break;
+    case(7): //з
+        cross.setPosition(539, 580);
+        window.draw(cross);
+        break;
+    case(8): //и
+        cross.setPosition(593, 580);
+        window.draw(cross);
+        break;
+    case(9): //й
+        cross.setPosition(647, 580);
+        window.draw(cross);
+        break;
+    case(10): //к
+        cross.setPosition(700, 580);
+        window.draw(cross);
+        break;
+    case(11): //л
+        cross.setPosition(757, 580);
+        window.draw(cross);
+        break;
+    case(12): //м
+        cross.setPosition(812, 580);
+        window.draw(cross);
+        break;
+        //////
+    case(13): //н
+        cross.setPosition(150, 642);
+        window.draw(cross);
+        break;
+    case(14): //о
+        cross.setPosition(207, 642);
+        window.draw(cross);
+        break;
+    case(15): //п
+        cross.setPosition(260, 642);
+        window.draw(cross);
+        break;
+    case(16): //р
+        cross.setPosition(315, 642);
+        window.draw(cross);
+        break;
+    case(17): //с
+        cross.setPosition(372, 642);
+        window.draw(cross);
+        break;
+    case(18): //т
+        cross.setPosition(425, 642);
+        window.draw(cross);
+        break;
+    case(19): //у
+        cross.setPosition(480, 642);
+        window.draw(cross);
+        break;
+    case(20): //ф
+        cross.setPosition(536, 642);
+        window.draw(cross);
+        break;
+    case(21): //х
+        cross.setPosition(590, 642);
+        window.draw(cross);
+        break;
+    case(22): //ц
+        cross.setPosition(645, 642);
+        window.draw(cross);
+        break;
+    case(23): //ч
+        cross.setPosition(700, 642);
+        window.draw(cross);
+        break;
+    case(24): //ш
+        cross.setPosition(757, 642);
+        window.draw(cross);
+        break;
+    case(25): //щ
+        cross.setPosition(812, 642);
+        window.draw(cross);
+        break;
+        ////////
+    case(26): //ь
+        cross.setPosition(343, 700);
+        window.draw(cross);
+        break;
+    case(27): //ы
+        cross.setPosition(397, 700);
+        window.draw(cross);
+        break;
+    case(28): //ъ
+        cross.setPosition(455, 700);
+        window.draw(cross);
+        break;
+    case(29): //э
+        cross.setPosition(507, 700);
+        window.draw(cross);
+        break;
+    case(30): //ю
+        cross.setPosition(560, 700);
+        window.draw(cross);
+        break;
+    case(31): //я
+        cross.setPosition(618, 700);
+        window.draw(cross);
+        break;
+    default:
+        break;
+    }
+}
+
 int main()
 {
     //русский в консоли
@@ -453,140 +591,7 @@ int main()
             {
                 if (array_flags[i].flag == 1)
                 {
-                    switch (i) {
-                        case(0): //а
-                            cross.setPosition(152, 580);
-                            window.draw(cross);
-                            break;
-                        case(1): //б
-                            cross.setPosition(210, 580);
-                            window.draw(cross);
-                            break;
-                        case(2): //в
-                            cross.setPosition(262, 580);
-                            window.draw(cross);
-                            break;
-                        case(3): //г
-                            cross.setPosition(315, 580);
-                            window.draw(cross);
-                            break;
-                        case(4): //д
-                            cross.setPosition(372, 580);
-                            window.draw(cross);
-                            break;
-                        case(5): //е
-                            cross.setPosition(427, 580);
-                            window.draw(cross);
-                            break;
-                        case(6): //ж
-                            cross.setPosition(482, 580);
-                            window.draw(cross);
-                            break;
-                        case(7): //з
-                            cross.setPosition(539, 580);
-                            window.draw(cross);
-                            break;
-                        case(8): //и
-                            cross.setPosition(593, 580);
-                            window.draw(cross);
-                            break;
-                        case(9): //й
-                            cross.setPosition(647, 580);
-                            window.draw(cross);
-                            break;
-                        case(10): //к
-                            cross.setPosition(700, 580);
-                            window.draw(cross);
-                            break;
-                        case(11): //л
-                            cross.setPosition(757, 580);
-                            window.draw(cross);
-                            break;
-                        case(12): //м
-                            cross.setPosition(812, 580);
-                            window.draw(cross);
-                            break;
-                            //////
-                        case(13): //н
-                            cross.setPosition(150, 642);
-                            window.draw(cross);
-                            break;
-                        case(14): //о
-                            cross.setPosition(207, 642);
-                            window.draw(cross);
-                            break;
-                        case(15): //п
-                            cross.setPosition(260, 642);
-                            window.draw(cross);
-                            break;
-                        case(16): //р
-                            cross.setPosition(315, 642);
-                            window.draw(cross);
-                            break;
-                        case(17): //с
-                            cross.setPosition(372, 642);
-                            window.draw(cross);
-                            break;
-                        case(18): //т
-                            cross.setPosition(425, 642);
-                            window.draw(cross);
-                            break;
-                        case(19): //у
-                            cross.setPosition(480, 642);
-                            window.draw(cross);
-                            break;
-                        case(20): //ф
-                            cross.setPosition(536, 642);
-                            window.draw(cross);
-                            break;
-                        case(21): //х
-                            cross.setPosition(590, 642);
-                            window.draw(cross);
-                            break;
-                        case(22): //ц
-                            cross.setPosition(645, 642);
-                            window.draw(cross);
-                            break;
-                        case(23): //ч
-                            cross.setPosition(700, 642);
-                            window.draw(cross);
-                            break;
-                        case(24): //ш
-                            cross.setPosition(757, 642);
-                            window.draw(cross);
-                            break;
-                        case(25): //щ
-                            cross.setPosition(812, 642);
-                            window.draw(cross);
-                            break;
-                            ////////
-                        case(26): //ь
-                            cross.setPosition(343, 700);
-                            window.draw(cross);
-                            break;
-                        case(27): //ы
-                            cross.setPosition(397, 700);
-                            window.draw(cross);
-                            break;
-                        case(28): //ъ
-                            cross.setPosition(455, 700);
-                            window.draw(cross);
-                            break;
-                        case(29): //э
-                            cross.setPosition(507, 700);
-                            window.draw(cross);
-                            break;
-                        case(30): //ю
-                            cross.setPosition(560, 700);
-                            window.draw(cross);
-                            break;
-                        case(31): //я
-                            cross.setPosition(618, 700);
-                            window.draw(cross);
-                            break;
-                        default:
-                            break;
-                    }
+                    draw_cross(i, window, cross);
                 }
             }
 
