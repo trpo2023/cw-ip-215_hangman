@@ -29,20 +29,19 @@ struct nerazg_slovo {
 };
 
 
-void check_byk_v_slove(char Bykva, string slovo, int len, nerazg_slovo nr_slovo[], bool& flag) {
+void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag) {
     for (int i = 0; i < len; i++) {
         if (slovo[i] == Bykva) {
-            nr_slovo[i].byk = Bykva;
             flag = 1;
         }
     }
-    for (int i = 0; i < len; i++) {
-        cout << nr_slovo[i].byk << " ";
-    }
-    cout << endl;
 }
 
-void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& line2, RectangleShape& line3, RectangleShape& line4, CircleShape& head,RectangleShape& body, RectangleShape& rightHand, RectangleShape& leftHand, RectangleShape& rightLeg, RectangleShape& leftLeg, Texture& alphabetTexture, Sprite& alphabet, Texture& cross_texture, Sprite& cross) {
+void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& line2, RectangleShape& line3, RectangleShape& line4,
+    CircleShape& head,RectangleShape& body, RectangleShape& rightHand, RectangleShape& leftHand,RectangleShape& rightLeg,
+    RectangleShape& leftLeg, Texture& alphabetTexture, Sprite& alphabet, Texture& cross_texture, Sprite& cross, 
+    Texture& underline_texture, Sprite& underline, Texture& win_texture, Sprite& win, Texture& lose_texture, Sprite& lose)
+{
 
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
@@ -87,35 +86,22 @@ void load_textur(RenderWindow &window, RectangleShape &line1, RectangleShape& li
     leftLeg.setFillColor(Color::Black);
 
     alphabetTexture.loadFromFile("alphabet/Alphabet.png");
-
     alphabet.setTexture(alphabetTexture);
     alphabet.setPosition(143, 570);
 
     cross_texture.loadFromFile("alphabet/Cross.png");
-
     cross.setTexture(cross_texture);
 
-}
+    underline_texture.loadFromFile("alphabet/underline.png");
+    underline.setTexture(underline_texture);
 
-void set_cord_slova(int len, int &slovo_cord_x) {
-    if (len == 2)
-        slovo_cord_x = 435;
-    if (len == 3)
-        slovo_cord_x = 405;
-    if (len == 4)
-        slovo_cord_x = 375;
-    if (len == 5)
-        slovo_cord_x = 345;
-    if (len == 6)
-        slovo_cord_x = 315;
-    if (len == 7)
-        slovo_cord_x = 285;
-    if (len == 8)
-        slovo_cord_x = 255;
-    if (len == 9)
-        slovo_cord_x = 225;
-    if (len == 10)
-        slovo_cord_x = 195;
+    win_texture.loadFromFile("alphabet/You win.png");
+    win.setTexture(win_texture);
+    win.setPosition(33, 47);
+    
+    lose_texture.loadFromFile("alphabet/game over.png");
+    lose.setTexture(lose_texture);
+    lose.setPosition(33, 47);
 }
 
 void check_byk_cord(int pos_x, int pos_y, char &Bykva) {
@@ -260,137 +246,106 @@ void draw_cross(int i, RenderWindow& window, Sprite &cross) {
     switch (i) {
     case(0): //а
         cross.setPosition(152, 580);
-        window.draw(cross);
         break;
     case(1): //б
         cross.setPosition(210, 580);
-        window.draw(cross);
         break;
     case(2): //в
         cross.setPosition(262, 580);
-        window.draw(cross);
         break;
     case(3): //г
         cross.setPosition(315, 580);
-        window.draw(cross);
         break;
     case(4): //д
         cross.setPosition(372, 580);
-        window.draw(cross);
         break;
     case(5): //е
         cross.setPosition(427, 580);
-        window.draw(cross);
         break;
     case(6): //ж
         cross.setPosition(482, 580);
-        window.draw(cross);
         break;
     case(7): //з
         cross.setPosition(539, 580);
-        window.draw(cross);
         break;
     case(8): //и
         cross.setPosition(593, 580);
-        window.draw(cross);
         break;
     case(9): //й
         cross.setPosition(647, 580);
-        window.draw(cross);
         break;
     case(10): //к
         cross.setPosition(700, 580);
-        window.draw(cross);
         break;
     case(11): //л
         cross.setPosition(757, 580);
-        window.draw(cross);
         break;
     case(12): //м
         cross.setPosition(812, 580);
-        window.draw(cross);
         break;
         //////
     case(13): //н
         cross.setPosition(150, 642);
-        window.draw(cross);
         break;
     case(14): //о
         cross.setPosition(207, 642);
-        window.draw(cross);
         break;
     case(15): //п
         cross.setPosition(260, 642);
-        window.draw(cross);
         break;
     case(16): //р
         cross.setPosition(315, 642);
-        window.draw(cross);
         break;
     case(17): //с
         cross.setPosition(372, 642);
-        window.draw(cross);
         break;
     case(18): //т
         cross.setPosition(425, 642);
-        window.draw(cross);
         break;
     case(19): //у
         cross.setPosition(480, 642);
-        window.draw(cross);
         break;
     case(20): //ф
         cross.setPosition(536, 642);
-        window.draw(cross);
         break;
     case(21): //х
         cross.setPosition(590, 642);
-        window.draw(cross);
         break;
     case(22): //ц
         cross.setPosition(645, 642);
-        window.draw(cross);
         break;
     case(23): //ч
         cross.setPosition(700, 642);
-        window.draw(cross);
         break;
     case(24): //ш
         cross.setPosition(757, 642);
-        window.draw(cross);
         break;
     case(25): //щ
         cross.setPosition(812, 642);
-        window.draw(cross);
         break;
         ////////
     case(26): //ь
         cross.setPosition(343, 700);
-        window.draw(cross);
         break;
     case(27): //ы
         cross.setPosition(397, 700);
-        window.draw(cross);
         break;
     case(28): //ъ
         cross.setPosition(455, 700);
-        window.draw(cross);
         break;
     case(29): //э
         cross.setPosition(507, 700);
-        window.draw(cross);
         break;
     case(30): //ю
         cross.setPosition(560, 700);
-        window.draw(cross);
         break;
     case(31): //я
         cross.setPosition(618, 700);
-        window.draw(cross);
         break;
     default:
         break;
     }
+    window.draw(cross);
 }
 
 int main()
@@ -404,7 +359,7 @@ int main()
 
     char Bykva = '0';
 
-    int attempt = 0; //номер попытки
+    int right_try = 0, attempt = 0; //номер удачной попытки и обычной
 
     bool flag = 0; //есть ли буква в слове
     bool flag_click = 0; //нажималась ли ранее буква
@@ -470,16 +425,10 @@ int main()
 
     int slovo_cord_x=0;
     //устанавливаем начальные координаты для выводимого слова
-    set_cord_slova(len, slovo_cord_x);
+    slovo_cord_x = 495 - 30 * len;
 
-    //Создаем массив неразгаданного слова
-    nerazg_slovo nr_slovo[max_len_slov], underline;
-    for (int i = 0; i < len; i++) {
-        nr_slovo[i].byk = '_';
-    }
-    underline.letterTexture.loadFromFile("alphabet/underine.png");
-    underline.letter.setTexture(underline.letterTexture);
-
+    //Создаем структуру неразгаданного слова
+    nerazg_slovo underline;
 
     //Массив структуры слова, которая будет выводиться на экран
     TextureLatterStruct NeSlovo[max_len_slov];
@@ -523,9 +472,15 @@ int main()
     //крестик
     Texture cross_texture;
     Sprite cross;
+    //Выйгрышная надпись
+    Texture win_texture;
+    Sprite win;
+    //Проигрыщная надпись
+    Texture lose_texture;
+    Sprite lose;
 
-    load_textur(window, line1, line2, line3, line4, head, body, rightHand, 
-        leftHand, rightLeg, leftLeg, alphabetTexture , alphabet, cross_texture, cross);
+    load_textur(window, line1, line2, line3, line4, head, body, rightHand, leftHand, rightLeg, leftLeg, alphabetTexture,
+        alphabet, cross_texture, cross, underline.letterTexture, underline.letter, win_texture, win, lose_texture, lose);
 
 
     while (window.isOpen())
@@ -570,6 +525,7 @@ int main()
             }
             if (attempt >= 7) {
                 window.draw(leftLeg);
+                window.draw(lose);
             }
 
             //рисуем алфавит
@@ -595,6 +551,10 @@ int main()
                 }
             }
 
+            if (right_try >= len) {
+                window.draw(win);
+            }
+
             // Проверка нажатия на нужную букву
             Vector2i position = Mouse::getPosition(window);
             if (Mouse::isButtonPressed(Mouse::Left)) {
@@ -608,8 +568,7 @@ int main()
                 cout << "Po x:" << position.x << endl;
                 cout << "Po y:" << position.y << endl;
 
-                //Проверка на какую букву нажали на первом ряду
-
+                //Проверка на какую букву нажали 
                 check_byk_cord(pos_x, pos_y, Bykva);
 
                 //Чтобы висилица не рисовалась при нажатии на зачеркнутую букву
@@ -629,7 +588,7 @@ int main()
                 }
 
                 //проверка буквы в слове
-                check_byk_v_slove(Bykva, slovo, len, nr_slovo, flag);
+                check_byk_v_slove(Bykva, slovo, len, flag);
 
                 //если буквы нет и она раньше не нажималась, то количество попыток увеличивоется
                 if (flag==0 && flag_click==0 && Bykva!='0') {
@@ -644,6 +603,7 @@ int main()
                         if (NeSlovo[i].bykva == Bykva) {
                             NeSlovo[i].letter.setPosition(cord_x, cord_y);
                             NeSlovo[i].flag = 1;
+                            right_try++;
                         }
                         cord_x += 60;
                     }
@@ -651,10 +611,11 @@ int main()
                 
             }
             window.display();
-        }
-        if (Keyboard::isKeyPressed(Keyboard::Escape))
-        {
-            window.close();
+
+            if (Keyboard::isKeyPressed(Keyboard::Escape))
+            {
+                window.close();
+            }
         }
     }
     return 0;
