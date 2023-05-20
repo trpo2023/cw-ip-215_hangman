@@ -25,15 +25,12 @@ struct TextureLatterStruct
 struct textures
 {
     CircleShape head;
-    RectangleShape line1;
-    RectangleShape line2;
-    RectangleShape line3;
-    RectangleShape line4;
     RectangleShape body;
     RectangleShape rightHand;
     RectangleShape leftHand;
     RectangleShape rightLeg;
     RectangleShape leftLeg;
+    RectangleShape line[4];
     Texture Texture[5];
     Sprite Sprite[5];
 
@@ -92,7 +89,55 @@ void create_textur(textures &struct_texture, int n)
         struct_texture.Sprite[n] = lose;
         break;
     }
-
+    case(5):
+    {
+        RectangleShape line(Vector2f(157.f, 7.f));
+        struct_texture.line[n - 5] = line;
+        break;
+    }
+    case(6):
+    {
+        RectangleShape line(Vector2f(366.f, 7.f));
+        struct_texture.line[n - 5] = line;
+        break;
+    }
+    case(7):
+    {
+        RectangleShape line(Vector2f(295.f, 7.f));
+        struct_texture.line[n - 5] = line;
+        break;
+    }
+    case(8):
+    {
+        RectangleShape line(Vector2f(55.f, 2.f));
+        struct_texture.line[n - 5] = line;
+        break;
+    }
+    case(9):
+    {
+        CircleShape head(41.f);
+        struct_texture.head = head;
+        break;
+    }
+    case(10):
+    {
+        RectangleShape body(Vector2f(130.f, 3.f));
+        struct_texture.body = body;
+        break;
+    }
+    case(11):
+    {
+        RectangleShape righthand(Vector2f(70.f, 3.f));
+        RectangleShape lefthand;
+        RectangleShape rightleg;
+        RectangleShape leftleg;
+        lefthand = rightleg = leftleg = righthand;
+        struct_texture.rightHand = righthand;
+        struct_texture.leftHand = lefthand;
+        struct_texture.rightLeg = rightleg;
+        struct_texture.rightHand = leftleg;
+        break;
+    }
     default:
         break;
     }
@@ -103,20 +148,6 @@ void load_textur(RenderWindow &window, textures &struct_texture)
 
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
-
-    struct_texture.line1.setFillColor(Color::Black);
-    struct_texture.line1.setPosition(663, 406);
-
-    struct_texture.line2.rotate(90.f);
-    struct_texture.line2.setFillColor(Color::Black);
-    struct_texture.line2.setPosition(745, 40);
-
-    struct_texture.line3.setFillColor(Color::Black);
-    struct_texture.line3.setPosition(450, 40);
-
-    struct_texture.line4.rotate(90.f);
-    struct_texture.line4.setFillColor(Color::Black);
-    struct_texture.line4.setPosition(500, 40);
 
     struct_texture.head.setPosition(459, 95);
     struct_texture.head.setFillColor(Color(217, 217, 217));
@@ -143,7 +174,7 @@ void load_textur(RenderWindow &window, textures &struct_texture)
     struct_texture.leftLeg.setPosition(500, 306);
     struct_texture.leftLeg.setFillColor(Color::Black);
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 9; i++)
     {
         switch (i)
         {
@@ -180,6 +211,32 @@ void load_textur(RenderWindow &window, textures &struct_texture)
             struct_texture.Sprite[i].setPosition(33, 47);
             break;
         }
+        case(5):
+        {
+            struct_texture.line[i - 5].setFillColor(Color::Black);
+            struct_texture.line[i - 5].setPosition(663, 406);
+            break;
+        };
+        case(6):
+        {
+            struct_texture.line[i - 5].rotate(90.f);
+            struct_texture.line[i - 5].setFillColor(Color::Black);
+            struct_texture.line[i - 5].setPosition(745, 40);
+            break;
+        };
+        case(7):
+        {
+            struct_texture.line[i - 5].setFillColor(Color::Black);
+            struct_texture.line[i - 5].setPosition(450, 40);
+            break;
+        };
+        case(8):
+        {
+            struct_texture.line[i - 5].rotate(90.f);
+            struct_texture.line[i - 5].setFillColor(Color::Black);
+            struct_texture.line[i - 5].setPosition(500, 40);
+            break;
+        };
         default:
             break;
         }
@@ -431,18 +488,50 @@ void draw_cross(int i, RenderWindow& window, Sprite &cross) {
     window.draw(cross);
 }
 
+void draw_gallows(int attempt, RenderWindow& window, textures &struct_texture)
+{
+    //рисуем виселицу в зависимости от попытки
+    if (attempt >= 1) {
+        window.draw(struct_texture.line[0]);
+        window.draw(struct_texture.line[1]);
+        window.draw(struct_texture.line[2]);
+    }
+    if (attempt >= 2) {
+        window.draw(struct_texture.head);
+        window.draw(struct_texture.line[3]);
+    }
+    if (attempt >= 3) {
+        window.draw(struct_texture.body);
+    }
+    if (attempt >= 4) {
+        window.draw(struct_texture.rightHand);
+    }
+    if (attempt >= 5) {
+        window.draw(struct_texture.leftHand);
+    }
+    if (attempt >= 6) {
+        window.draw(struct_texture.rightLeg);
+    }
+    if (attempt >= 7) {
+        window.draw(struct_texture.leftLeg);
+        window.draw(struct_texture.Sprite[4]);
+    }
+
+    //рисуем алфавит
+    window.draw(struct_texture.Sprite[0]);
+}
+
 int main()
 {
     //русский в консоли
     setlocale(LC_CTYPE, "rus");
-    const int slov_v_spiske = 3; //слов в списке
+    //const int slov_v_spiske = 3; //слов в списке
     const int max_len_slov = 10; //максимальная длина слова
     const string array_alp = "абвгдежзийклмнопрстуфхцчшщьыъэюя"; //алфавит
     matrix_alp array_flags[32]; //массив структуры с буквами и флагами, для зачеркивания
     textures textures; //структура с текстурами и спрайтами элементов
 
     char Bykva = '0';
-
     int right_try = 0, attempt = 0; //номер удачной попытки и обычной
 
     bool flag = 0; //есть ли буква в слове
@@ -491,10 +580,10 @@ int main()
         array_flags[i].flag = 0;
     }
 
-    string spisok[slov_v_spiske] = { "лаваш", "визг", "айдамввв"};
+    string spisok[] = { "лаваш", "визг", "перфоратор", "переключатель", "лесоводство", "футбол", "волейбол", "разработчик", "фаренгейт"};
 
     //Рандомно выбираем слово из списка
-    string slovo = spisok[0]; // потом поменять на случайное слово
+    string slovo = spisok[8]; // потом поменять на случайное слово
     //slovo = spisok[rand() % 3];
     
     //Посчитаем длину слова
@@ -503,7 +592,7 @@ int main()
         len++;
     }
 
-    if (len > 12) {
+    if (len >= 12) {
         return 1;
     }
 
@@ -535,18 +624,9 @@ int main()
         
     }
 
+    //Создание всех текстур и спрайтов
     RenderWindow window(VideoMode(1000, 800), L"Виселица", Style::Default);
-    textures.line1 = RectangleShape (Vector2f(157.f, 7.f));
-    textures.line2 = RectangleShape (Vector2f(366.f, 7.f));
-    textures.line3 = RectangleShape (Vector2f(295.f, 7.f));
-    textures.line4 = RectangleShape (Vector2f(55.f, 2.f));
-    textures.head = CircleShape (41.f); 
-    textures.body = RectangleShape (Vector2f(130.f, 3.f));
-    textures.rightHand = RectangleShape (Vector2f(70.f, 3.f));
-    textures.leftHand = RectangleShape (Vector2f(70.f, 3.f));
-    textures.rightLeg = RectangleShape (Vector2f(70.f, 3.f));
-    textures.leftLeg = RectangleShape (Vector2f(70.f, 3.f));
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 12; i++) {
         create_textur(textures, i);
     }
     load_textur(window, textures);
@@ -569,36 +649,7 @@ int main()
             }
             //очищаем окно и заливаем нужным цветом;
             window.clear(Color(217, 217, 217));
-
-            //рисуем виселицу в зависимости от попытки
-            if (attempt >= 1) {
-                window.draw(textures.line1);
-                window.draw(textures.line2);
-                window.draw(textures.line3);
-            }
-            if (attempt >= 2) {
-                window.draw(textures.head);
-                window.draw(textures.line4);
-            }
-            if (attempt >= 3) {
-                window.draw(textures.body);
-            }
-            if (attempt >= 4) {
-                window.draw(textures.rightHand);
-            }
-            if (attempt >= 5) {
-                window.draw(textures.leftHand);
-            }
-            if (attempt >= 6) {
-                window.draw(textures.rightLeg);
-            }
-            if (attempt >= 7) {
-                window.draw(textures.leftLeg);
-                window.draw(textures.Sprite[4]);
-            }
-
-            //рисуем алфавит
-            window.draw(textures.Sprite[0]);
+            draw_gallows(attempt, window, textures);
 
             //рисуем уже нажатые правильные буквы
             for (int i = 0, cordx = slovo_cord_x; i < len; i++)
