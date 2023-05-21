@@ -209,14 +209,14 @@ void load_textur(RenderWindow& window, textures& struct_texture)
         {
             struct_texture.Texture[i].loadFromFile("img/You win.png");
             struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            struct_texture.Sprite[i].setPosition(33, 47);
+            struct_texture.Sprite[i].setPosition(10, 100);
             break;
         }
         case(4):
         {
             struct_texture.Texture[i].loadFromFile("img/game over.png");
             struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            struct_texture.Sprite[i].setPosition(33, 47);
+            struct_texture.Sprite[i].setPosition(10, 100);
             break;
         }
         case(5):
@@ -689,12 +689,14 @@ int main()
                 }
                 case(1):
                 {
+                    //рисуем бекграунд
                     if (back_flag == 0)
                     {
                         textures.Texture[5].loadFromFile("img/background.png");
                         textures.Sprite[5].setTexture(textures.Texture[5]);
                         textures.Sprite[5].setPosition(0, 0); // kuimgfbvcs
                     }
+
                     window.draw(textures.Sprite[5]);
                     //рисуем виссилицу
                     draw_gallows(attempt, window, textures);
