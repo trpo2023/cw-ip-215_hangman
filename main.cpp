@@ -2,7 +2,7 @@
 #include <iostream> //основа
 #include <clocale> //для кирилицы
 #include <string> //для строк
-
+#include <time.h> //для rand
 
 using namespace sf;
 using namespace std;
@@ -538,6 +538,7 @@ void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
 
 int main()
 {
+    srand(time(NULL));
     //русский в консоли
     setlocale(LC_CTYPE, "rus");
     //const int slov_v_spiske = 3; //слов в списке
@@ -595,11 +596,16 @@ int main()
         array_flags[i].flag = 0;
     }
 
-    string spisok[] = { "лаваш", "визг", "перфоратор", "переключатель", "лесоводство", "футбол", "волейбол", "разработчик", "фаренгейт" };
+    string spisok[] = { "лаваш", "визг", "футбол", "волейбол", "разработчик", "фаренгейт" };
+
+
+    int Slov_v_Spiske = 0;
+    for (auto i : spisok) { //Считаем количество слов в списке
+        Slov_v_Spiske++;
+    }
 
     //Рандомно выбираем слово из списка
-    string slovo = spisok[8]; // потом поменять на случайное слово
-    //slovo = spisok[rand() % 3];
+    string slovo = spisok[rand() % Slov_v_Spiske];
 
     //Посчитаем длину слова
     int len = 0;
@@ -648,6 +654,7 @@ int main()
 
     int button = 0;
     bool back_flag = 0;
+    bool StatusGameFlag = 0;
     while (window.isOpen())
     {
         Event event;
@@ -674,8 +681,6 @@ int main()
                     if (Mouse::isButtonPressed(Mouse::Left)) {
                         int pos_x = position.x; //сохраняем координаты мышки по x
                         int pos_y = position.y; //сохраняем координаты мышки по y
-                        cout << "Po x:" << pos_x << endl;
-                        cout << "Po y:" << pos_y << endl;
                         if ((pos_x >= 250) && (pos_x <= 750) && (pos_y >= 350) && (pos_y <= 460))
                         {
                             button = 1;
@@ -689,6 +694,7 @@ int main()
                 }
                 case(1):
                 {
+                    
                     //рисуем бекграунд
                     if (back_flag == 0)
                     {
@@ -786,6 +792,13 @@ int main()
                                 NeSlovo[i].letter.setPosition(cord_x, cord_y);
                                 cord_x += 60;
                             }
+                            StatusGameFlag = 1;
+                        }
+
+                        if (StatusGameFlag) {
+                            if (pos_x >= 65 && pos_x <= 140 && pos_y >= 260 && pos_y <= 305) {
+                                button = 3;
+                            }
                         }
                     }
                     window.display();
@@ -795,6 +808,74 @@ int main()
                 {
                     window.close();
                     break;
+                }
+                //Обнуление всех данных и новое слово, а потом рестарт игры
+                case(3):
+                {
+                    srand(time(NULL));
+                    StatusGameFlag = 0;
+                    back_flag = 0;
+                    button = 1; // переходим к игре
+
+
+                    //Заполнение массива флагов буквами и флагами
+                    for (int i = 0; i < 32; i++)
+                    {
+                        array_flags[i].bukva = array_alp[i];
+                        array_flags[i].flag = 0;
+                    }
+
+                    Bykva = '0';
+                    right_try = 0, attempt = 0; //номер удачной попытки и обычной
+
+                    flag = 0; //есть ли буква в слове
+                    flag_click = 0; //нажималась ли ранее буква
+
+                    slovo = spisok[rand() % Slov_v_Spiske];
+
+                    //Посчитаем длину слова
+                    len = 0;
+                    while (slovo[len] != NULL) {
+                        len++;
+                    }
+
+                    if (len >= max_len_slov) {
+                        cout << "Ошибка длины слова";
+                        return 1;
+                    }
+
+                    //устанавливаем начальные координаты для выводимого слова
+                    slovo_cord_x = 495 - 30 * len;
+
+                    //Массив структуры слова, которая будет выводиться на экран
+                    NeSlovo[max_len_slov];
+
+                    //Записываем буквы нашего слова, чтобы потом загрузить их как текстуру и вывести на экран
+                    for (int i = 0; i < len; i++) {
+                        NeSlovo[i].bykva = slovo[i];
+                    }
+
+                    //Загружаем спрайт буквы, которая есть у нас в слове
+                    for (int i = 0; i < len; i++) {
+                        int j = 0;
+                        while (j < 33)
+                        {
+                            if (NeSlovo[i].bykva == array_alp[j]) {
+                                NeSlovo[i].letterTexture.loadFromFile(path[j]); //загружаем букву из картинки
+                                NeSlovo[i].letter.setTexture(NeSlovo[i].letterTexture);
+                                NeSlovo[i].flag = 0; //Чтобы не выводились буквы, котрые еще не нажимались
+                                break;
+                            }
+                            j++;
+                        }
+
+                    }
+
+                    //Создание всех текстур и спрайтов
+                    for (int i = 0; i < 13; i++) {
+                        create_textur(textures, i);
+                    }
+                    load_textur(window, textures);
                 }
                 
             }
