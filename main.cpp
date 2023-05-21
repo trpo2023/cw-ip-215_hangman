@@ -1,4 +1,5 @@
 ﻿#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream> //основа
 #include <clocale> //для кирилицы
 #include <string> //для строк
@@ -652,6 +653,16 @@ int main()
     }
     load_textur(window, textures);
 
+    //Музыка
+    Music music;//создаем объект музыки
+    music.openFromFile("music/Music-Overworld_Day.ogg");//загружаем файл
+    music.play();//воспроизводим музыку
+    music.setLoop(true);
+
+    SoundBuffer hitBuffer;//создаём буфер для звука
+    hitBuffer.loadFromFile("music/hit.ogg");//загружаем в него звук
+    Sound hit(hitBuffer);//создаем звук и загружаем в него звук из буфера
+
     int button = 0;
     bool back_flag = 0;
     bool StatusGameFlag = 0; //для проверки состояния игры
@@ -671,6 +682,8 @@ int main()
             default:
                 break;
             }
+            //Зацикленная музыка
+
             //очищаем окно и заливаем нужным цветом;
             window.clear(Color(217, 217, 217));
             switch (button) 
@@ -770,6 +783,7 @@ int main()
                         //если буквы нет и она раньше не нажималась, то количество попыток увеличивоется
                         if (flag == 0 && flag_click == 0 && Bykva != '0') {
                             attempt++;
+                            hit.play();
                         }
 
                         const int cord_y = 460; //координаты рисующихся букв по y
