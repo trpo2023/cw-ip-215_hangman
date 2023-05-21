@@ -779,6 +779,14 @@ int main()
                                 cord_x += 60;
                             }
                         }
+                        //если попытки кончились, то мы выводим все слово на экран
+                        if (attempt > 6) {
+                            for (int i = 0, cord_x = slovo_cord_x - 10; i < len; i++) {
+                                NeSlovo[i].flag = 1;
+                                NeSlovo[i].letter.setPosition(cord_x, cord_y);
+                                cord_x += 60;
+                            }
+                        }
                     }
                     window.display();
                     break;
