@@ -45,11 +45,11 @@ void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag) {
     }
 }
 
-void create_textur(textures &struct_texture, int n)
+void create_textur(textures& struct_texture, int n)
 {
     switch (n)
     {
-    case(0): 
+    case(0):
     {
         Texture alphabetTexture;
         Sprite alphabet;
@@ -135,7 +135,7 @@ void create_textur(textures &struct_texture, int n)
         struct_texture.rightHand = righthand;
         struct_texture.leftHand = lefthand;
         struct_texture.rightLeg = rightleg;
-        struct_texture.rightHand = leftleg;
+        struct_texture.leftLeg = leftleg;
         break;
     }
     default:
@@ -143,7 +143,7 @@ void create_textur(textures &struct_texture, int n)
     }
 }
 
-void load_textur(RenderWindow &window, textures &struct_texture)
+void load_textur(RenderWindow& window, textures& struct_texture)
 {
 
     window.setFramerateLimit(60);
@@ -180,33 +180,33 @@ void load_textur(RenderWindow &window, textures &struct_texture)
         {
         case(0):
         {
-            struct_texture.Texture[i].loadFromFile("alphabet/Alphabet.png");
+            struct_texture.Texture[i].loadFromFile("img/Alphabet.png");
             struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
             struct_texture.Sprite[i].setPosition(143, 570);
             break;
         }
         case(1):
         {
-            struct_texture.Texture[i].loadFromFile("alphabet/Cross.png");
+            struct_texture.Texture[i].loadFromFile("img/Cross.png");
             struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
             break;
         }
         case(2):
         {
-            struct_texture.Texture[i].loadFromFile("alphabet/underline.png");
+            struct_texture.Texture[i].loadFromFile("img/underline.png");
             struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
             break;
         }
         case(3):
         {
-            struct_texture.Texture[i].loadFromFile("alphabet/You win.png");
+            struct_texture.Texture[i].loadFromFile("img/You win.png");
             struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
             struct_texture.Sprite[i].setPosition(33, 47);
             break;
         }
         case(4):
         {
-            struct_texture.Texture[i].loadFromFile("alphabet/game over.png");
+            struct_texture.Texture[i].loadFromFile("img/game over.png");
             struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
             struct_texture.Sprite[i].setPosition(33, 47);
             break;
@@ -241,10 +241,10 @@ void load_textur(RenderWindow &window, textures &struct_texture)
             break;
         }
     }
-    
+
 }
 
-void check_byk_cord(int pos_x, int pos_y, char &Bykva) {
+void check_byk_cord(int pos_x, int pos_y, char& Bykva) {
     if (pos_y >= 580 && pos_y <= 615) {
 
         if (pos_x >= 155 && pos_x <= 185)
@@ -382,7 +382,7 @@ void check_byk_cord(int pos_x, int pos_y, char &Bykva) {
     }
 }
 
-void draw_cross(int i, RenderWindow& window, Sprite &cross) {
+void draw_cross(int i, RenderWindow& window, Sprite& cross) {
     switch (i) {
     case(0): //а
         cross.setPosition(152, 580);
@@ -488,7 +488,7 @@ void draw_cross(int i, RenderWindow& window, Sprite &cross) {
     window.draw(cross);
 }
 
-void draw_gallows(int attempt, RenderWindow& window, textures &struct_texture)
+void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
 {
     //рисуем виселицу в зависимости от попытки
     if (attempt >= 1) {
@@ -514,7 +514,7 @@ void draw_gallows(int attempt, RenderWindow& window, textures &struct_texture)
     }
     if (attempt >= 7) {
         window.draw(struct_texture.leftLeg);
-        window.draw(struct_texture.Sprite[4]);
+        window.draw(struct_texture.Sprite[4]); //рисуем geme over
     }
 
     //рисуем алфавит
@@ -526,7 +526,7 @@ int main()
     //русский в консоли
     setlocale(LC_CTYPE, "rus");
     //const int slov_v_spiske = 3; //слов в списке
-    const int max_len_slov = 10; //максимальная длина слова
+    const int max_len_slov = 11; //максимальная длина слова
     const string array_alp = "абвгдежзийклмнопрстуфхцчшщьыъэюя"; //алфавит
     matrix_alp array_flags[32]; //массив структуры с буквами и флагами, для зачеркивания
     textures textures; //структура с текстурами и спрайтами элементов
@@ -539,38 +539,38 @@ int main()
 
     //Пути до картинок с буквами
     string path[32] = {
-        "alphabet/А.png",
-        "alphabet/Б.png",
-        "alphabet/В.png",
-        "alphabet/Г.png",
-        "alphabet/Д.png",
-        "alphabet/Е.png",
-        "alphabet/Ж.png",
-        "alphabet/З.png",
-        "alphabet/И.png",
-        "alphabet/Й.png",
-        "alphabet/К.png",
-        "alphabet/Л.png",
-        "alphabet/М.png",
-        "alphabet/Н.png",
-        "alphabet/О.png",
-        "alphabet/П.png",
-        "alphabet/Р.png",
-        "alphabet/С.png",
-        "alphabet/Т.png",
-        "alphabet/У.png",
-        "alphabet/Ф.png",
-        "alphabet/Х.png",
-        "alphabet/Ц.png",
-        "alphabet/Ч.png",
-        "alphabet/Ш.png",
-        "alphabet/Щ.png",
-        "alphabet/Ь.png",
-        "alphabet/Ы.png",
-        "alphabet/Ъ.png",
-        "alphabet/Э.png",
-        "alphabet/Ю.png",
-        "alphabet/Я.png"
+        "img/А.png",
+        "img/Б.png",
+        "img/В.png",
+        "img/Г.png",
+        "img/Д.png",
+        "img/Е.png",
+        "img/Ж.png",
+        "img/З.png",
+        "img/И.png",
+        "img/Й.png",
+        "img/К.png",
+        "img/Л.png",
+        "img/М.png",
+        "img/Н.png",
+        "img/О.png",
+        "img/П.png",
+        "img/Р.png",
+        "img/С.png",
+        "img/Т.png",
+        "img/У.png",
+        "img/Ф.png",
+        "img/Х.png",
+        "img/Ц.png",
+        "img/Ч.png",
+        "img/Ш.png",
+        "img/Щ.png",
+        "img/Ь.png",
+        "img/Ы.png",
+        "img/Ъ.png",
+        "img/Э.png",
+        "img/Ю.png",
+        "img/Я.png"
     };
 
     //Заполнение массива флагов буквами и флагами
@@ -580,23 +580,23 @@ int main()
         array_flags[i].flag = 0;
     }
 
-    string spisok[] = { "лаваш", "визг", "перфоратор", "переключатель", "лесоводство", "футбол", "волейбол", "разработчик", "фаренгейт"};
+    string spisok[] = { "лаваш", "визг", "перфоратор", "переключатель", "лесоводство", "футбол", "волейбол", "разработчик", "фаренгейт" };
 
     //Рандомно выбираем слово из списка
     string slovo = spisok[8]; // потом поменять на случайное слово
     //slovo = spisok[rand() % 3];
-    
+
     //Посчитаем длину слова
     int len = 0;
     while (slovo[len] != NULL) {
         len++;
     }
 
-    if (len >= 12) {
+    if (len >= max_len_slov) {
         return 1;
     }
 
-    int slovo_cord_x=0;
+    int slovo_cord_x = 0;
     //устанавливаем начальные координаты для выводимого слова
     slovo_cord_x = 495 - 30 * len;
 
@@ -604,14 +604,14 @@ int main()
     TextureLatterStruct NeSlovo[max_len_slov];
 
     //Записываем буквы нашего слова, чтобы потом загрузить их как текстуру и вывести на экран
-    for (int i = 0; i < len; i++){
+    for (int i = 0; i < len; i++) {
         NeSlovo[i].bykva = slovo[i];
     }
 
     //Загружаем спрайт буквы, которая есть у нас в слове
     for (int i = 0; i < len; i++) {
         int j = 0;
-        while (j <33)
+        while (j < 33)
         {
             if (NeSlovo[i].bykva == array_alp[j]) {
                 NeSlovo[i].letterTexture.loadFromFile(path[j]); //загружаем букву из картинки
@@ -621,7 +621,7 @@ int main()
             }
             j++;
         }
-        
+
     }
 
     //Создание всех текстур и спрайтов
@@ -637,103 +637,106 @@ int main()
         Event event;
         while (window.pollEvent(event))
         {
-            switch (event.type){
-                case(Event::Closed):
-                    window.close();
-                    break;
-                case(Event::KeyPressed):
-                    if (event.key.code == Keyboard::Escape) { window.close(); }
-                    break;
-                default:
-                    break;
-            }
-            //очищаем окно и заливаем нужным цветом;
-            window.clear(Color(217, 217, 217));
-            draw_gallows(attempt, window, textures);
-
-            //рисуем уже нажатые правильные буквы
-            for (int i = 0, cordx = slovo_cord_x; i < len; i++)
-            {
-                textures.Sprite[2].setPosition(cordx,510);
-                window.draw(textures.Sprite[2]);
-                cordx += 60;
-                if (NeSlovo[i].flag == 1) {
-                    window.draw(NeSlovo[i].letter);
-                }
-            }
-
-            // Зачеркиваем букву, у которой флаг 1, т.е она уже ранее нажималась
-            for (int i = 0; i < 32; i++)
-            {
-                if (array_flags[i].flag == 1)
-                {
-                    draw_cross(i, window, textures.Sprite[1]);
-                }
-            }
-
-            if (right_try >= len) {
-                window.draw(textures.Sprite[3]);
-            }
-
-            // Проверка нажатия на нужную букву
-            Vector2i position = Mouse::getPosition(window);
-            if (Mouse::isButtonPressed(Mouse::Left)) {
-                int pos_x = position.x; //сохраняем координаты мышки по x
-                int pos_y = position.y; //сохраняем координаты мышки по y
-
-                //обнуление проверки буквы в слове
-                flag = 0;
-                flag_click = 0;
-
-                cout << "Po x:" << position.x << endl;
-                cout << "Po y:" << position.y << endl;
-
-                //Проверка на какую букву нажали 
-                check_byk_cord(pos_x, pos_y, Bykva);
-
-                //Чтобы висилица не рисовалась при нажатии на зачеркнутую букву
-                for (int i = 0; i < 32; i++)
-                {
-                    if (array_flags[i].bukva == Bykva && array_flags[i].flag == 1) {
-                        flag_click = 1;
+            switch(t){
+                case(1) {
+                    switch (event.type) {
+                    case(Event::Closed):
+                        window.close();
+                        break;
+                    case(Event::KeyPressed):
+                        if (event.key.code == Keyboard::Escape) { window.close(); }
+                        break;
+                    default:
+                        break;
                     }
-                }
+                    //очищаем окно и заливаем нужным цветом;
+                    window.clear(Color(217, 217, 217));
 
-                //Меняем флаг буквы, если она была нажата
-                for (int i = 0; i < 32; i++)
-                {
-                    if (array_flags[i].bukva == Bykva) {
-                        array_flags[i].flag = 1;
-                    } 
-                }
+                    //рисуем виссилицу
+                    draw_gallows(attempt, window, textures);
 
-                //проверка буквы в слове
-                check_byk_v_slove(Bykva, slovo, len, flag);
-
-                //если буквы нет и она раньше не нажималась, то количество попыток увеличивоется
-                if (flag==0 && flag_click==0 && Bykva!='0') {
-                    attempt++;
-                }
-
-                const int cord_y = 460; //координаты рисующихся букв по y
-
-                //Если буква есть в слове, то мы даем координаты в следующем цикле она нарисуется
-                if (flag==1 && flag_click==0) {
-                    for (int i = 0, cord_x= slovo_cord_x-10; i < len; i++) {
-                        if (NeSlovo[i].bykva == Bykva) {
-                            NeSlovo[i].letter.setPosition(cord_x, cord_y);
-                            NeSlovo[i].flag = 1;
-                            right_try++;
+                    //рисуем уже нажатые правильные буквы
+                    for (int i = 0, cordx = slovo_cord_x; i < len; i++)
+                    {
+                        textures.Sprite[2].setPosition(cordx, 510);
+                        window.draw(textures.Sprite[2]);
+                        cordx += 60;
+                        if (NeSlovo[i].flag == 1) {
+                            window.draw(NeSlovo[i].letter);
                         }
-                        cord_x += 60;
                     }
-                }
-                
+
+                    // Зачеркиваем букву, у которой флаг 1, т.е она уже ранее нажималась
+                    for (int i = 0; i < 32; i++)
+                    {
+                        if (array_flags[i].flag == 1)
+                        {
+                            draw_cross(i, window, textures.Sprite[1]);
+                        }
+                    }
+
+                    if (right_try >= len) {
+                        window.draw(textures.Sprite[3]);
+                    }
+
+                    // Проверка нажатия на нужную букву
+                    Vector2i position = Mouse::getPosition(window);
+                    if (Mouse::isButtonPressed(Mouse::Left)) {
+                        int pos_x = position.x; //сохраняем координаты мышки по x
+                        int pos_y = position.y; //сохраняем координаты мышки по y
+
+                        //обнуление проверки буквы в слове
+                        flag = 0;
+                        flag_click = 0;
+
+                        cout << "Po x:" << position.x << endl;
+                        cout << "Po y:" << position.y << endl;
+
+                        //Проверка на какую букву нажали 
+                        check_byk_cord(pos_x, pos_y, Bykva);
+
+                        //Чтобы висилица не рисовалась при нажатии на зачеркнутую букву
+                        for (int i = 0; i < 32; i++)
+                        {
+                            if (array_flags[i].bukva == Bykva && array_flags[i].flag == 1) {
+                                flag_click = 1;
+                            }
+                        }
+
+                        //Меняем флаг буквы, если она была нажата
+                        for (int i = 0; i < 32; i++)
+                        {
+                            if (array_flags[i].bukva == Bykva) {
+                                array_flags[i].flag = 1;
+                            }
+                        }
+
+                        //проверка буквы в слове
+                        check_byk_v_slove(Bykva, slovo, len, flag);
+
+                        //если буквы нет и она раньше не нажималась, то количество попыток увеличивоется
+                        if (flag == 0 && flag_click == 0 && Bykva != '0') {
+                            attempt++;
+                        }
+
+                        const int cord_y = 460; //координаты рисующихся букв по y
+
+                        //Если буква есть в слове, то мы даем координаты в следующем цикле она нарисуется
+                        if (flag == 1 && flag_click == 0) {
+                            for (int i = 0, cord_x = slovo_cord_x - 10; i < len; i++) {
+                                if (NeSlovo[i].bykva == Bykva) {
+                                    NeSlovo[i].letter.setPosition(cord_x, cord_y);
+                                    NeSlovo[i].flag = 1;
+                                    right_try++;
+                                }
+                                cord_x += 60;
+                            }
+                        }
             }
+        }
             window.display();
 
         }
     }
     return 0;
 }
-
