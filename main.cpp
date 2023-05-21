@@ -596,7 +596,7 @@ int main()
         array_flags[i].flag = 0;
     }
 
-    string spisok[] = { "лаваш", "визг", "футбол", "волейбол", "разработчик", "фаренгейт" };
+    string spisok[] = { "лаваш", "визг", "футбол", "волейбол", "фаренгейт" };
 
 
     int Slov_v_Spiske = 0;
@@ -654,9 +654,10 @@ int main()
 
     int button = 0;
     bool back_flag = 0;
-    bool StatusGameFlag = 0;
+    bool StatusGameFlag = 0; //для проверки состояния игры
     while (window.isOpen())
     {
+        int Where = 0; // переход к меню или переигровки
         Event event;
         while (window.pollEvent(event))
         {
@@ -729,6 +730,7 @@ int main()
 
                     if (right_try >= len) {
                         window.draw(textures.Sprite[3]);
+                        StatusGameFlag = 1;
                     }
 
                     // Проверка нажатия на нужную букву
@@ -741,11 +743,10 @@ int main()
                         flag = 0;
                         flag_click = 0;
 
-                        cout << "Po x:" << position.x << endl;
-                        cout << "Po y:" << position.y << endl;
-
-                        //Проверка на какую букву нажали 
-                        check_byk_cord(pos_x, pos_y, Bykva);
+                        if (!StatusGameFlag) {
+                            //Проверка на какую букву нажали 
+                            check_byk_cord(pos_x, pos_y, Bykva);
+                        }
 
                         //Чтобы висилица не рисовалась при нажатии на зачеркнутую букву
                         for (int i = 0; i < 32; i++)
@@ -795,9 +796,17 @@ int main()
                             StatusGameFlag = 1;
                         }
 
+                        //Проверка на нажатие ДА или НЕТ, Заново сыграть или В меню
                         if (StatusGameFlag) {
-                            if (pos_x >= 65 && pos_x <= 140 && pos_y >= 260 && pos_y <= 305) {
-                                button = 3;
+                            if (pos_y >= 260 && pos_y <= 305) {
+                                if (pos_x >= 65 && pos_x <= 140) {
+                                    button = 3;
+                                    Where = 1; //Рестарт
+                                }
+                                if (pos_x >= 280 && pos_x <= 380) {
+                                    button = 3;
+                                    Where = 2;  //В меню
+                                }
                             }
                         }
                     }
@@ -815,8 +824,6 @@ int main()
                     srand(time(NULL));
                     StatusGameFlag = 0;
                     back_flag = 0;
-                    button = 1; // переходим к игре
-
 
                     //Заполнение массива флагов буквами и флагами
                     for (int i = 0; i < 32; i++)
@@ -876,6 +883,16 @@ int main()
                         create_textur(textures, i);
                     }
                     load_textur(window, textures);
+                    //Рестарт
+                    if (Where == 1) {
+                        button = 1;
+                        Where = 0;
+                    }
+                    //В меню
+                    if (Where == 2) {
+                        button = 0;
+                        Where = 0;
+                    }
                 }
                 
             }
