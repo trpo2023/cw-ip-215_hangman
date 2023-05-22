@@ -116,7 +116,6 @@ void create_textur(textures& struct_texture, int n)
 
 void load_textur(RenderWindow& window, textures& struct_texture)
 {
-
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
 
@@ -145,82 +144,54 @@ void load_textur(RenderWindow& window, textures& struct_texture)
     struct_texture.leftLeg.setPosition(500, 306);
     struct_texture.leftLeg.setFillColor(Color::Black);
 
-    for (int i = 0; i < 10; i++)
+    struct_texture.Texture[0].loadFromFile("img/Alphabet.png");
+    struct_texture.Sprite[0].setTexture(struct_texture.Texture[0]);
+    struct_texture.Sprite[0].setPosition(143, 570);
+
+    struct_texture.Texture[1].loadFromFile("img/Cross.png");
+    struct_texture.Sprite[1].setTexture(struct_texture.Texture[1]);
+
+    struct_texture.Texture[2].loadFromFile("img/underline.png");
+    struct_texture.Sprite[2].setTexture(struct_texture.Texture[2]);
+
+    struct_texture.Texture[3].loadFromFile("img/You win.png");
+    struct_texture.Sprite[3].setTexture(struct_texture.Texture[3]);
+    struct_texture.Sprite[3].setPosition(10, 100);
+
+    struct_texture.Texture[4].loadFromFile("img/game over.png");
+    struct_texture.Sprite[4].setTexture(struct_texture.Texture[4]);
+    struct_texture.Sprite[4].setPosition(10, 100);
+
+    struct_texture.Texture[5].loadFromFile("img/menu.png");
+    struct_texture.Sprite[5].setTexture(struct_texture.Texture[5]);
+    struct_texture.Sprite[5].setPosition(0, 0);
+
+    for (int i = 6; i < 10; i++)
     {
+        struct_texture.line[i - 6].setFillColor(Color::Black);
         switch (i)
         {
-        case(0):
-        {
-            struct_texture.Texture[i].loadFromFile("img/Alphabet.png");
-            struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            struct_texture.Sprite[i].setPosition(143, 570);
-            break;
-        }
-        case(1):
-        {
-            struct_texture.Texture[i].loadFromFile("img/Cross.png");
-            struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            break;
-        }
-        case(2):
-        {
-            struct_texture.Texture[i].loadFromFile("img/underline.png");
-            struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            break;
-        }
-        case(3):
-        {
-            struct_texture.Texture[i].loadFromFile("img/You win.png");
-            struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            struct_texture.Sprite[i].setPosition(10, 100);
-            break;
-        }
-        case(4):
-        {
-            struct_texture.Texture[i].loadFromFile("img/game over.png");
-            struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            struct_texture.Sprite[i].setPosition(10, 100);
-            break;
-        }
-        case(5):
-        {
-            struct_texture.Texture[i].loadFromFile("img/menu.png");
-            struct_texture.Sprite[i].setTexture(struct_texture.Texture[i]);
-            struct_texture.Sprite[i].setPosition(0, 0); // kuimgfbvcs
-            break;
-        }
-        case(6):
-        {
-            struct_texture.line[i - 6].setFillColor(Color::Black);
+        case 6:
             struct_texture.line[i - 6].setPosition(663, 406);
             break;
-        };
-        case(7):
-        {
+        case 7:
             struct_texture.line[i - 6].rotate(90.f);
-            struct_texture.line[i - 6].setFillColor(Color::Black);
             struct_texture.line[i - 6].setPosition(745, 40);
             break;
-        };
-        case(8):
-        {
-            struct_texture.line[i - 6].setFillColor(Color::Black);
+        case 8:
             struct_texture.line[i - 6].setPosition(450, 40);
             break;
-        };
-        case(9):
-        {
+        case 9:
             struct_texture.line[i - 6].rotate(90.f);
-            struct_texture.line[i - 6].setFillColor(Color::Black);
             struct_texture.line[i - 6].setPosition(500, 40);
             break;
-        };
         default:
             break;
         }
     }
-
 }
+
+
 
 void check_byk_cord(int pos_x, int pos_y, char& Bykva) {
     if (pos_y >= 580 && pos_y <= 615) {
