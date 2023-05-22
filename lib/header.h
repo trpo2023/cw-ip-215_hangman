@@ -3,6 +3,7 @@
 #include <iostream> //основа
 #include <clocale> //для кирилицы
 #include <string> //для строк
+#include <unordered_map>
 
 
 using namespace sf;

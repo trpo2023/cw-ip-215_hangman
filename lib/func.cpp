@@ -328,109 +328,46 @@ void check_byk_cord(int pos_x, int pos_y, char& Bykva) {
 }
 
 void draw_cross(int i, RenderWindow& window, Sprite& cross) {
-    switch (i) {
-    case(0): //à
-        cross.setPosition(152, 580);
-        break;
-    case(1): //á
-        cross.setPosition(210, 580);
-        break;
-    case(2): //â
-        cross.setPosition(262, 580);
-        break;
-    case(3): //ã
-        cross.setPosition(315, 580);
-        break;
-    case(4): //ä
-        cross.setPosition(372, 580);
-        break;
-    case(5): //å
-        cross.setPosition(427, 580);
-        break;
-    case(6): //æ
-        cross.setPosition(482, 580);
-        break;
-    case(7): //ç
-        cross.setPosition(539, 580);
-        break;
-    case(8): //è
-        cross.setPosition(593, 580);
-        break;
-    case(9): //é
-        cross.setPosition(647, 580);
-        break;
-    case(10): //ê
-        cross.setPosition(700, 580);
-        break;
-    case(11): //ë
-        cross.setPosition(757, 580);
-        break;
-    case(12): //ì
-        cross.setPosition(812, 580);
-        break;
-        //////
-    case(13): //í
-        cross.setPosition(150, 642);
-        break;
-    case(14): //î
-        cross.setPosition(207, 642);
-        break;
-    case(15): //ï
-        cross.setPosition(260, 642);
-        break;
-    case(16): //ð
-        cross.setPosition(315, 642);
-        break;
-    case(17): //ñ
-        cross.setPosition(372, 642);
-        break;
-    case(18): //ò
-        cross.setPosition(425, 642);
-        break;
-    case(19): //ó
-        cross.setPosition(480, 642);
-        break;
-    case(20): //ô
-        cross.setPosition(536, 642);
-        break;
-    case(21): //õ
-        cross.setPosition(590, 642);
-        break;
-    case(22): //ö
-        cross.setPosition(645, 642);
-        break;
-    case(23): //÷
-        cross.setPosition(700, 642);
-        break;
-    case(24): //ø
-        cross.setPosition(757, 642);
-        break;
-    case(25): //ù
-        cross.setPosition(812, 642);
-        break;
-        ////////
-    case(26): //ü
-        cross.setPosition(343, 700);
-        break;
-    case(27): //û
-        cross.setPosition(397, 700);
-        break;
-    case(28): //ú
-        cross.setPosition(455, 700);
-        break;
-    case(29): //ý
-        cross.setPosition(507, 700);
-        break;
-    case(30): //þ
-        cross.setPosition(560, 700);
-        break;
-    case(31): //ÿ
-        cross.setPosition(618, 700);
-        break;
-    default:
-        break;
+    unordered_map<int, Vector2f> positions = {
+        {0, Vector2f(152, 580)},  // à
+        {1, Vector2f(210, 580)},  // á
+        {2, Vector2f(262, 580)},  // â
+        {3, Vector2f(315, 580)},  // ã
+        {4, Vector2f(372, 580)},  // ä
+        {5, Vector2f(427, 580)},  // å
+        {6, Vector2f(482, 580)},  // æ
+        {7, Vector2f(539, 580)},  // ç
+        {8, Vector2f(593, 580)},  // è
+        {9, Vector2f(647, 580)},  // é
+        {10, Vector2f(700, 580)}, // ê
+        {11, Vector2f(757, 580)}, // ë
+        {12, Vector2f(812, 580)}, // ì
+        {13, Vector2f(150, 642)}, // í
+        {14, Vector2f(207, 642)}, // î
+        {15, Vector2f(260, 642)}, // ï
+        {16, Vector2f(315, 642)}, // ð
+        {17, Vector2f(372, 642)}, // ñ
+        {18, Vector2f(425, 642)}, // ò
+        {19, Vector2f(480, 642)}, // ó
+        {20, Vector2f(536, 642)}, // ô
+        {21, Vector2f(590, 642)}, // õ
+        {22, Vector2f(645, 642)}, // ö
+        {23, Vector2f(700, 642)}, // ÷
+        {24, Vector2f(757, 642)}, // ø
+        {25, Vector2f(812, 642)}, // ù
+        {26, Vector2f(343, 700)}, // ü
+        {27, Vector2f(397, 700)}, // û
+        {28, Vector2f(455, 700)}, // ú
+        {29, Vector2f(507, 700)}, // ý
+        {30, Vector2f(560, 700)}, // þ
+        {31, Vector2f(618, 700)}  // ÿ
+    };
+
+    auto it = positions.find(i);
+    if (it != positions.end()) {
+        cross.setPosition(it->second);
+        window.draw(cross);
     }
-    window.draw(cross);
 }
 
 void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
