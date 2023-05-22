@@ -300,7 +300,6 @@ int main()
                 {
                     srand(time(NULL));
                     StatusGameFlag = 0;
-                    back_flag = 0;
 
                     //Заполнение массива флагов буквами и флагами
                     for (int i = 0; i < 32; i++)
