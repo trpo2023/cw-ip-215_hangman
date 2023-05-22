@@ -10,103 +10,64 @@ void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag) {
 
 void create_textur(textures& struct_texture, int n)
 {
-    switch (n)
-    {
-    case(0):
-    {
-        Texture alphabetTexture;
-        Sprite alphabet;
-        struct_texture.Texture[n] = alphabetTexture;
-        struct_texture.Sprite[n] = alphabet;
+    switch (n){
+    case 0:{
+        struct_texture.Texture[n] = Texture();
+        struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case(1):
-    {
-        Texture cross_texture;
-        Sprite cross;
-        struct_texture.Texture[n] = cross_texture;
-        struct_texture.Sprite[n] = cross;
+    case 1:{
+        struct_texture.Texture[n] = Texture();
+        struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case(2):
-    {
-        Texture underline_texture;
-        Sprite underline;
-        struct_texture.Texture[n] = underline_texture;
-        struct_texture.Sprite[n] = underline;
+    case 2:{
+        struct_texture.Texture[n] = Texture();
+        struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case(3):
-    {
-        Texture win_texture;
-        Sprite win;
-        struct_texture.Texture[n] = win_texture;
-        struct_texture.Sprite[n] = win;
+    case 3:{
+        struct_texture.Texture[n] = Texture();
+        struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case(4):
-    {
-        Texture lose_texture;
-        Sprite lose;
-        struct_texture.Texture[n] = lose_texture;
-        struct_texture.Sprite[n] = lose;
+    case 4:{
+        struct_texture.Texture[n] = Texture();
+        struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case(5):
-    {
-        Texture menu_texture;
-        Sprite menu;
-        struct_texture.Texture[n] = menu_texture;
-        struct_texture.Sprite[n] = menu;
+    case 5:{
+        struct_texture.Texture[n] = Texture();
+        struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case(6):
-    {
-        RectangleShape line(Vector2f(157.f, 7.f));
-        struct_texture.line[n - 6] = line;
+    case 6:{
+        struct_texture.line[n - 6] = RectangleShape(Vector2f(157.f, 7.f));
         break;
     }
-    case(7):
-    {
-        RectangleShape line(Vector2f(366.f, 7.f));
-        struct_texture.line[n - 6] = line;
+    case 7:{
+        struct_texture.line[n - 6] = RectangleShape(Vector2f(366.f, 7.f));
         break;
     }
-    case(8):
-    {
-        RectangleShape line(Vector2f(295.f, 7.f));
-        struct_texture.line[n - 6] = line;
+    case 8:{
+        struct_texture.line[n - 6] = RectangleShape(Vector2f(295.f, 7.f));
         break;
     }
-    case(9):
-    {
-        RectangleShape line(Vector2f(55.f, 2.f));
-        struct_texture.line[n - 6] = line;
+    case 9:{
+        struct_texture.line[n - 6] = RectangleShape(Vector2f(55.f, 2.f));
         break;
     }
-    case(10):
-    {
-        CircleShape head(41.f);
-        struct_texture.head = head;
+    case 10:{
+        struct_texture.head = CircleShape(41.f);
         break;
     }
-    case(11):
-    {
-        RectangleShape body(Vector2f(130.f, 3.f));
-        struct_texture.body = body;
+    case 11:{
+        struct_texture.body = RectangleShape(Vector2f(130.f, 3.f));
         break;
     }
-    case(12):
-    {
-        RectangleShape righthand(Vector2f(70.f, 3.f));
-        RectangleShape lefthand;
-        RectangleShape rightleg;
-        RectangleShape leftleg;
-        lefthand = rightleg = leftleg = righthand;
-        struct_texture.rightHand = righthand;
-        struct_texture.leftHand = lefthand;
-        struct_texture.rightLeg = rightleg;
-        struct_texture.leftLeg = leftleg;
+    case 12:{
+        RectangleShape limb = RectangleShape(Vector2f(70.f, 3.f));
+        struct_texture.rightHand = struct_texture.leftHand = struct_texture.rightLeg = struct_texture.leftLeg = limb;
         break;
     }
     default:
