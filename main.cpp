@@ -131,9 +131,9 @@ int main()
     int button = 0;
     bool back_flag = 0;
     bool StatusGameFlag = 0; //для проверки состояния игры
+    int Where = 0; // переход к меню или переигровки
     while (window.isOpen())
     {
-        int Where = 0; // переход к меню или переигровки
         Event event;
         while (window.pollEvent(event))
         {
@@ -155,6 +155,7 @@ int main()
             {
                 case(0):
                 {
+                    //Русем меню
                     window.draw(textures.Sprite[5]);
                     Vector2i position = Mouse::getPosition(window);
                     if (Mouse::isButtonPressed(Mouse::Left)) {
@@ -175,14 +176,7 @@ int main()
                 {
                     
                     //рисуем бекграунд
-                    if (back_flag == 0)
-                    {
-                        textures.Texture[5].loadFromFile("img/background.png");
-                        textures.Sprite[5].setTexture(textures.Texture[5]);
-                        textures.Sprite[5].setPosition(0, 0); // kuimgfbvcs
-                    }
-
-                    window.draw(textures.Sprite[5]);
+                    window.draw(textures.Sprite[6]);
                     //рисуем виссилицу
                     draw_gallows(attempt, window, textures);
 
@@ -277,15 +271,17 @@ int main()
 
                         //Проверка на нажатие ДА или НЕТ, Заново сыграть или В меню
                         if (StatusGameFlag) {
-                            if (pos_y >= 260 && pos_y <= 305) {
-                                if (pos_x >= 65 && pos_x <= 140) {
-                                    button = 3;
-                                    Where = 1; //Рестарт
-                                }
-                                if (pos_x >= 280 && pos_x <= 380) {
-                                    button = 3;
-                                    Where = 2;  //В меню
-                                }
+                            if ( (pos_y >= 260 && pos_y <= 305) && (pos_x >= 65 && pos_x <= 140) ) {
+                                button = 3;
+                                Where = 1; //Рестарт
+                                cout << "po x:" << pos_x << endl;
+                                cout << "po y:" << pos_y << endl;
+                            }
+                            if ( (pos_y >= 260 && pos_y <= 305) && (pos_x >= 280 && pos_x <= 380) ) {
+                                button = 3;
+                                Where = 2;  //В меню
+                                cout << "po x:" << pos_x << endl;
+                                cout << "po y:" << pos_y << endl;
                             }
                         }
                     }
@@ -356,11 +352,6 @@ int main()
 
                     }
 
-                    //Создание всех текстур и спрайтов
-                    for (int i = 0; i < 13; i++) {
-                        create_textur(textures, i);
-                    }
-                    load_textur(window, textures);
                     //Рестарт
                     if (Where == 1) {
                         button = 1;

@@ -33,8 +33,8 @@ struct textures
     RectangleShape rightLeg;
     RectangleShape leftLeg;
     RectangleShape line[4];
-    Texture Texture[6];
-    Sprite Sprite[6];
+    Texture Texture[7];
+    Sprite Sprite[7];
 
 };
 

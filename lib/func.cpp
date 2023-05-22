@@ -41,31 +41,36 @@ void create_textur(textures& struct_texture, int n)
         struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case 6:{
-        struct_texture.line[n - 6] = RectangleShape(Vector2f(157.f, 7.f));
+    case 6: {
+        struct_texture.Texture[n] = Texture();
+        struct_texture.Sprite[n] = Sprite();
         break;
     }
     case 7:{
-        struct_texture.line[n - 6] = RectangleShape(Vector2f(366.f, 7.f));
+        struct_texture.line[n - 7] = RectangleShape(Vector2f(157.f, 7.f));
         break;
     }
     case 8:{
-        struct_texture.line[n - 6] = RectangleShape(Vector2f(295.f, 7.f));
+        struct_texture.line[n - 7] = RectangleShape(Vector2f(366.f, 7.f));
         break;
     }
     case 9:{
-        struct_texture.line[n - 6] = RectangleShape(Vector2f(55.f, 2.f));
+        struct_texture.line[n - 7] = RectangleShape(Vector2f(295.f, 7.f));
         break;
     }
     case 10:{
-        struct_texture.head = CircleShape(41.f);
+        struct_texture.line[n - 7] = RectangleShape(Vector2f(55.f, 2.f));
         break;
     }
     case 11:{
-        struct_texture.body = RectangleShape(Vector2f(130.f, 3.f));
+        struct_texture.head = CircleShape(41.f);
         break;
     }
     case 12:{
+        struct_texture.body = RectangleShape(Vector2f(130.f, 3.f));
+        break;
+    }
+    case 13:{
         RectangleShape limb = RectangleShape(Vector2f(70.f, 3.f));
         struct_texture.rightHand = struct_texture.leftHand = struct_texture.rightLeg = struct_texture.leftLeg = limb;
         break;
@@ -127,24 +132,28 @@ void load_textur(RenderWindow& window, textures& struct_texture)
     struct_texture.Sprite[5].setTexture(struct_texture.Texture[5]);
     struct_texture.Sprite[5].setPosition(0, 0);
 
-    for (int i = 6; i < 10; i++)
+    struct_texture.Texture[6].loadFromFile("img/background.png");
+    struct_texture.Sprite[6].setTexture(struct_texture.Texture[6]);
+    struct_texture.Sprite[6].setPosition(0, 0);
+
+    for (int i = 0; i < 4; i++)
     {
-        struct_texture.line[i - 6].setFillColor(Color::Black);
+        struct_texture.line[i].setFillColor(Color::Black);
         switch (i)
         {
-        case 6:
-            struct_texture.line[i - 6].setPosition(663, 406);
+        case 0:
+            struct_texture.line[i].setPosition(663, 406);
             break;
-        case 7:
-            struct_texture.line[i - 6].rotate(90.f);
-            struct_texture.line[i - 6].setPosition(745, 40);
+        case 1:
+            struct_texture.line[i].rotate(90.f);
+            struct_texture.line[i].setPosition(745, 40);
             break;
-        case 8:
-            struct_texture.line[i - 6].setPosition(450, 40);
+        case 2:
+            struct_texture.line[i].setPosition(450, 40);
             break;
-        case 9:
-            struct_texture.line[i - 6].rotate(90.f);
-            struct_texture.line[i - 6].setPosition(500, 40);
+        case 3:
+            struct_texture.line[i].rotate(90.f);
+            struct_texture.line[i].setPosition(500, 40);
             break;
         default:
             break;
