@@ -193,108 +193,77 @@ void load_textur(RenderWindow& window, textures& struct_texture)
 
 
 
-void check_byk_cord(int pos_x, int pos_y, char& Bykva) {
-    if (pos_y >= 580 && pos_y <= 615) {
-        if (pos_x >= 155 && pos_x <= 185) {
+void check_byk_cord(int pos_x, int pos_y, char& Bykva)
+{
+    if (pos_y >= 580 && pos_y <= 615){
+        if (pos_x >= 155 && pos_x <= 185)
             Bykva = 'à';
-        }
-        else if (pos_x >= 210 && pos_x <= 240) {
+        else if (pos_x >= 210 && pos_x <= 240)
             Bykva = 'á';
-        }
-        else if (pos_x >= 265 && pos_x <= 295) {
+        else if (pos_x >= 265 && pos_x <= 295)
             Bykva = 'â';
-        }
-        else if (pos_x >= 325 && pos_x <= 350) {
+        else if (pos_x >= 325 && pos_x <= 350)
             Bykva = 'ã';
-        }
-        else if (pos_x >= 370 && pos_x <= 410) {
+        else if (pos_x >= 370 && pos_x <= 410)
             Bykva = 'ä';
-        }
-        else if (pos_x >= 435 && pos_x <= 460) {
+        else if (pos_x >= 435 && pos_x <= 460)
             Bykva = 'å';
-        }
-        else if (pos_x >= 477 && pos_x <= 522) {
+        else if (pos_x >= 477 && pos_x <= 522)
             Bykva = 'æ';
-        }
-        else if (pos_x >= 540 && pos_x <= 566) {
+        else if (pos_x >= 540 && pos_x <= 566)
             Bykva = 'ç';
-        }
-        else if (pos_x >= 595 && pos_x <= 624) {
+        else if (pos_x >= 595 && pos_x <= 624)
             Bykva = 'è';
-        }
-        else if (pos_x >= 650 && pos_x <= 678) {
+        else if (pos_x >= 650 && pos_x <= 678)
             Bykva = 'é';
-        }
-        else if (pos_x >= 708 && pos_x <= 735) {
+        else if (pos_x >= 708 && pos_x <= 735)
             Bykva = 'ê';
-        }
-        else if (pos_x >= 758 && pos_x <= 790) {
+        else if (pos_x >= 758 && pos_x <= 790)
             Bykva = 'ë';
-        }
-        else if (pos_x >= 812 && pos_x <= 848) {
+        else if (pos_x >= 812 && pos_x <= 848)
             Bykva = 'ì';
-        }
     }
-    else if (pos_y >= 640 && pos_y <= 677) {
-        if (pos_x >= 155 && pos_x <= 185) {
+    else if (pos_y >= 640 && pos_y <= 677){
+        if (pos_x >= 155 && pos_x <= 185)
             Bykva = 'í';
-        }
-        else if (pos_x >= 205 && pos_x <= 240) {
+        else if (pos_x >= 205 && pos_x <= 240)
             Bykva = 'î';
-        }
-        else if (pos_x >= 265 && pos_x <= 295) {
+        else if (pos_x >= 265 && pos_x <= 295)
             Bykva = 'ï';
-        }
-        else if (pos_x >= 320 && pos_x <= 350) {
+        else if (pos_x >= 320 && pos_x <= 350)
             Bykva = 'ð';
-        }
-        else if (pos_x >= 372 && pos_x <= 405) {
+        else if (pos_x >= 372 && pos_x <= 405)
             Bykva = 'ñ';
-        }
-        else if (pos_x >= 430 && pos_x <= 460) {
+        else if (pos_x >= 430 && pos_x <= 460)
             Bykva = 'ò';
-        }
-        else if (pos_x >= 483 && pos_x <= 512) {
+        else if (pos_x >= 483 && pos_x <= 512)
             Bykva = 'ó';
-        }
-        else if (pos_x >= 535 && pos_x <= 573) {
+        else if (pos_x >= 535 && pos_x <= 573)
             Bykva = 'ô';
-        }
-        else if (pos_x >= 595 && pos_x <= 623) {
+        else if (pos_x >= 595 && pos_x <= 623)
             Bykva = 'õ';
-        }
-        else if (pos_x >= 650 && pos_x <= 680) {
+        else if (pos_x >= 650 && pos_x <= 680)
             Bykva = 'ö';
-        }
-        else if (pos_x >= 702 && pos_x <= 731) {
+        else if (pos_x >= 702 && pos_x <= 731)
             Bykva = '÷';
-        }
-        else if (pos_x >= 751 && pos_x <= 793) {
+        else if (pos_x >= 751 && pos_x <= 793)
             Bykva = 'ø';
-        }
-        else if (pos_x >= 807 && pos_x <= 853) {
+        else if (pos_x >= 807 && pos_x <= 853)
             Bykva = 'ù';
-        }
     }
-    else if (pos_y >= 700 && pos_y <= 736) {
-        if (pos_x >= 348 && pos_x <= 376) {
+    else if (pos_y >= 700 && pos_y <= 736){
+        if (pos_x >= 348 && pos_x <= 376)
             Bykva = 'ü';
-        }
-        else if (pos_x >= 395 && pos_x <= 435) {
+        else if (pos_x >= 395 && pos_x <= 435)
             Bykva = 'û';
-        }
-        else if (pos_x >= 450 && pos_x <= 490) {
+        else if (pos_x >= 450 && pos_x <= 490)
             Bykva = 'ú';
-        }
-        else if (pos_x >= 510 && pos_x <= 541) {
+        else if (pos_x >= 510 && pos_x <= 541)
             Bykva = 'ý';
-        }
-        else if (pos_x >= 561 && pos_x <= 606) {
+        else if (pos_x >= 561 && pos_x <= 606)
             Bykva = 'þ';
-        }
-        else if (pos_x >= 623 && pos_x <= 648) {
+        else if (pos_x >= 623 && pos_x <= 648)
             Bykva = 'ÿ';
-        }
     }
 }
 
