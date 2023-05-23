@@ -42,7 +42,7 @@ jobs:
         uses: WyriHaximus/github-action-wait-for-status@v1.7.0
 
       - name: Wait for successful build status
-        uses: github-actions/wait-for-status@v1 //тут ошибка
+        uses: "WyriHaximus/github-action-wait-for-status@v2"
         with:
           checks: 'Build' # имя проверки статуса сборки
           timeout-minutes: 10 # время ожидания в минутах
