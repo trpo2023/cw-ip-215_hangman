@@ -13,14 +13,8 @@ jobs:
           vs-version: '16.0'
       - name: Build with MSBuild
         run: msbuild /p:Configuration=Release || exit 0
+      #- name: Check format
+       # run: clang-format --style=file {{main.cpp}}
 
-      #  continue-on-error: true
-      #- name: Wait for commit statuses
-      #  uses: WyriHaximus/github-action-wait-for-status@v1.7.0
 
-      #- name: Wait for successful build status
-      #  uses: "WyriHaximus/github-action-wait-for-status@v1" #Функция только для linux :(
-      #  with:
-      #    checks: 'Build' # имя проверки статуса сборки
-      #    timeout-minutes: 10 # время ожидания в минутах
-      #    ignore-issues: true # игнорировать проблемы в проверках статуса (например, недоступность статуса сборки)
+

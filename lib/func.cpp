@@ -1,6 +1,7 @@
 #include "header.h"
 
-void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag) {
+void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag)
+{
     for (int i = 0; i < len; i++) {
         if (slovo[i] == Bykva) {
             flag = 1;
@@ -10,33 +11,33 @@ void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag) {
 
 void create_textur(textures& struct_texture, int n)
 {
-    switch (n){
-    case 0:{
+    switch (n) {
+    case 0: {
         struct_texture.Texture[n] = Texture();
         struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case 1:{
+    case 1: {
         struct_texture.Texture[n] = Texture();
         struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case 2:{
+    case 2: {
         struct_texture.Texture[n] = Texture();
         struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case 3:{
+    case 3: {
         struct_texture.Texture[n] = Texture();
         struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case 4:{
+    case 4: {
         struct_texture.Texture[n] = Texture();
         struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case 5:{
+    case 5: {
         struct_texture.Texture[n] = Texture();
         struct_texture.Sprite[n] = Sprite();
         break;
@@ -46,33 +47,34 @@ void create_textur(textures& struct_texture, int n)
         struct_texture.Sprite[n] = Sprite();
         break;
     }
-    case 7:{
+    case 7: {
         struct_texture.line[n - 7] = RectangleShape(Vector2f(157.f, 7.f));
         break;
     }
-    case 8:{
+    case 8: {
         struct_texture.line[n - 7] = RectangleShape(Vector2f(366.f, 7.f));
         break;
     }
-    case 9:{
+    case 9: {
         struct_texture.line[n - 7] = RectangleShape(Vector2f(295.f, 7.f));
         break;
     }
-    case 10:{
+    case 10: {
         struct_texture.line[n - 7] = RectangleShape(Vector2f(55.f, 2.f));
         break;
     }
-    case 11:{
+    case 11: {
         struct_texture.head = CircleShape(41.f);
         break;
     }
-    case 12:{
+    case 12: {
         struct_texture.body = RectangleShape(Vector2f(130.f, 3.f));
         break;
     }
-    case 13:{
+    case 13: {
         RectangleShape limb = RectangleShape(Vector2f(70.f, 3.f));
-        struct_texture.rightHand = struct_texture.leftHand = struct_texture.rightLeg = struct_texture.leftLeg = limb;
+        struct_texture.rightHand = struct_texture.leftHand
+                = struct_texture.rightLeg = struct_texture.leftLeg = limb;
         break;
     }
     default:
@@ -136,11 +138,9 @@ void load_textur(RenderWindow& window, textures& struct_texture)
     struct_texture.Sprite[6].setTexture(struct_texture.Texture[6]);
     struct_texture.Sprite[6].setPosition(0, 0);
 
-    for (int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++) {
         struct_texture.line[i].setFillColor(Color::Black);
-        switch (i)
-        {
+        switch (i) {
         case 0:
             struct_texture.line[i].setPosition(663, 406);
             break;
@@ -161,11 +161,9 @@ void load_textur(RenderWindow& window, textures& struct_texture)
     }
 }
 
-
-
 void check_byk_cord(int pos_x, int pos_y, char& Bykva)
 {
-    if (pos_y >= 580 && pos_y <= 615){
+    if (pos_y >= 580 && pos_y <= 615) {
         if (pos_x >= 155 && pos_x <= 185)
             Bykva = 'à';
         else if (pos_x >= 210 && pos_x <= 240)
@@ -192,8 +190,7 @@ void check_byk_cord(int pos_x, int pos_y, char& Bykva)
             Bykva = 'ë';
         else if (pos_x >= 812 && pos_x <= 848)
             Bykva = 'ì';
-    }
-    else if (pos_y >= 640 && pos_y <= 677){
+    } else if (pos_y >= 640 && pos_y <= 677) {
         if (pos_x >= 155 && pos_x <= 185)
             Bykva = 'í';
         else if (pos_x >= 205 && pos_x <= 240)
@@ -220,8 +217,7 @@ void check_byk_cord(int pos_x, int pos_y, char& Bykva)
             Bykva = 'ø';
         else if (pos_x >= 807 && pos_x <= 853)
             Bykva = 'ù';
-    }
-    else if (pos_y >= 700 && pos_y <= 736){
+    } else if (pos_y >= 700 && pos_y <= 736) {
         if (pos_x >= 348 && pos_x <= 376)
             Bykva = 'ü';
         else if (pos_x >= 395 && pos_x <= 435)
@@ -237,40 +233,41 @@ void check_byk_cord(int pos_x, int pos_y, char& Bykva)
     }
 }
 
-void draw_cross(int i, RenderWindow& window, Sprite& cross) {
+void draw_cross(int i, RenderWindow& window, Sprite& cross)
+{
     unordered_map<int, Vector2f> positions = {
-        {0, Vector2f(152, 580)},  // à
-        {1, Vector2f(210, 580)},  // á
-        {2, Vector2f(262, 580)},  // â
-        {3, Vector2f(315, 580)},  // ã
-        {4, Vector2f(372, 580)},  // ä
-        {5, Vector2f(427, 580)},  // å
-        {6, Vector2f(482, 580)},  // æ
-        {7, Vector2f(539, 580)},  // ç
-        {8, Vector2f(593, 580)},  // è
-        {9, Vector2f(647, 580)},  // é
-        {10, Vector2f(700, 580)}, // ê
-        {11, Vector2f(757, 580)}, // ë
-        {12, Vector2f(812, 580)}, // ì
-        {13, Vector2f(150, 642)}, // í
-        {14, Vector2f(207, 642)}, // î
-        {15, Vector2f(260, 642)}, // ï
-        {16, Vector2f(315, 642)}, // ð
-        {17, Vector2f(372, 642)}, // ñ
-        {18, Vector2f(425, 642)}, // ò
-        {19, Vector2f(480, 642)}, // ó
-        {20, Vector2f(536, 642)}, // ô
-        {21, Vector2f(590, 642)}, // õ
-        {22, Vector2f(645, 642)}, // ö
-        {23, Vector2f(700, 642)}, // ÷
-        {24, Vector2f(757, 642)}, // ø
-        {25, Vector2f(812, 642)}, // ù
-        {26, Vector2f(343, 700)}, // ü
-        {27, Vector2f(397, 700)}, // û
-        {28, Vector2f(455, 700)}, // ú
-        {29, Vector2f(507, 700)}, // ý
-        {30, Vector2f(560, 700)}, // þ
-        {31, Vector2f(618, 700)}  // ÿ
+            {0, Vector2f(152, 580)},  // à
+            {1, Vector2f(210, 580)},  // á
+            {2, Vector2f(262, 580)},  // â
+            {3, Vector2f(315, 580)},  // ã
+            {4, Vector2f(372, 580)},  // ä
+            {5, Vector2f(427, 580)},  // å
+            {6, Vector2f(482, 580)},  // æ
+            {7, Vector2f(539, 580)},  // ç
+            {8, Vector2f(593, 580)},  // è
+            {9, Vector2f(647, 580)},  // é
+            {10, Vector2f(700, 580)}, // ê
+            {11, Vector2f(757, 580)}, // ë
+            {12, Vector2f(812, 580)}, // ì
+            {13, Vector2f(150, 642)}, // í
+            {14, Vector2f(207, 642)}, // î
+            {15, Vector2f(260, 642)}, // ï
+            {16, Vector2f(315, 642)}, // ð
+            {17, Vector2f(372, 642)}, // ñ
+            {18, Vector2f(425, 642)}, // ò
+            {19, Vector2f(480, 642)}, // ó
+            {20, Vector2f(536, 642)}, // ô
+            {21, Vector2f(590, 642)}, // õ
+            {22, Vector2f(645, 642)}, // ö
+            {23, Vector2f(700, 642)}, // ÷
+            {24, Vector2f(757, 642)}, // ø
+            {25, Vector2f(812, 642)}, // ù
+            {26, Vector2f(343, 700)}, // ü
+            {27, Vector2f(397, 700)}, // û
+            {28, Vector2f(455, 700)}, // ú
+            {29, Vector2f(507, 700)}, // ý
+            {30, Vector2f(560, 700)}, // þ
+            {31, Vector2f(618, 700)}  // ÿ
     };
 
     auto it = positions.find(i);
