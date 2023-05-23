@@ -2,30 +2,6 @@ name: Build
 
 on: push
 
-# Ver 4
-#jobs:
-#  build:
-#    runs-on: windows-latest
-
-#    steps:
-#      - uses: actions/checkout@v2
-
-#      #- name: Check codestyle
-#      #  run: git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
-
-#      - name: Set up MSVC
-#        uses: microsoft/setup-msvc@v1.0.2
-
-#      - name: Build
-#        run: |
-#            mkdir build
-#            cd build
-#            cmake ..
-#            cmake --build .
-      #- name: Build application
-      #  run: msbuild.exe /p:Configuration=Release /p:Platform=x64 MyProject.sln
-
-#Ver 3
 jobs:
   build:
     runs-on: windows-latest
@@ -37,45 +13,14 @@ jobs:
           vs-version: '16.0'
       - name: Build with MSBuild
         run: msbuild /p:Configuration=Release || exit 0
+
       #  continue-on-error: true
       #- name: Wait for commit statuses
       #  uses: WyriHaximus/github-action-wait-for-status@v1.7.0
 
       #- name: Wait for successful build status
-      #  uses: "WyriHaximus/github-action-wait-for-status@v1"
+      #  uses: "WyriHaximus/github-action-wait-for-status@v1" #Функция только для linux :(
       #  with:
       #    checks: 'Build' # имя проверки статуса сборки
       #    timeout-minutes: 10 # время ожидания в минутах
       #    ignore-issues: true # игнорировать проблемы в проверках статуса (например, недоступность статуса сборки)
-
-#Ver 2
-#jobs:
-#  build:
-#    runs-on: windows-latest
-
-#    steps:
-#    - uses: actions/checkout@v2
-
-#    - name: Set up MSVC
-#      uses: microsoft/setup-msvc@v1.6.2
-
-#    - name: Build
-#      run: |
-#        mkdir build
-#        cd build
-#        cmake ..
-#        cmake --build .
-
-
-#jobs:
-#  build:
-#    runs-on: ubuntu-20.04
-
-#    steps:
-#      - uses: actions/checkout@v2
-
-#      - name: Check codestyle
-#        run: git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
-
-#      - name: Build application
-#        run: make
