@@ -280,7 +280,7 @@ int main()
                             if ( (pos_y >= 260 && pos_y <= 305) && (pos_x >= 280 && pos_x <= 380) ) {
                                 button = 3;
                                 Where = 2;  //В меню
-                                cout << "po x:" << pos_x << endl;
+                                cout << "po x:" << pos_x << endl
                                 cout << "po y:" << pos_y << endl;
                             }
                         }
