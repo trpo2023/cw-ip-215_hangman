@@ -315,6 +315,7 @@ void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
 //тесты, вынести в отдельную папку и разбить на фаилы
 void test() {
     test_check_byk_v_slove();
+    test_create_textur();
 }
 
 void test_check_byk_v_slove() {
@@ -342,4 +343,36 @@ void test_check_byk_v_slove() {
     assert(flag == 0);
 
     cout << "check_byk_v_slove() - OK" << endl;
+}
+
+void test_create_textur() {
+    textures Textures;
+    //проверка, что текстуры не создаются без вызова функции
+    assert(Textures.head.getRadius() == 0.f);
+    assert(Textures.body.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.rightHand.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.leftHand.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.rightLeg.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.leftLeg.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[0].getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[1].getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[2].getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[3].getSize() == Vector2f(0.f, 0.f));
+
+    //проверка функции, что она задает размеры фигурам и создает их
+    for (int i = 0; i < 14; i++) {
+        create_textur(Textures, i);
+    }
+    assert(Textures.head.getRadius() != 0.f);
+    assert(Textures.body.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.rightHand.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.leftHand.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.rightLeg.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.leftLeg.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[0].getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[1].getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[2].getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[3].getSize() != Vector2f(0.f, 0.f));
+
+    cout << "create_textur() - OK" << endl;
 }
