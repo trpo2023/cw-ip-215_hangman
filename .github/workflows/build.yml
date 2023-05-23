@@ -13,7 +13,7 @@ jobs:
       #  run: git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
 
       - name: Set up MSVC
-        uses: microsoft/setup-msvc@v1.0.2
+        uses: microsoft/setup-msvc@v1.6.2
 
       - name: Build application
         run: msbuild.exe /p:Configuration=Release /p:Platform=x64 MyProject.sln
