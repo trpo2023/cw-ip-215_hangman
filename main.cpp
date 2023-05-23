@@ -281,7 +281,7 @@ int main()
                                 button = 3;
                                 Where = 2;  //В меню
                                 cout << "po x:" << pos_x << endl;
-                                cout << "po y:" << pos_y << endl;
+                                cout << "po y:" << pos_y << endl
                             }
                         }
                     }

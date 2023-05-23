@@ -5,25 +5,32 @@ on: push
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v2
+    - name: Set up Visual Studio 2019 Build Tools
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        vs-version: '16.0'
+    - name: Build with MSBuild
+      run: msbuild /p:Configuration=Release
 
-    - name: Set up MSVC
-      uses: microsoft/setup-msvc@v1.6.2
+#jobs:
+#  build:
+#    runs-on: windows-latest
 
-    - name: Build
-      run: |
-        mkdir build
-        cd build
-        cmake ..
-        cmake --build .
+#    steps:
+#    - uses: actions/checkout@v2
 
+#    - name: Set up MSVC
+#      uses: microsoft/setup-msvc@v1.6.2
 
+#    - name: Build
+#      run: |
+#        mkdir build
+#        cd build
+#        cmake ..
+#        cmake --build .
 
-#name: Build
-
-#on: push
 
 #jobs:
 #  build:
