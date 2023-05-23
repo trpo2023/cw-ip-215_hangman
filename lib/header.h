@@ -4,6 +4,7 @@
 #include <clocale> //для кирилицы
 #include <string> //для строк
 #include <unordered_map>
+#include <cassert>
 
 
 using namespace sf;
@@ -44,3 +45,5 @@ void load_textur(RenderWindow& window, textures& struct_texture);
 void check_byk_cord(int pos_x, int pos_y, char& Bykva);
 void draw_cross(int i, RenderWindow& window, Sprite& cross);
 void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture);
+void test();
+void test_check_byk_v_slove();

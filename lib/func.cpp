@@ -161,8 +161,6 @@ void load_textur(RenderWindow& window, textures& struct_texture)
     }
 }
 
-
-
 void check_byk_cord(int pos_x, int pos_y, char& Bykva)
 {
     if (pos_y >= 580 && pos_y <= 615){
@@ -311,4 +309,37 @@ void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
 
     //рисуем алфавит
     window.draw(struct_texture.Sprite[0]);
+}
+
+
+//тесты, вынести в отдельную папку и разбить на фаилы
+void test() {
+    test_check_byk_v_slove();
+}
+
+void test_check_byk_v_slove() {
+    char Bykva = 'а';
+    string slovo = "паша";
+    int len = slovo.length();
+    bool flag = 0;
+
+    check_byk_v_slove(Bykva, slovo, len, flag);
+    assert(flag == 1);
+
+    flag = 0;
+    Bykva = '-';
+    check_byk_v_slove(Bykva, slovo, len, flag);
+    assert(flag == 0);
+
+    flag = 0;
+    Bykva = '3';
+    check_byk_v_slove(Bykva, slovo, len, flag);
+    assert(flag == 0);
+
+    flag = 0;
+    Bykva = 'ш';
+    check_byk_v_slove(Bykva, slovo, 0, flag);
+    assert(flag == 0);
+
+    cout << "check_byk_v_slove() - OK" << endl;
 }

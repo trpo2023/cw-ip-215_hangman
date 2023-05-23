@@ -2,6 +2,7 @@
 
 int main()
 {
+    test();
     srand(time(NULL));
     //русский в консоли
     setlocale(LC_CTYPE, "rus");
