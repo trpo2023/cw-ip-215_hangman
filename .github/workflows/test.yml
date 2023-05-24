@@ -12,5 +12,5 @@ jobs:
         with:
           vs-version: '16.0'
       - name: Build with MSBuild
-        run: cd test && msbuild /p:Configuration=Release || exit 0
+        run: msbuild /p:Configuration=Release || exit 0
       
