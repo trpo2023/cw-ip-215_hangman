@@ -317,6 +317,7 @@ void test() {
     test_check_byk_v_slove();
     test_create_textur();
     test_load_textur();
+    test_check_byk_cord();
 }
 
 void test_check_byk_v_slove() {
@@ -509,4 +510,105 @@ void test_load_textur() {
     assert(Textures.line[3].getPosition() == Vector2f(500, 40));
 
     cout << "load_textur() - OK" << endl;
+}
+
+void test_check_byk_cord() {
+    //тестовые данные
+    char Bykva = 'а';
+    check_byk_cord(0, 0, Bykva);
+    assert(Bykva == 'а');
+
+    //обработка стандартных значений
+    Bykva = '-';
+    check_byk_cord(170, 590, Bykva);
+    assert(Bykva == 'а');
+    check_byk_cord(210, 590, Bykva);
+    assert(Bykva == 'б');
+    check_byk_cord(265, 590, Bykva);
+    assert(Bykva == 'в');
+    check_byk_cord(325, 590, Bykva);
+    assert(Bykva == 'г');
+    check_byk_cord(370, 590, Bykva);
+    assert(Bykva == 'д');
+    check_byk_cord(435, 590, Bykva);
+    assert(Bykva == 'е');
+    check_byk_cord(477, 590, Bykva);
+    assert(Bykva == 'ж');
+    check_byk_cord(540, 590, Bykva);
+    assert(Bykva == 'з');
+    check_byk_cord(595, 590, Bykva);
+    assert(Bykva == 'и');
+    check_byk_cord(650, 590, Bykva);
+    assert(Bykva == 'й');
+    check_byk_cord(708, 590, Bykva);
+    assert(Bykva == 'к');
+    check_byk_cord(758, 590, Bykva);
+    assert(Bykva == 'л');
+    check_byk_cord(812, 590, Bykva);
+    assert(Bykva == 'м');
+
+    check_byk_cord(155, 650, Bykva);
+    assert(Bykva == 'н');
+    check_byk_cord(205, 650, Bykva);
+    assert(Bykva == 'о');
+    check_byk_cord(265, 650, Bykva);
+    assert(Bykva == 'п');
+    check_byk_cord(320, 650, Bykva);
+    assert(Bykva == 'р');
+    check_byk_cord(372, 650, Bykva);
+    assert(Bykva == 'с');
+    check_byk_cord(430, 650, Bykva);
+    assert(Bykva == 'т');
+    check_byk_cord(483, 650, Bykva);
+    assert(Bykva == 'у');
+    check_byk_cord(535, 650, Bykva);
+    assert(Bykva == 'ф');
+    check_byk_cord(595, 650, Bykva);
+    assert(Bykva == 'х');
+    check_byk_cord(650, 650, Bykva);
+    assert(Bykva == 'ц');
+    check_byk_cord(702, 650, Bykva);
+    assert(Bykva == 'ч');
+    check_byk_cord(751, 650, Bykva);
+    assert(Bykva == 'ш');
+    check_byk_cord(807, 650, Bykva);
+    assert(Bykva == 'щ');
+
+    check_byk_cord(348, 720, Bykva);
+    assert(Bykva == 'ь');
+    check_byk_cord(395, 720, Bykva);
+    assert(Bykva == 'ы');
+    check_byk_cord(450, 720, Bykva);
+    assert(Bykva == 'ъ');
+    check_byk_cord(510, 720, Bykva);
+    assert(Bykva == 'э');
+    check_byk_cord(561, 720, Bykva);
+    assert(Bykva == 'ю');
+    check_byk_cord(623, 720, Bykva);
+    assert(Bykva == 'я');
+
+    //обработка, если границы  не попадают стандартные
+    Bykva = '*';
+
+    check_byk_cord(800, 0, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(0, 800, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(1000, 0, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(1000, 800, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(999999, 99999999, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(-100, -100, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(0, -100, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(-100, 0, Bykva);
+    assert(Bykva == '*');
+    check_byk_cord(0, 0, Bykva);
+    assert(Bykva == '*');
+
+
+    cout << "check_byk_cord() - OK" << endl;
 }
