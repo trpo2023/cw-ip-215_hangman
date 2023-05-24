@@ -1,26 +1,15 @@
-#name: Build
+name: Build
 
-#on: push
+on: push
 
-#jobs:
-#  build:
-#    runs-on: windows-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Set up Visual Studio 2022 Build Tools
-#        uses: microsoft/setup-msbuild@v1.0.2
-#        with:
-#          vs-version: '16.0'
-#      - name: Build with MSBuild
-#        run: msbuild /p:Configuration=Release || exit 0
-
-      #  continue-on-error: true
-      #- name: Wait for commit statuses
-      #  uses: WyriHaximus/github-action-wait-for-status@v1.7.0
-
-      #- name: Wait for successful build status
-      #  uses: "WyriHaximus/github-action-wait-for-status@v1" #Функция только для linux :(
-      #  with:
-      #    checks: 'Build' # имя проверки статуса сборки
-      #    timeout-minutes: 10 # время ожидания в минутах
-      #    ignore-issues: true # игнорировать проблемы в проверках статуса (например, недоступность статуса сборки)
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Visual Studio 2022 Build Tools
+        uses: microsoft/setup-msbuild@v1.0.2
+        with:
+          vs-version: '16.0'
+      - name: Build with MSBuild
+        run: msbuild /p:Configuration=Release || exit 0
