@@ -277,7 +277,11 @@ void draw_cross(int i, RenderWindow& window, Sprite& cross)
     }
 }
 
-void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture, int &testDrawCount)
+void draw_gallows(
+        int attempt,
+        RenderWindow& window,
+        textures& struct_texture,
+        int& testDrawCount)
 {
     //рисуем виселицу в зависимости от попытки
     if (attempt >= 1) {

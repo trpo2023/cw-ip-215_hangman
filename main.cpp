@@ -147,7 +147,8 @@ int main()
                 //рисуем бекграунд
                 window.draw(textures.Sprite[6]);
                 //рисуем виссилицу
-                draw_gallows(attempt, window, textures);
+                int temp = NULL;
+                draw_gallows(attempt, window, textures, temp);
 
                 //рисуем уже нажатые правильные буквы
                 for (int i = 0, cordx = slovo_cord_x; i < len; i++) {
