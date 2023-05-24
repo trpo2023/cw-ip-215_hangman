@@ -235,80 +235,88 @@ void check_byk_cord(int pos_x, int pos_y, char& Bykva)
     }
 }
 
-    void draw_cross(int i, RenderWindow& window, Sprite& cross) {
-        unordered_map<int, Vector2f> positions = {
-            {0, Vector2f(152, 580)},  // а
-            {1, Vector2f(210, 580)},  // б
-            {2, Vector2f(262, 580)},  // в
-            {3, Vector2f(315, 580)},  // г
-            {4, Vector2f(372, 580)},  // д
-            {5, Vector2f(427, 580)},  // е
-            {6, Vector2f(482, 580)},  // ж
-            {7, Vector2f(539, 580)},  // з
-            {8, Vector2f(593, 580)},  // и
-            {9, Vector2f(647, 580)},  // й
-            {10, Vector2f(700, 580)}, // к
-            {11, Vector2f(757, 580)}, // л
-            {12, Vector2f(812, 580)}, // м
-            {13, Vector2f(150, 642)}, // н
-            {14, Vector2f(207, 642)}, // о
-            {15, Vector2f(260, 642)}, // п
-            {16, Vector2f(315, 642)}, // р
-            {17, Vector2f(372, 642)}, // с
-            {18, Vector2f(425, 642)}, // т
-            {19, Vector2f(480, 642)}, // у
-            {20, Vector2f(536, 642)}, // ф
-            {21, Vector2f(590, 642)}, // х
-            {22, Vector2f(645, 642)}, // ц
-            {23, Vector2f(700, 642)}, // ч
-            {24, Vector2f(757, 642)}, // ш
-            {25, Vector2f(812, 642)}, // щ
-            {26, Vector2f(343, 700)}, // ь
-            {27, Vector2f(397, 700)}, // ы
-            {28, Vector2f(455, 700)}, // ъ
-            {29, Vector2f(507, 700)}, // э
-            {30, Vector2f(560, 700)}, // ю
-            {31, Vector2f(618, 700)}  // я
-        };
+void draw_cross(int i, RenderWindow& window, Sprite& cross) {
+    unordered_map<int, Vector2f> positions = {
+        {0, Vector2f(152, 580)},  // а
+        {1, Vector2f(210, 580)},  // б
+        {2, Vector2f(262, 580)},  // в
+        {3, Vector2f(315, 580)},  // г
+        {4, Vector2f(372, 580)},  // д
+        {5, Vector2f(427, 580)},  // е
+        {6, Vector2f(482, 580)},  // ж
+        {7, Vector2f(539, 580)},  // з
+        {8, Vector2f(593, 580)},  // и
+        {9, Vector2f(647, 580)},  // й
+        {10, Vector2f(700, 580)}, // к
+        {11, Vector2f(757, 580)}, // л
+        {12, Vector2f(812, 580)}, // м
+        {13, Vector2f(150, 642)}, // н
+        {14, Vector2f(207, 642)}, // о
+        {15, Vector2f(260, 642)}, // п
+        {16, Vector2f(315, 642)}, // р
+        {17, Vector2f(372, 642)}, // с
+        {18, Vector2f(425, 642)}, // т
+        {19, Vector2f(480, 642)}, // у
+        {20, Vector2f(536, 642)}, // ф
+        {21, Vector2f(590, 642)}, // х
+        {22, Vector2f(645, 642)}, // ц
+        {23, Vector2f(700, 642)}, // ч
+        {24, Vector2f(757, 642)}, // ш
+        {25, Vector2f(812, 642)}, // щ
+        {26, Vector2f(343, 700)}, // ь
+        {27, Vector2f(397, 700)}, // ы
+        {28, Vector2f(455, 700)}, // ъ
+        {29, Vector2f(507, 700)}, // э
+        {30, Vector2f(560, 700)}, // ю
+        {31, Vector2f(618, 700)}  // я
+    };
 
-        auto it = positions.find(i);
-        if (it != positions.end()) {
-            cross.setPosition(it->second);
-            window.draw(cross);
-        }
+    auto it = positions.find(i);
+    if (it != positions.end()) {
+        cross.setPosition(it->second);
+        window.draw(cross);
     }
+}
 
-void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
+void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture, int &testDrawCount)
 {
     //рисуем виселицу в зависимости от попытки
     if (attempt >= 1) {
         window.draw(struct_texture.line[0]);
         window.draw(struct_texture.line[1]);
         window.draw(struct_texture.line[2]);
+        testDrawCount += 3;
     }
     if (attempt >= 2) {
         window.draw(struct_texture.head);
         window.draw(struct_texture.line[3]);
+        testDrawCount += 2;
     }
     if (attempt >= 3) {
         window.draw(struct_texture.body);
+        testDrawCount += 1;
     }
     if (attempt >= 4) {
         window.draw(struct_texture.rightHand);
+        testDrawCount += 1;
     }
     if (attempt >= 5) {
         window.draw(struct_texture.leftHand);
+        testDrawCount += 1;
     }
     if (attempt >= 6) {
         window.draw(struct_texture.rightLeg);
+        testDrawCount += 1;
     }
     if (attempt >= 7) {
         window.draw(struct_texture.leftLeg);
         window.draw(struct_texture.Sprite[4]); //рисуем geme over
+        testDrawCount += 2;
     }
 
     //рисуем алфавит
     window.draw(struct_texture.Sprite[0]);
+    testDrawCount += 1;
 }
 
 
@@ -319,6 +327,7 @@ void test() {
     test_load_textur();
     test_check_byk_cord();
     test_draw_cross();
+    test_draw_gallows();
 }
 
 void test_check_byk_v_slove() {
@@ -703,4 +712,53 @@ void test_draw_cross() {
     assert(test.getPosition() == Vector2f(10, 10));
 
     cout << "draw_cross() - OK" << endl;
+}
+
+void test_draw_gallows() {
+    textures Textures;
+    RenderWindow window;
+    int DrawCount = 0;
+
+    //проверка количества отрисованных элементов
+    draw_gallows(0, window, Textures, DrawCount);
+    assert(DrawCount == 1);
+
+    DrawCount = 0;
+    draw_gallows(1, window, Textures, DrawCount);
+    assert(DrawCount == 4);
+
+    DrawCount = 0;
+    draw_gallows(2, window, Textures, DrawCount);
+    assert(DrawCount == 6);
+
+    DrawCount = 0;
+    draw_gallows(3, window, Textures, DrawCount);
+    assert(DrawCount == 7);
+
+    DrawCount = 0;
+    draw_gallows(4, window, Textures, DrawCount);
+    assert(DrawCount == 8);
+
+    DrawCount = 0;
+    draw_gallows(5, window, Textures, DrawCount);
+    assert(DrawCount == 9);
+
+    DrawCount = 0;
+    draw_gallows(6, window, Textures, DrawCount);
+    assert(DrawCount == 10);
+
+    DrawCount = 0;
+    draw_gallows(7, window, Textures, DrawCount);
+    assert(DrawCount == 12);
+
+    //обработка значений, которые выходят за пределы
+    DrawCount = 0;
+    draw_gallows(99, window, Textures, DrawCount);
+    assert(DrawCount == 12);
+
+    DrawCount = 0;
+    draw_gallows(-1, window, Textures, DrawCount);
+    assert(DrawCount == 1);
+
+    cout << "draw_gallows() - OK" << endl;
 }
