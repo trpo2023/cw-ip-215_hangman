@@ -12,4 +12,4 @@ jobs:
         with:
           vs-version: '16.0'
       - name: Build with MSBuild
-        run: msbuild test/test.vcxproj/p:Configuration=Release || exit 0
+        run: msbuild test.vcxproj/p:Configuration=Release || exit 0
