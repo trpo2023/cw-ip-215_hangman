@@ -1,0 +1,17 @@
+name: test
+
+on: push
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Visual Studio 2022 Build Tools
+        uses: microsoft/setup-msbuild@v1.0.2
+        with:
+          vs-version: '16.0'
+      - name: Run specific file from a specific folder
+        working-directory: ./test/
+        run: msbuild /p:Configuration=Release || exit 0
+      

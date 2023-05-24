@@ -13,8 +13,3 @@ jobs:
           vs-version: '16.0'
       - name: Build with MSBuild
         run: msbuild /p:Configuration=Release || exit 0
-      #- name: Check format
-       # run: clang-format --style=file {{main.cpp}}
-
-
-

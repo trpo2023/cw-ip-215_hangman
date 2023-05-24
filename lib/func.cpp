@@ -277,35 +277,43 @@ void draw_cross(int i, RenderWindow& window, Sprite& cross)
     }
 }
 
-void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
+void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture, int &testDrawCount)
 {
     //рисуем виселицу в зависимости от попытки
     if (attempt >= 1) {
         window.draw(struct_texture.line[0]);
         window.draw(struct_texture.line[1]);
         window.draw(struct_texture.line[2]);
+        testDrawCount += 3;
     }
     if (attempt >= 2) {
         window.draw(struct_texture.head);
         window.draw(struct_texture.line[3]);
+        testDrawCount += 2;
     }
     if (attempt >= 3) {
         window.draw(struct_texture.body);
+        testDrawCount += 1;
     }
     if (attempt >= 4) {
         window.draw(struct_texture.rightHand);
+        testDrawCount += 1;
     }
     if (attempt >= 5) {
         window.draw(struct_texture.leftHand);
+        testDrawCount += 1;
     }
     if (attempt >= 6) {
         window.draw(struct_texture.rightLeg);
+        testDrawCount += 1;
     }
     if (attempt >= 7) {
         window.draw(struct_texture.leftLeg);
         window.draw(struct_texture.Sprite[4]); //рисуем geme over
+        testDrawCount += 2;
     }
 
     //рисуем алфавит
     window.draw(struct_texture.Sprite[0]);
+    testDrawCount += 1;
 }
