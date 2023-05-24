@@ -49,3 +49,4 @@ void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture);
 void test();
 void test_check_byk_v_slove();
 void test_create_textur();
+void test_load_textur();

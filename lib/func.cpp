@@ -316,6 +316,7 @@ void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
 void test() {
     test_check_byk_v_slove();
     test_create_textur();
+    test_load_textur();
 }
 
 void test_check_byk_v_slove() {
@@ -375,4 +376,137 @@ void test_create_textur() {
     assert(Textures.line[3].getSize() != Vector2f(0.f, 0.f));
 
     cout << "create_textur() - OK" << endl;
+}
+
+void test_load_textur() {
+    textures Textures;
+    RenderWindow window;
+    //проверяем, что до вызова функции все знацения позиции, цвета, угол поворота равны нулю или не существуют
+    assert(Textures.head.getPosition().x == 0);
+    assert(Textures.head.getPosition().y == 0);
+    assert(Textures.head.getOutlineColor() != Color::Black);
+    assert(Textures.head.getOutlineThickness() == 0.f);
+    assert(Textures.head.getFillColor() != Color(217, 217, 217));
+
+    assert(Textures.body.getPosition().x == 0);
+    assert(Textures.body.getPosition().y == 0);
+    assert(Textures.body.getFillColor() != Color(217, 217, 217));
+    assert(Textures.body.getRotation() == 0.f);
+
+    assert(Textures.rightHand.getPosition().x == 0);
+    assert(Textures.rightHand.getPosition().y == 0);
+    assert(Textures.rightHand.getFillColor() != Color::Black);
+    assert(Textures.rightHand.getRotation() == 0.f);
+
+    assert(Textures.leftHand.getPosition().x == 0);
+    assert(Textures.leftHand.getPosition().y == 0);
+    assert(Textures.leftHand.getFillColor() != Color::Black);
+    assert(Textures.leftHand.getRotation() == 0.f);
+
+    assert(Textures.leftLeg.getPosition().x == 0);
+    assert(Textures.leftLeg.getPosition().y == 0);
+    assert(Textures.leftLeg.getFillColor() != Color::Black);
+    assert(Textures.leftLeg.getRotation() == 0.f);
+
+    assert(Textures.rightLeg.getPosition().x == 0);
+    assert(Textures.rightLeg.getPosition().y == 0);
+    assert(Textures.rightLeg.getFillColor() != Color::Black);
+    assert(Textures.rightLeg.getRotation() == 0.f);
+
+    assert(Textures.Texture[0].getSize() == Vector2u(0, 0));
+    assert(Textures.Sprite[0].getTexture() == NULL);
+
+    assert(Textures.Texture[1].getSize() == Vector2u(0, 0));
+    assert(Textures.Sprite[1].getTexture() == NULL);
+
+    assert(Textures.Texture[2].getSize() == Vector2u(0, 0));
+    assert(Textures.Sprite[2].getTexture() == NULL);
+
+    assert(Textures.Texture[3].getSize() == Vector2u(0, 0));
+    assert(Textures.Sprite[3].getTexture() == NULL);
+
+    assert(Textures.Texture[4].getSize() == Vector2u(0, 0));
+    assert(Textures.Sprite[4].getTexture() == NULL);
+
+    assert(Textures.Texture[5].getSize() == Vector2u(0, 0));
+    assert(Textures.Sprite[5].getTexture() == NULL);
+
+    assert(Textures.Texture[6].getSize() == Vector2u(0, 0));
+    assert(Textures.Sprite[6].getTexture() == NULL);
+
+    assert(Textures.line[0].getFillColor() != Color::Black);
+    assert(Textures.line[0].getPosition() == Vector2f(0, 0));
+
+    assert(Textures.line[1].getFillColor() != Color::Black);
+    assert(Textures.line[1].getPosition() == Vector2f(0, 0));
+
+    assert(Textures.line[2].getFillColor() != Color::Black);
+    assert(Textures.line[2].getPosition() == Vector2f(0, 0));
+
+    assert(Textures.line[3].getFillColor() != Color::Black);
+    assert(Textures.line[3].getPosition() == Vector2f(0, 0));
+
+    //Вызываем функцию и загружаем размеры
+    load_textur(window, Textures);
+
+    //Проверяем размеры и другое послее вызова
+    assert(Textures.head.getPosition() == Vector2f(459, 95));
+    assert(Textures.head.getOutlineColor() == Color::Black);
+    assert(Textures.head.getOutlineThickness() == 3.f);
+    assert(Textures.head.getFillColor() == Color(217, 217, 217));
+
+    assert(Textures.body.getPosition() == Vector2f(500, 178));
+    assert(Textures.body.getFillColor() == Color::Black);
+    assert(Textures.body.getRotation() == 90.f);
+
+    assert(Textures.rightHand.getPosition() == Vector2f(500, 206));
+    assert(Textures.rightHand.getFillColor() == Color::Black);
+    assert(Textures.rightHand.getRotation() == 45.f);
+
+    assert(Textures.rightHand.getPosition() == Vector2f(500, 206));
+    assert(Textures.leftHand.getFillColor() == Color::Black);
+    assert(Textures.leftHand.getRotation() == 135.f);
+
+    assert(Textures.leftLeg.getPosition() == Vector2f(500, 306));
+    assert(Textures.leftLeg.getFillColor() == Color::Black);
+    assert(Textures.leftLeg.getRotation() == 135.f);
+
+    assert(Textures.rightLeg.getPosition() == Vector2f(500, 306));
+    assert(Textures.rightLeg.getFillColor() == Color::Black);
+    assert(Textures.rightLeg.getRotation() == 45.f);
+
+    assert(Textures.Texture[0].getSize() != Vector2u(0, 0));
+    assert(Textures.Sprite[0].getTexture() != NULL);
+
+    assert(Textures.Texture[1].getSize() != Vector2u(0, 0));
+    assert(Textures.Sprite[1].getTexture() != NULL);
+
+    assert(Textures.Texture[2].getSize() != Vector2u(0, 0));
+    assert(Textures.Sprite[2].getTexture() != NULL);
+
+    assert(Textures.Texture[3].getSize() != Vector2u(0, 0));
+    assert(Textures.Sprite[3].getTexture() != NULL);
+
+    assert(Textures.Texture[4].getSize() != Vector2u(0, 0));
+    assert(Textures.Sprite[4].getTexture() != NULL);
+
+    assert(Textures.Texture[5].getSize() != Vector2u(0, 0));
+    assert(Textures.Sprite[5].getTexture() != NULL);
+
+    assert(Textures.Texture[6].getSize() != Vector2u(0, 0));
+    assert(Textures.Sprite[6].getTexture() != NULL);
+
+    assert(Textures.line[0].getFillColor() == Color::Black);
+    assert(Textures.line[0].getPosition() == Vector2f(663, 406));
+
+    assert(Textures.line[1].getFillColor() == Color::Black);
+    assert(Textures.line[1].getPosition() == Vector2f(745, 40));
+
+    assert(Textures.line[2].getFillColor() == Color::Black);
+    assert(Textures.line[2].getPosition() == Vector2f(450, 40));
+
+    assert(Textures.line[3].getFillColor() == Color::Black);
+    assert(Textures.line[3].getPosition() == Vector2f(500, 40));
+
+    cout << "load_textur() - OK" << endl;
 }
