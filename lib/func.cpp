@@ -235,48 +235,48 @@ void check_byk_cord(int pos_x, int pos_y, char& Bykva)
     }
 }
 
-void draw_cross(int i, RenderWindow& window, Sprite& cross) {
-    unordered_map<int, Vector2f> positions = {
-        {0, Vector2f(152, 580)},  // а
-        {1, Vector2f(210, 580)},  // б
-        {2, Vector2f(262, 580)},  // в
-        {3, Vector2f(315, 580)},  // г
-        {4, Vector2f(372, 580)},  // д
-        {5, Vector2f(427, 580)},  // е
-        {6, Vector2f(482, 580)},  // ж
-        {7, Vector2f(539, 580)},  // з
-        {8, Vector2f(593, 580)},  // и
-        {9, Vector2f(647, 580)},  // й
-        {10, Vector2f(700, 580)}, // к
-        {11, Vector2f(757, 580)}, // л
-        {12, Vector2f(812, 580)}, // м
-        {13, Vector2f(150, 642)}, // н
-        {14, Vector2f(207, 642)}, // о
-        {15, Vector2f(260, 642)}, // п
-        {16, Vector2f(315, 642)}, // р
-        {17, Vector2f(372, 642)}, // с
-        {18, Vector2f(425, 642)}, // т
-        {19, Vector2f(480, 642)}, // у
-        {20, Vector2f(536, 642)}, // ф
-        {21, Vector2f(590, 642)}, // х
-        {22, Vector2f(645, 642)}, // ц
-        {23, Vector2f(700, 642)}, // ч
-        {24, Vector2f(757, 642)}, // ш
-        {25, Vector2f(812, 642)}, // щ
-        {26, Vector2f(343, 700)}, // ь
-        {27, Vector2f(397, 700)}, // ы
-        {28, Vector2f(455, 700)}, // ъ
-        {29, Vector2f(507, 700)}, // э
-        {30, Vector2f(560, 700)}, // ю
-        {31, Vector2f(618, 700)}  // я
-    };
+    void draw_cross(int i, RenderWindow& window, Sprite& cross) {
+        unordered_map<int, Vector2f> positions = {
+            {0, Vector2f(152, 580)},  // а
+            {1, Vector2f(210, 580)},  // б
+            {2, Vector2f(262, 580)},  // в
+            {3, Vector2f(315, 580)},  // г
+            {4, Vector2f(372, 580)},  // д
+            {5, Vector2f(427, 580)},  // е
+            {6, Vector2f(482, 580)},  // ж
+            {7, Vector2f(539, 580)},  // з
+            {8, Vector2f(593, 580)},  // и
+            {9, Vector2f(647, 580)},  // й
+            {10, Vector2f(700, 580)}, // к
+            {11, Vector2f(757, 580)}, // л
+            {12, Vector2f(812, 580)}, // м
+            {13, Vector2f(150, 642)}, // н
+            {14, Vector2f(207, 642)}, // о
+            {15, Vector2f(260, 642)}, // п
+            {16, Vector2f(315, 642)}, // р
+            {17, Vector2f(372, 642)}, // с
+            {18, Vector2f(425, 642)}, // т
+            {19, Vector2f(480, 642)}, // у
+            {20, Vector2f(536, 642)}, // ф
+            {21, Vector2f(590, 642)}, // х
+            {22, Vector2f(645, 642)}, // ц
+            {23, Vector2f(700, 642)}, // ч
+            {24, Vector2f(757, 642)}, // ш
+            {25, Vector2f(812, 642)}, // щ
+            {26, Vector2f(343, 700)}, // ь
+            {27, Vector2f(397, 700)}, // ы
+            {28, Vector2f(455, 700)}, // ъ
+            {29, Vector2f(507, 700)}, // э
+            {30, Vector2f(560, 700)}, // ю
+            {31, Vector2f(618, 700)}  // я
+        };
 
-    auto it = positions.find(i);
-    if (it != positions.end()) {
-        cross.setPosition(it->second);
-        window.draw(cross);
+        auto it = positions.find(i);
+        if (it != positions.end()) {
+            cross.setPosition(it->second);
+            window.draw(cross);
+        }
     }
-}
 
 void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture)
 {
@@ -318,6 +318,7 @@ void test() {
     test_create_textur();
     test_load_textur();
     test_check_byk_cord();
+    test_draw_cross();
 }
 
 void test_check_byk_v_slove() {
@@ -611,4 +612,95 @@ void test_check_byk_cord() {
 
 
     cout << "check_byk_cord() - OK" << endl;
+}
+
+void test_draw_cross() {
+    Sprite cross;
+    RenderWindow window;
+    // Проверка начальной позиции спрайта
+    assert(cross.getPosition() == Vector2f(0, 0));
+
+    // Проверка для каждой позиции из positions
+    draw_cross(0, window, cross);
+    assert(cross.getPosition() == Vector2f(152, 580));
+    draw_cross(1, window, cross);
+    assert(cross.getPosition() == Vector2f(210, 580));
+    draw_cross(2, window, cross);
+    assert(cross.getPosition() == Vector2f(262, 580));
+    draw_cross(3, window, cross);
+    assert(cross.getPosition() == Vector2f(315, 580));
+    draw_cross(4, window, cross);
+    assert(cross.getPosition() == Vector2f(372, 580));
+    draw_cross(5, window, cross);
+    assert(cross.getPosition() == Vector2f(427, 580));
+    draw_cross(6, window, cross);
+    assert(cross.getPosition() == Vector2f(482, 580));
+    draw_cross(7, window, cross);
+    assert(cross.getPosition() == Vector2f(539, 580));
+    draw_cross(8, window, cross);
+    assert(cross.getPosition() == Vector2f(593, 580));
+    draw_cross(9, window, cross);
+    assert(cross.getPosition() == Vector2f(647, 580));
+    draw_cross(10, window, cross);
+    assert(cross.getPosition() == Vector2f(700, 580));
+    draw_cross(11, window, cross);
+    assert(cross.getPosition() == Vector2f(757, 580));
+    draw_cross(12, window, cross);
+    assert(cross.getPosition() == Vector2f(812, 580));
+    draw_cross(13, window, cross);
+    assert(cross.getPosition() == Vector2f(150, 642));
+    draw_cross(14, window, cross);
+    assert(cross.getPosition() == Vector2f(207, 642));
+    draw_cross(15, window, cross);
+    assert(cross.getPosition() == Vector2f(260, 642));
+    draw_cross(16, window, cross);
+    assert(cross.getPosition() == Vector2f(315, 642));
+    draw_cross(17, window, cross);
+    assert(cross.getPosition() == Vector2f(372, 642));
+    draw_cross(18, window, cross);
+    assert(cross.getPosition() == Vector2f(425, 642));
+    draw_cross(19, window, cross);
+    assert(cross.getPosition() == Vector2f(480, 642));
+    draw_cross(20, window, cross);
+    assert(cross.getPosition() == Vector2f(536, 642));
+    draw_cross(21, window, cross);
+    assert(cross.getPosition() == Vector2f(590, 642));
+    draw_cross(22, window, cross);
+    assert(cross.getPosition() == Vector2f(645, 642));
+    draw_cross(23, window, cross);
+    assert(cross.getPosition() == Vector2f(700, 642));
+    draw_cross(24, window, cross);
+    assert(cross.getPosition() == Vector2f(757, 642));
+    draw_cross(25, window, cross);
+    assert(cross.getPosition() == Vector2f(812, 642));
+    draw_cross(26, window, cross);
+    assert(cross.getPosition() == Vector2f(343, 700));
+    draw_cross(27, window, cross);
+    assert(cross.getPosition() == Vector2f(397, 700));
+    draw_cross(28, window, cross);
+    assert(cross.getPosition() == Vector2f(455, 700));
+    draw_cross(29, window, cross);
+    assert(cross.getPosition() == Vector2f(507, 700));
+    draw_cross(30, window, cross);
+    assert(cross.getPosition() == Vector2f(560, 700));
+    draw_cross(31, window, cross);
+    assert(cross.getPosition() == Vector2f(618, 700)); 
+
+    //обработка не стандартных значений i
+    cross.setPosition(0, 0);
+    draw_cross(99, window, cross);
+    assert(cross.getPosition() == Vector2f(0, 0));
+
+    draw_cross(-10, window, cross);
+    assert(cross.getPosition() == Vector2f(0, 0));
+
+    //обработка других спрайтов
+    Sprite test;
+    test.setPosition(10, 10);
+    cross.setPosition(0, 0);
+    draw_cross(4, window, cross);
+    assert(cross.getPosition() == Vector2f(372, 580));
+    assert(test.getPosition() == Vector2f(10, 10));
+
+    cout << "draw_cross() - OK" << endl;
 }
