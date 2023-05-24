@@ -1,18 +1,18 @@
-name: Build
+#name: Build
 
-on: push
+#on: push
 
-jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Visual Studio 2022 Build Tools
-        uses: microsoft/setup-msbuild@v1.0.2
-        with:
-          vs-version: '16.0'
-      - name: Build with MSBuild
-        run: msbuild /p:Configuration=Release || exit 0
+#jobs:
+#  build:
+#    runs-on: windows-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Set up Visual Studio 2022 Build Tools
+#        uses: microsoft/setup-msbuild@v1.0.2
+#        with:
+#          vs-version: '16.0'
+#      - name: Build with MSBuild
+#        run: msbuild /p:Configuration=Release || exit 0
 
       #  continue-on-error: true
       #- name: Wait for commit statuses
