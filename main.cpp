@@ -84,7 +84,7 @@ int main()
 
     //Создание всех текстур и спрайтов
     RenderWindow window(VideoMode(1000, 800), L"Виселица", Style::Close);
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < 14; i++) {
         create_textur(textures, i);
     }
     load_textur(window, textures);
