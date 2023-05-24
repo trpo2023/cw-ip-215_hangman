@@ -11,6 +11,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
         with:
           vs-version: '16.0'
-      - name: Build with MSBuild
+      - name: Run specific file from a specific folder
+        working-directory: ./test/
         run: msbuild /p:Configuration=Release || exit 0
       
