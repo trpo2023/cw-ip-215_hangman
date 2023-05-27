@@ -11,8 +11,8 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
         with:
           vs-version: '16.0'
-      - name: Build with MSBuild
-        run: msbuild /p:Configuration=Release || exit 0
-      - name: Run tests
-        working-directory: ./test/
-        run: msbuild /p:Configuration=Release || exit 0 && ./main.cpp
+      - name: build with msbuild
+        run: |
+          msbuild /p:configuration=release || exit 0
+          working-directory: ./test/
+          .\x64\Debug\test/exe
