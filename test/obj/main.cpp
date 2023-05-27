@@ -1,6 +1,6 @@
-#include "obj/test.h"
+#include "test.h"
 
-void main() {
+int main() {
     test_check_byk_v_slove();
     test_create_textur();
     test_load_textur();

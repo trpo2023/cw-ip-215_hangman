@@ -13,3 +13,6 @@ jobs:
           vs-version: '16.0'
       - name: Build with MSBuild
         run: msbuild /p:Configuration=Release || exit 0
+      - name: Run tests
+        working-directory: ./test/
+        run: msbuild /p:Configuration=Release || exit 0 && ./main.cpp
