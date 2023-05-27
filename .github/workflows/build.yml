@@ -17,4 +17,4 @@ jobs:
         run: |  
           working-directory: ./test/
           msbuild /p:configuration=release || exit 1
-          .\x64\Debug\test.exe
+          .\x64\Debug\test.exe 
