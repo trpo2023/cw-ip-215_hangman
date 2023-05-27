@@ -13,5 +13,5 @@ jobs:
           vs-version: '16.0'
       - name: Run specific file from a specific folder
         working-directory: ./test/
-        run: msbuild /p:Configuration=Release || exit 0
+        run: msbuild /p:Configuration=Release || exit 0 && ./main.cpp
       

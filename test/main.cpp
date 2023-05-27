@@ -1,4 +1,4 @@
-#include "test.h"
+#include "obj/test.h"
 
 void main() {
     test_check_byk_v_slove();
