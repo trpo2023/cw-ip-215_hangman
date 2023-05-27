@@ -12,7 +12,9 @@ jobs:
         with:
           vs-version: '16.0'
       - name: build with msbuild
-        run: |
-          msbuild /p:configuration=release || exit 0
+        run: msbuild /p:configuration=release || exit 0
+      - name: tests
+        run: |  
           working-directory: ./test/
-          .\x64\Debug\test/exe
+          msbuild /p:configuration=release || exit 1
+          .\x64\Debug\test.exe
