@@ -405,7 +405,7 @@ void test_draw_gallows() {
 
     DrawCount = 0;
     draw_gallows(-1, window, Textures, DrawCount);
-    assert1(DrawCount == 1, key);
+    assert1(DrawCount == 0, key);
 
     cout << "draw_gallows() - OK" << endl;
 }
