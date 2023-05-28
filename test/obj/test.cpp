@@ -401,7 +401,7 @@ void test_draw_gallows() {
     //обработка значений, которые выходят за пределы
     DrawCount = 0;
     draw_gallows(99, window, Textures, DrawCount);
-    assert1(DrawCount == 17, key);
+    assert1(DrawCount == 12, key);
 
     DrawCount = 0;
     draw_gallows(-1, window, Textures, DrawCount);

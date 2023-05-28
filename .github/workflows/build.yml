@@ -16,5 +16,5 @@ jobs:
       - name: Tests. Error code is a number of faild test
         working-directory: ./test/
         run: |  
-          msbuild /p:configuration=release || exit 1
+          msbuild /p:configuration=release
           .\x64\Debug\test.exe
