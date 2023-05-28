@@ -13,7 +13,7 @@ jobs:
           vs-version: '16.0'
       #- name: build with msbuild
       #  run: msbuild /p:configuration=release || exit 0
-      - name: tests
+      - name: Tests. Error code is a number of faild test
         working-directory: ./test/
         run: |  
           msbuild /p:configuration=release || exit 1
