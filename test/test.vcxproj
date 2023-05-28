@@ -141,10 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="obj\assert1.cpp" />
-    <ClCompile Include="obj\func.cpp" />
-    <ClCompile Include="obj\main.cpp" />
-    <ClCompile Include="obj\test.cpp" />
+    <ClCompile Include="lib\assert1.cpp" />
+    <ClCompile Include="lib\func.cpp" />
+    <ClCompile Include="lib\main.cpp" />
+    <ClCompile Include="lib\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test.h" />

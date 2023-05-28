@@ -27,7 +27,7 @@ void test_check_byk_v_slove() {
     check_byk_v_slove(Bykva, slovo, 0, flag);
     assert1(flag == 0, key);
 
-    cout << "CHECK_BYK_V_SLOVE() - OK" << endl;
+    cout << "TEST[1/6]   CHECK_BYK_V_SLOVE() - OK" << endl;
 }
 
 void test_create_textur() {
@@ -60,7 +60,7 @@ void test_create_textur() {
     assert1(Textures.line[2].getSize() != Vector2f(0.f, 0.f), key);
     assert1(Textures.line[3].getSize() != Vector2f(0.f, 0.f), key);
 
-    cout << "CREATE_TEXTUR() - OK" << endl;
+    cout << "TEST[2/6]   CREATE_TEXTUR() - OK" << endl;
 }
 
 
@@ -163,7 +163,7 @@ void test_load_textur() {
     assert1(Textures.line[3].getFillColor() == Color::Black, key);
     assert1(Textures.line[3].getPosition() == Vector2f(500, 40), key);
 
-    cout << "LOAD_TEXTUR() - OK" << endl;
+    cout << "TEST[3/6]   LOAD_TEXTUR() - OK" << endl;
 }
 
 void test_check_byk_cord() {
@@ -265,7 +265,7 @@ void test_check_byk_cord() {
     assert1(Bykva == '*', key);
 
 
-    cout << "CHECK_BYK_CORD() - OK" << endl;
+    cout << "TEST[4/6]   CHECK_BYK_CORD() - OK" << endl;
 }
 
 void test_draw_cross() {
@@ -273,7 +273,7 @@ void test_draw_cross() {
     Sprite cross;
     RenderWindow window;
     // Проверка начальной позиции спрайта
-    assert1(cross.getPosition() == Vector2f(0, 15), key); // ssssssssssssssssssssssss
+    assert1(cross.getPosition() == Vector2f(0, 0), key); // ssssssssssssssssssssssss
 
     // Проверка для каждой позиции из positions
     draw_cross(0, window, cross);
@@ -357,7 +357,7 @@ void test_draw_cross() {
     assert1(cross.getPosition() == Vector2f(372, 580), key);
     assert1(test.getPosition() == Vector2f(10, 10), key);
 
-    cout << "DRAW_CROSS() - OK" << endl;
+    cout << "TEST[5/6]   DRAW_CROSS() - OK" << endl;
 }
 
 void test_draw_gallows() {
@@ -407,5 +407,5 @@ void test_draw_gallows() {
     draw_gallows(-1, window, Textures, DrawCount);
     assert1(DrawCount == 1, key);
 
-    cout << "DRAW_GALLOWS() - OK" << endl;
+    cout << "TEST[6/6]   DRAW_GALLOWS() - OK" << endl;
 }
