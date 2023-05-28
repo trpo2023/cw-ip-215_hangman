@@ -1,0 +1,15 @@
+﻿  assert1.cpp
+C:\Users\maks0\source\repos\trpo2023\cw-ip-215_hangman\test\lib\assert1.cpp(15,1): warning C4005: assert1: изменение макроопределения
+C:\Users\maks0\source\repos\trpo2023\cw-ip-215_hangman\test\lib\test.h(55,1): message : см. предыдущее определение "assert1"
+  main.cpp
+  test.cpp
+C:\Users\maks0\source\repos\trpo2023\cw-ip-215_hangman\test\lib\test.cpp(10,29): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  LINK : не найден или не выполнена сборка C:\Users\maks0\source\repos\trpo2023\cw-ip-215_hangman\test\x64\Release\test.exe при последней инкрементной компоновке; выполняется полная компоновка
+test.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl check_byk_v_slove(char,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,bool &)" (?check_byk_v_slove@@YAXDV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HAEA_N@Z) в функции "void __cdecl test_check_byk_v_slove(void)" (?test_check_byk_v_slove@@YAXXZ).
+test.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl create_textur(struct textures &,int)" (?create_textur@@YAXAEAUtextures@@H@Z) в функции "void __cdecl test_create_textur(void)" (?test_create_textur@@YAXXZ).
+test.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl load_textur(class sf::RenderWindow &,struct textures &)" (?load_textur@@YAXAEAVRenderWindow@sf@@AEAUtextures@@@Z) в функции "void __cdecl test_load_textur(void)" (?test_load_textur@@YAXXZ).
+test.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl check_byk_cord(int,int,char &)" (?check_byk_cord@@YAXHHAEAD@Z) в функции "void __cdecl test_check_byk_cord(void)" (?test_check_byk_cord@@YAXXZ).
+test.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl draw_cross(int,class sf::RenderWindow &,class sf::Sprite &)" (?draw_cross@@YAXHAEAVRenderWindow@sf@@AEAVSprite@2@@Z) в функции "void __cdecl test_draw_cross(void)" (?test_draw_cross@@YAXXZ).
+test.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl draw_gallows(int,class sf::RenderWindow &,struct textures &,int &)" (?draw_gallows@@YAXHAEAVRenderWindow@sf@@AEAUtextures@@AEAH@Z) в функции "void __cdecl test_draw_gallows(void)" (?test_draw_gallows@@YAXXZ).
+C:\Users\maks0\source\repos\trpo2023\cw-ip-215_hangman\test\x64\Release\test.exe : fatal error LNK1120: неразрешенных внешних элементов: 6

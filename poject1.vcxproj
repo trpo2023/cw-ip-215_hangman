@@ -146,7 +146,7 @@ clang-format.exe -style=file -i $(ProjectDir)\lib\func.cpp</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lib\func.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="lib\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
