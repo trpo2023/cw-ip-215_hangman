@@ -15,7 +15,7 @@ void test_check_byk_v_slove() {
     flag = 0;
     Bykva = '-';
     check_byk_v_slove(Bykva, slovo, len, flag);
-    assert1(flag == 15, key); //DERTFYGUHIJK,L
+    assert1(flag == 0, key);
 
     flag = 0;
     Bykva = '3';
@@ -273,7 +273,7 @@ void test_draw_cross() {
     Sprite cross;
     RenderWindow window;
     // Проверка начальной позиции спрайта
-    assert1(cross.getPosition() == Vector2f(0, 0), key);
+    assert1(cross.getPosition() == Vector2f(0, 15), key); // ssssssssssssssssssssssss
 
     // Проверка для каждой позиции из positions
     draw_cross(0, window, cross);
