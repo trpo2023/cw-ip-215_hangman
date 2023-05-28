@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lib\assert1.cpp" />
+    <ClCompile Include="lib\func.cpp" />
     <ClCompile Include="lib\main.cpp" />
     <ClCompile Include="lib\test.cpp" />
   </ItemGroup>
