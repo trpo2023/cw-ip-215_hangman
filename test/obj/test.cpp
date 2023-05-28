@@ -15,7 +15,7 @@ void test_check_byk_v_slove() {
     flag = 0;
     Bykva = '-';
     check_byk_v_slove(Bykva, slovo, len, flag);
-    assert1(flag == 0, key);
+    assert1(flag == 15, key); //DERTFYGUHIJK,L
 
     flag = 0;
     Bykva = '3';
@@ -405,7 +405,7 @@ void test_draw_gallows() {
 
     DrawCount = 0;
     draw_gallows(-1, window, Textures, DrawCount);
-    assert1(DrawCount == 0, key);
+    assert1(DrawCount == 1, key);
 
     cout << "draw_gallows() - OK" << endl;
 }
