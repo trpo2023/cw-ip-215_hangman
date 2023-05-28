@@ -40,27 +40,6 @@ struct textures
 
 };
 
-#ifndef _ASSERT1_H
-#define _ASSERT1_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-    void __assert1_failure(const char* expr, const char* file, int line, const char* func, int error_code);
-
-#ifdef NDEBUG
-#define assert1(ignore) ((void)0)
-#else
-#define assert1(expr, error_code) ((void)((expr) || (__assert1_failure(#expr, __FILE__, __LINE__, __func__, error_code), 0)))
-#endif
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* _ASSERT1_H */
-
 void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag);
 void create_textur(textures& struct_texture, int n);
 void load_textur(RenderWindow& window, textures& struct_texture);

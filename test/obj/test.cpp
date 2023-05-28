@@ -10,57 +10,57 @@ void test_check_byk_v_slove() {
     int len = slovo.length();
     bool flag = 0;
     check_byk_v_slove(Bykva, slovo, len, flag);
-    assert1(flag == 1, key);
+    assert(flag == 1);
 
     flag = 0;
     Bykva = '-';
     check_byk_v_slove(Bykva, slovo, len, flag);
-    assert1(flag == 0, key);
+    assert(flag == 0);
 
     flag = 0;
     Bykva = '3';
     check_byk_v_slove(Bykva, slovo, len, flag);
-    assert1(flag == 0, key);
+    assert(flag == 0);
 
     flag = 0;
     Bykva = 'г';
     check_byk_v_slove(Bykva, slovo, 0, flag);
-    assert1(flag == 0, key);
+    assert(flag == 0);
 
-    cout << "check_byk_v_slove() - OK" << endl;
+    cout << "CHECK_BYK_V_SLOVE() - OK" << endl;
 }
 
 void test_create_textur() {
     int key = 2;
     textures Textures;
     //проверка, что текстуры не создаются без вызова функции
-    assert1(Textures.head.getRadius() == 0.f, key);
-    assert1(Textures.body.getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.rightHand.getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.leftHand.getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.rightLeg.getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.leftLeg.getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[0].getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[1].getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[2].getSize() == Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[3].getSize() == Vector2f(0.f, 0.f), key);
+    assert(Textures.head.getRadius() == 0.f);
+    assert(Textures.body.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.rightHand.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.leftHand.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.rightLeg.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.leftLeg.getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[0].getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[1].getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[2].getSize() == Vector2f(0.f, 0.f));
+    assert(Textures.line[3].getSize() == Vector2f(0.f, 0.f));
 
     //проверка функции, что она задает размеры фигурам и создает их
     for (int i = 0; i < 14; i++) {
         create_textur(Textures, i);
     }
-    assert1(Textures.head.getRadius() != 0.f, key);
-    assert1(Textures.body.getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.rightHand.getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.leftHand.getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.rightLeg.getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.leftLeg.getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[0].getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[1].getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[2].getSize() != Vector2f(0.f, 0.f), key);
-    assert1(Textures.line[3].getSize() != Vector2f(0.f, 0.f), key);
+    assert(Textures.head.getRadius() != 0.f);
+    assert(Textures.body.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.rightHand.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.leftHand.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.rightLeg.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.leftLeg.getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[0].getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[1].getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[2].getSize() != Vector2f(0.f, 0.f));
+    assert(Textures.line[3].getSize() != Vector2f(0.f, 0.f));
 
-    cout << "create_textur() - OK" << endl;
+    cout << "CREATE_TEXTUR() - OK" << endl;
 }
 
 
@@ -69,101 +69,101 @@ void test_load_textur() {
     textures Textures;
     RenderWindow window;
     //проверяем, что до вызова функции все знацения позиции, цвета, угол поворота равны нулю или не существуют
-    assert1(Textures.head.getPosition().x == 0, key);
-    assert1(Textures.head.getPosition().y == 0, key);
-    assert1(Textures.head.getOutlineColor() != Color::Black, key);
-    assert1(Textures.head.getOutlineThickness() == 0.f, key);
-    assert1(Textures.head.getFillColor() != Color(217, 217, 217), key);
+    assert(Textures.head.getPosition().x == 0);
+    assert(Textures.head.getPosition().y == 0);
+    assert(Textures.head.getOutlineColor() != Color::Black);
+    assert(Textures.head.getOutlineThickness() == 0.f);
+    assert(Textures.head.getFillColor() != Color(217, 217, 217));
 
-    assert1(Textures.body.getPosition().x == 0, key);
-    assert1(Textures.body.getPosition().y == 0, key);
-    assert1(Textures.body.getFillColor() != Color(217, 217, 217), key);
-    assert1(Textures.body.getRotation() == 0.f, key);
+    assert(Textures.body.getPosition().x == 0);
+    assert(Textures.body.getPosition().y == 0);
+    assert(Textures.body.getFillColor() != Color(217, 217, 217));
+    assert(Textures.body.getRotation() == 0.f);
 
-    assert1(Textures.rightHand.getPosition().x == 0, key);
-    assert1(Textures.rightHand.getPosition().y == 0, key);
-    assert1(Textures.rightHand.getFillColor() != Color::Black, key);
-    assert1(Textures.rightHand.getRotation() == 0.f, key);
+    assert(Textures.rightHand.getPosition().x == 0);
+    assert(Textures.rightHand.getPosition().y == 0);
+    assert(Textures.rightHand.getFillColor() != Color::Black);
+    assert(Textures.rightHand.getRotation() == 0.f);
 
-    assert1(Textures.leftHand.getPosition().x == 0, key);
-    assert1(Textures.leftHand.getPosition().y == 0, key);
-    assert1(Textures.leftHand.getFillColor() != Color::Black, key);
-    assert1(Textures.leftHand.getRotation() == 0.f, key);
+    assert(Textures.leftHand.getPosition().x == 0);
+    assert(Textures.leftHand.getPosition().y == 0);
+    assert(Textures.leftHand.getFillColor() != Color::Black);
+    assert(Textures.leftHand.getRotation() == 0.f);
 
-    assert1(Textures.leftLeg.getPosition().x == 0, key);
-    assert1(Textures.leftLeg.getPosition().y == 0, key);
-    assert1(Textures.leftLeg.getFillColor() != Color::Black, key);
-    assert1(Textures.leftLeg.getRotation() == 0.f, key);
+    assert(Textures.leftLeg.getPosition().x == 0);
+    assert(Textures.leftLeg.getPosition().y == 0);
+    assert(Textures.leftLeg.getFillColor() != Color::Black);
+    assert(Textures.leftLeg.getRotation() == 0.f);
 
-    assert1(Textures.rightLeg.getPosition().x == 0, key);
-    assert1(Textures.rightLeg.getPosition().y == 0, key);
-    assert1(Textures.rightLeg.getFillColor() != Color::Black, key);
-    assert1(Textures.rightLeg.getRotation() == 0.f, key);
+    assert(Textures.rightLeg.getPosition().x == 0);
+    assert(Textures.rightLeg.getPosition().y == 0);
+    assert(Textures.rightLeg.getFillColor() != Color::Black);
+    assert(Textures.rightLeg.getRotation() == 0.f);
 
     for (int i = 0; i < 7; i++){
-        assert1(Textures.Texture[i].getSize() == Vector2u(0, 0), key);
-        assert1(Textures.Sprite[i].getTexture() == NULL, key);
+        assert(Textures.Texture[i].getSize() == Vector2u(0, 0));
+        assert(Textures.Sprite[i].getTexture() == NULL);
     }
 
-    assert1(Textures.line[0].getFillColor() != Color::Black, key);
-    assert1(Textures.line[0].getPosition() == Vector2f(0, 0), key);
+    assert(Textures.line[0].getFillColor() != Color::Black);
+    assert(Textures.line[0].getPosition() == Vector2f(0, 0));
 
-    assert1(Textures.line[1].getFillColor() != Color::Black, key);
-    assert1(Textures.line[1].getPosition() == Vector2f(0, 0), key);
+    assert(Textures.line[1].getFillColor() != Color::Black);
+    assert(Textures.line[1].getPosition() == Vector2f(0, 0));
 
-    assert1(Textures.line[2].getFillColor() != Color::Black, key);
-    assert1(Textures.line[2].getPosition() == Vector2f(0, 0), key);
+    assert(Textures.line[2].getFillColor() != Color::Black);
+    assert(Textures.line[2].getPosition() == Vector2f(0, 0));
 
-    assert1(Textures.line[3].getFillColor() != Color::Black, key);
-    assert1(Textures.line[3].getPosition() == Vector2f(0, 0), key);
+    assert(Textures.line[3].getFillColor() != Color::Black);
+    assert(Textures.line[3].getPosition() == Vector2f(0, 0));
 
     //Вызываем функцию и загружаем размеры
     load_textur(window, Textures);
 
     //Проверяем размеры и другое послее вызова
-    assert1(Textures.head.getPosition() == Vector2f(459, 95), key);
-    assert1(Textures.head.getOutlineColor() == Color::Black, key);
-    assert1(Textures.head.getOutlineThickness() == 3.f, key);
-    assert1(Textures.head.getFillColor() == Color(217, 217, 217), key);
+    assert(Textures.head.getPosition() == Vector2f(459, 95));
+    assert(Textures.head.getOutlineColor() == Color::Black);
+    assert(Textures.head.getOutlineThickness() == 3.f);
+    assert(Textures.head.getFillColor() == Color(217, 217, 217));
 
-    assert1(Textures.body.getPosition() == Vector2f(500, 178), key);
-    assert1(Textures.body.getFillColor() == Color::Black, key);
-    assert1(Textures.body.getRotation() == 90.f, key);
+    assert(Textures.body.getPosition() == Vector2f(500, 178));
+    assert(Textures.body.getFillColor() == Color::Black);
+    assert(Textures.body.getRotation() == 90.f);
 
-    assert1(Textures.rightHand.getPosition() == Vector2f(500, 206), key);
-    assert1(Textures.rightHand.getFillColor() == Color::Black, key);
-    assert1(Textures.rightHand.getRotation() == 45.f, key);
+    assert(Textures.rightHand.getPosition() == Vector2f(500, 206));
+    assert(Textures.rightHand.getFillColor() == Color::Black);
+    assert(Textures.rightHand.getRotation() == 45.f);
 
-    assert1(Textures.rightHand.getPosition() == Vector2f(500, 206), key);
-    assert1(Textures.leftHand.getFillColor() == Color::Black, key);
-    assert1(Textures.leftHand.getRotation() == 135.f, key);
+    assert(Textures.rightHand.getPosition() == Vector2f(500, 206));
+    assert(Textures.leftHand.getFillColor() == Color::Black);
+    assert(Textures.leftHand.getRotation() == 135.f);
 
-    assert1(Textures.leftLeg.getPosition() == Vector2f(500, 306), key);
-    assert1(Textures.leftLeg.getFillColor() == Color::Black, key);
-    assert1(Textures.leftLeg.getRotation() == 135.f, key);
+    assert(Textures.leftLeg.getPosition() == Vector2f(500, 306));
+    assert(Textures.leftLeg.getFillColor() == Color::Black);
+    assert(Textures.leftLeg.getRotation() == 135.f);
 
-    assert1(Textures.rightLeg.getPosition() == Vector2f(500, 306), key);
-    assert1(Textures.rightLeg.getFillColor() == Color::Black, key);
-    assert1(Textures.rightLeg.getRotation() == 45.f, key);
+    assert(Textures.rightLeg.getPosition() == Vector2f(500, 306));
+    assert(Textures.rightLeg.getFillColor() == Color::Black);
+    assert(Textures.rightLeg.getRotation() == 45.f);
 
     for (int i = 0; i < 7; i++) {
-        assert1(Textures.Texture[i].getSize() != Vector2u(0, 0), key);
-        assert1(Textures.Sprite[i].getTexture() != NULL, key);
+        assert(Textures.Texture[i].getSize() != Vector2u(0, 0));
+        assert(Textures.Sprite[i].getTexture() != NULL);
     }
     
-    assert1(Textures.line[0].getFillColor() == Color::Black, key);
-    assert1(Textures.line[0].getPosition() == Vector2f(663, 406), key);
+    assert(Textures.line[0].getFillColor() == Color::Black);
+    assert(Textures.line[0].getPosition() == Vector2f(663, 406));
 
-    assert1(Textures.line[1].getFillColor() == Color::Black, key);
-    assert1(Textures.line[1].getPosition() == Vector2f(745, 40), key);
+    assert(Textures.line[1].getFillColor() == Color::Black);
+    assert(Textures.line[1].getPosition() == Vector2f(745, 40));
 
-    assert1(Textures.line[2].getFillColor() == Color::Black, key);
-    assert1(Textures.line[2].getPosition() == Vector2f(450, 40), key);
+    assert(Textures.line[2].getFillColor() == Color::Black);
+    assert(Textures.line[2].getPosition() == Vector2f(450, 40));
 
-    assert1(Textures.line[3].getFillColor() == Color::Black, key);
-    assert1(Textures.line[3].getPosition() == Vector2f(500, 40), key);
+    assert(Textures.line[3].getFillColor() == Color::Black);
+    assert(Textures.line[3].getPosition() == Vector2f(500, 40));
 
-    cout << "load_textur() - OK" << endl;
+    cout << "LOAD_TEXTUR() - OK" << endl;
 }
 
 void test_check_byk_cord() {
@@ -171,101 +171,101 @@ void test_check_byk_cord() {
     //тестовые данные
     char Bykva = 'а';
     check_byk_cord(0, 0, Bykva);
-    assert1(Bykva == 'а', key);
+    assert(Bykva == 'а');
 
     //обработка стандартных значений
     Bykva = '-';
     check_byk_cord(170, 590, Bykva);
-    assert1(Bykva == 'а', key);
+    assert(Bykva == 'а');
     check_byk_cord(210, 590, Bykva);
-    assert1(Bykva == 'б', key);
+    assert(Bykva == 'б');
     check_byk_cord(265, 590, Bykva);
-    assert1(Bykva == 'в', key);
+    assert(Bykva == 'в');
     check_byk_cord(325, 590, Bykva);
-    assert1(Bykva == 'г', key);
+    assert(Bykva == 'г');
     check_byk_cord(370, 590, Bykva);
-    assert1(Bykva == 'д', key);
+    assert(Bykva == 'д');
     check_byk_cord(435, 590, Bykva);
-    assert1(Bykva == 'е', key);
+    assert(Bykva == 'е');
     check_byk_cord(477, 590, Bykva);
-    assert1(Bykva == 'ж', key);
+    assert(Bykva == 'ж');
     check_byk_cord(540, 590, Bykva);
-    assert1(Bykva == 'з', key);
+    assert(Bykva == 'з');
     check_byk_cord(595, 590, Bykva);
-    assert1(Bykva == 'и', key);
+    assert(Bykva == 'и');
     check_byk_cord(650, 590, Bykva);
-    assert1(Bykva == 'й', key);
+    assert(Bykva == 'й');
     check_byk_cord(708, 590, Bykva);
-    assert1(Bykva == 'к', key);
+    assert(Bykva == 'к');
     check_byk_cord(758, 590, Bykva);
-    assert1(Bykva == 'л', key);
+    assert(Bykva == 'л');
     check_byk_cord(812, 590, Bykva);
-    assert1(Bykva == 'м', key);
+    assert(Bykva == 'м');
 
     check_byk_cord(155, 650, Bykva);
-    assert1(Bykva == 'н', key);
+    assert(Bykva == 'н');
     check_byk_cord(205, 650, Bykva);
-    assert1(Bykva == 'о', key);
+    assert(Bykva == 'о');
     check_byk_cord(265, 650, Bykva);
-    assert1(Bykva == 'п', key);
+    assert(Bykva == 'п');
     check_byk_cord(320, 650, Bykva);
-    assert1(Bykva == 'р', key);
+    assert(Bykva == 'р');
     check_byk_cord(372, 650, Bykva);
-    assert1(Bykva == 'с', key);
+    assert(Bykva == 'с');
     check_byk_cord(430, 650, Bykva);
-    assert1(Bykva == 'т', key);
+    assert(Bykva == 'т');
     check_byk_cord(483, 650, Bykva);
-    assert1(Bykva == 'у', key);
+    assert(Bykva == 'у');
     check_byk_cord(535, 650, Bykva);
-    assert1(Bykva == 'ф', key);
+    assert(Bykva == 'ф');
     check_byk_cord(595, 650, Bykva);
-    assert1(Bykva == 'х', key);
+    assert(Bykva == 'х');
     check_byk_cord(650, 650, Bykva);
-    assert1(Bykva == 'ц', key);
+    assert(Bykva == 'ц');
     check_byk_cord(702, 650, Bykva);
-    assert1(Bykva == 'ч', key);
+    assert(Bykva == 'ч');
     check_byk_cord(751, 650, Bykva);
-    assert1(Bykva == 'ш', key);
+    assert(Bykva == 'ш');
     check_byk_cord(807, 650, Bykva);
-    assert1(Bykva == 'щ', key);
+    assert(Bykva == 'щ');
 
     check_byk_cord(348, 720, Bykva);
-    assert1(Bykva == 'ь', key);
+    assert(Bykva == 'ь');
     check_byk_cord(395, 720, Bykva);
-    assert1(Bykva == 'ы', key);
+    assert(Bykva == 'ы');
     check_byk_cord(450, 720, Bykva);
-    assert1(Bykva == 'ъ', key);
+    assert(Bykva == 'ъ');
     check_byk_cord(510, 720, Bykva);
-    assert1(Bykva == 'э', key);
+    assert(Bykva == 'э');
     check_byk_cord(561, 720, Bykva);
-    assert1(Bykva == 'ю', key);
+    assert(Bykva == 'ю');
     check_byk_cord(623, 720, Bykva);
-    assert1(Bykva == 'я', key);
+    assert(Bykva == 'я');
 
     //обработка, если границы  не попадают стандартные
     Bykva = '*';
 
     check_byk_cord(800, 0, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(0, 800, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(1000, 0, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(1000, 800, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(999999, 99999999, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(-100, -100, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(0, -100, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(-100, 0, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
     check_byk_cord(0, 0, Bykva);
-    assert1(Bykva == '*', key);
+    assert(Bykva == '*');
 
 
-    cout << "check_byk_cord() - OK" << endl;
+    cout << "CHECK_BYK_CORD() - OK" << endl;
 }
 
 void test_draw_cross() {
@@ -273,91 +273,91 @@ void test_draw_cross() {
     Sprite cross;
     RenderWindow window;
     // Проверка начальной позиции спрайта
-    assert1(cross.getPosition() == Vector2f(0, 15), key); // ssssssssssssssssssssssss
+    assert(cross.getPosition() == Vector2f(0, 15)); // ssssssssssssssssssssssss
 
     // Проверка для каждой позиции из positions
     draw_cross(0, window, cross);
-    assert1(cross.getPosition() == Vector2f(152, 580), key);
+    assert(cross.getPosition() == Vector2f(152, 580));
     draw_cross(1, window, cross);
-    assert1(cross.getPosition() == Vector2f(210, 580), key);
+    assert(cross.getPosition() == Vector2f(210, 580));
     draw_cross(2, window, cross);
-    assert1(cross.getPosition() == Vector2f(262, 580), key);
+    assert(cross.getPosition() == Vector2f(262, 580));
     draw_cross(3, window, cross);
-    assert1(cross.getPosition() == Vector2f(315, 580), key);
+    assert(cross.getPosition() == Vector2f(315, 580));
     draw_cross(4, window, cross);
-    assert1(cross.getPosition() == Vector2f(372, 580), key);
+    assert(cross.getPosition() == Vector2f(372, 580));
     draw_cross(5, window, cross);
-    assert1(cross.getPosition() == Vector2f(427, 580), key);
+    assert(cross.getPosition() == Vector2f(427, 580));
     draw_cross(6, window, cross);
-    assert1(cross.getPosition() == Vector2f(482, 580), key);
+    assert(cross.getPosition() == Vector2f(482, 580));
     draw_cross(7, window, cross);
-    assert1(cross.getPosition() == Vector2f(539, 580), key);
+    assert(cross.getPosition() == Vector2f(539, 580));
     draw_cross(8, window, cross);
-    assert1(cross.getPosition() == Vector2f(593, 580), key);
+    assert(cross.getPosition() == Vector2f(593, 580));
     draw_cross(9, window, cross);
-    assert1(cross.getPosition() == Vector2f(647, 580), key);
+    assert(cross.getPosition() == Vector2f(647, 580));
     draw_cross(10, window, cross);
-    assert1(cross.getPosition() == Vector2f(700, 580), key);
+    assert(cross.getPosition() == Vector2f(700, 580));
     draw_cross(11, window, cross);
-    assert1(cross.getPosition() == Vector2f(757, 580), key);
+    assert(cross.getPosition() == Vector2f(757, 580));
     draw_cross(12, window, cross);
-    assert1(cross.getPosition() == Vector2f(812, 580), key);
+    assert(cross.getPosition() == Vector2f(812, 580));
     draw_cross(13, window, cross);
-    assert1(cross.getPosition() == Vector2f(150, 642), key);
+    assert(cross.getPosition() == Vector2f(150, 642));
     draw_cross(14, window, cross);
-    assert1(cross.getPosition() == Vector2f(207, 642), key);
+    assert(cross.getPosition() == Vector2f(207, 642));
     draw_cross(15, window, cross);
-    assert1(cross.getPosition() == Vector2f(260, 642), key);
+    assert(cross.getPosition() == Vector2f(260, 642));
     draw_cross(16, window, cross);
-    assert1(cross.getPosition() == Vector2f(315, 642), key);
+    assert(cross.getPosition() == Vector2f(315, 642));
     draw_cross(17, window, cross);
-    assert1(cross.getPosition() == Vector2f(372, 642), key);
+    assert(cross.getPosition() == Vector2f(372, 642));
     draw_cross(18, window, cross);
-    assert1(cross.getPosition() == Vector2f(425, 642), key);
+    assert(cross.getPosition() == Vector2f(425, 642));
     draw_cross(19, window, cross);
-    assert1(cross.getPosition() == Vector2f(480, 642), key);
+    assert(cross.getPosition() == Vector2f(480, 642));
     draw_cross(20, window, cross);
-    assert1(cross.getPosition() == Vector2f(536, 642), key);
+    assert(cross.getPosition() == Vector2f(536, 642));
     draw_cross(21, window, cross);
-    assert1(cross.getPosition() == Vector2f(590, 642), key);
+    assert(cross.getPosition() == Vector2f(590, 642));
     draw_cross(22, window, cross);
-    assert1(cross.getPosition() == Vector2f(645, 642), key);
+    assert(cross.getPosition() == Vector2f(645, 642));
     draw_cross(23, window, cross);
-    assert1(cross.getPosition() == Vector2f(700, 642), key);
+    assert(cross.getPosition() == Vector2f(700, 642));
     draw_cross(24, window, cross);
-    assert1(cross.getPosition() == Vector2f(757, 642), key);
+    assert(cross.getPosition() == Vector2f(757, 642));
     draw_cross(25, window, cross);
-    assert1(cross.getPosition() == Vector2f(812, 642), key);
+    assert(cross.getPosition() == Vector2f(812, 642));
     draw_cross(26, window, cross);
-    assert1(cross.getPosition() == Vector2f(343, 700), key);
+    assert(cross.getPosition() == Vector2f(343, 700));
     draw_cross(27, window, cross);
-    assert1(cross.getPosition() == Vector2f(397, 700), key);
+    assert(cross.getPosition() == Vector2f(397, 700));
     draw_cross(28, window, cross);
-    assert1(cross.getPosition() == Vector2f(455, 700), key);
+    assert(cross.getPosition() == Vector2f(455, 700));
     draw_cross(29, window, cross);
-    assert1(cross.getPosition() == Vector2f(507, 700), key);
+    assert(cross.getPosition() == Vector2f(507, 700));
     draw_cross(30, window, cross);
-    assert1(cross.getPosition() == Vector2f(560, 700), key);
+    assert(cross.getPosition() == Vector2f(560, 700));
     draw_cross(31, window, cross);
-    assert1(cross.getPosition() == Vector2f(618, 700), key);
+    assert(cross.getPosition() == Vector2f(618, 700));
 
     //обработка не стандартных значений i
     cross.setPosition(0, 0);
     draw_cross(99, window, cross);
-    assert1(cross.getPosition() == Vector2f(0, 0), key);
+    assert(cross.getPosition() == Vector2f(0, 0));
 
     draw_cross(-10, window, cross);
-    assert1(cross.getPosition() == Vector2f(0, 0), key);
+    assert(cross.getPosition() == Vector2f(0, 0));
 
     //обработка других спрайтов
     Sprite test;
     test.setPosition(10, 10);
     cross.setPosition(0, 0);
     draw_cross(4, window, cross);
-    assert1(cross.getPosition() == Vector2f(372, 580), key);
-    assert1(test.getPosition() == Vector2f(10, 10), key);
+    assert(cross.getPosition() == Vector2f(372, 580));
+    assert(test.getPosition() == Vector2f(10, 10));
 
-    cout << "draw_cross() - OK" << endl;
+    cout << "DRAW_CROSS() - OK" << endl;
 }
 
 void test_draw_gallows() {
@@ -368,44 +368,44 @@ void test_draw_gallows() {
 
     //проверка количества отрисованных элементов
     draw_gallows(0, window, Textures, DrawCount);
-    assert1(DrawCount == 1, key);
+    assert(DrawCount == 1);
 
     DrawCount = 0;
     draw_gallows(1, window, Textures, DrawCount);
-    assert1(DrawCount == 4, key);
+    assert(DrawCount == 4);
 
     DrawCount = 0;
     draw_gallows(2, window, Textures, DrawCount);
-    assert1(DrawCount == 6, key);
+    assert(DrawCount == 6);
 
     DrawCount = 0;
     draw_gallows(3, window, Textures, DrawCount);
-    assert1(DrawCount == 7, key);
+    assert(DrawCount == 7);
 
     DrawCount = 0;
     draw_gallows(4, window, Textures, DrawCount);
-    assert1(DrawCount == 8, key);
+    assert(DrawCount == 8);
 
     DrawCount = 0;
     draw_gallows(5, window, Textures, DrawCount);
-    assert1(DrawCount == 9, key);
+    assert(DrawCount == 9);
 
     DrawCount = 0;
     draw_gallows(6, window, Textures, DrawCount);
-    assert1(DrawCount == 10, key);
+    assert(DrawCount == 10);
 
     DrawCount = 0;
     draw_gallows(7, window, Textures, DrawCount);
-    assert1(DrawCount == 12, key);
+    assert(DrawCount == 12);
 
     //обработка значений, которые выходят за пределы
     DrawCount = 0;
     draw_gallows(99, window, Textures, DrawCount);
-    assert1(DrawCount == 12, key);
+    assert(DrawCount == 12);
 
     DrawCount = 0;
     draw_gallows(-1, window, Textures, DrawCount);
-    assert1(DrawCount == 1, key);
+    assert(DrawCount == 1);
 
-    cout << "draw_gallows() - OK" << endl;
+    cout << "DRAW_GALLOWS() - OK" << endl;
 }

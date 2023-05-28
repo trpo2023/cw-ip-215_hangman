@@ -141,7 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="obj\For_test.cpp" />
     <ClCompile Include="obj\func.cpp" />
     <ClCompile Include="obj\main.cpp" />
     <ClCompile Include="obj\test.cpp" />
