@@ -11,7 +11,7 @@
 using namespace sf;
 using namespace std;
 
-struct matrix_alp
+struct alp_flags
 {
     char bukva;
     bool flag;
@@ -40,7 +40,7 @@ struct textures
 
 };
 
-void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag);
+void check_byk_in_word(char Bykva, string slovo, int len, bool& flag);
 void create_textur(textures& struct_texture, int n);
 void load_textur(RenderWindow& window, textures& struct_texture);
 void check_byk_cord(int pos_x, int pos_y, char& Bykva);

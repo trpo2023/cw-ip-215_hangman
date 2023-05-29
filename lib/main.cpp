@@ -6,7 +6,7 @@ int main() {
   setlocale(LC_CTYPE, "rus");
   const int max_len_slov = 11; //максимальная длина слова
   const string array_alp = "абвгдежзийклмнопрстуфхцчшщьыъэюя"; //алфавит
-  matrix_alp array_flags[32]; //массив структуры с буквами и флагами, для
+  alp_flags array_flags[32]; //массив структуры с буквами и флагами, для
                               //зачеркивания
   textures textures; //структура с текстурами и спрайтами элементов
 
@@ -32,15 +32,15 @@ int main() {
     array_flags[i].flag = 0;
   }
 
-  string spisok[] = {"лаваш", "визг", "футбол", "волейбол", "фаренгейт"};
+  string list[] = {"лаваш", "визг", "футбол", "волейбол", "фаренгейт"};
 
   int Slov_v_Spiske = 0;
-  for (auto i : spisok) { //Считаем количество слов в списке
+  for (auto i : list) { //Считаем количество слов в списке
     Slov_v_Spiske++;
   }
 
   //Рандомно выбираем слово из списка
-  string slovo = spisok[rand() % Slov_v_Spiske];
+  string slovo = list[rand() % Slov_v_Spiske];
 
   //Посчитаем длину слова
   int len = 0;
@@ -57,23 +57,23 @@ int main() {
   slovo_cord_x = 495 - 30 * len;
 
   //Массив структуры слова, которая будет выводиться на экран
-  TextureLatterStruct NeSlovo[max_len_slov];
+  TextureLatterStruct Word[max_len_slov];
 
   //Записываем буквы нашего слова, чтобы потом загрузить их как текстуру и
   //вывести на экран
   for (int i = 0; i < len; i++) {
-    NeSlovo[i].bykva = slovo[i];
+    Word[i].bykva = slovo[i];
   }
 
   //Загружаем спрайт буквы, которая есть у нас в слове
   for (int i = 0; i < len; i++) {
     int j = 0;
     while (j < 33) {
-      if (NeSlovo[i].bykva == array_alp[j]) {
-        NeSlovo[i].letterTexture.loadFromFile(
+      if (Word[i].bykva == array_alp[j]) {
+        Word[i].letterTexture.loadFromFile(
             path[j]); //загружаем букву из картинки
-        NeSlovo[i].letter.setTexture(NeSlovo[i].letterTexture);
-        NeSlovo[i].flag = 0; //Чтобы не выводились буквы, котрые еще не
+        Word[i].letter.setTexture(Word[i].letterTexture);
+        Word[i].flag = 0; //Чтобы не выводились буквы, котрые еще не
                              //нажимались
         break;
       }
@@ -153,8 +153,8 @@ int main() {
           textures.Sprite[2].setPosition(cordx, 510);
           window.draw(textures.Sprite[2]);
           cordx += 60;
-          if (NeSlovo[i].flag == 1) {
-            window.draw(NeSlovo[i].letter);
+          if (Word[i].flag == 1) {
+            window.draw(Word[i].letter);
           }
         }
 
@@ -189,20 +189,18 @@ int main() {
           //Чтобы висилица не рисовалась при нажатии на зачеркнутую
           //букву
           for (int i = 0; i < 32; i++) {
-            if (array_flags[i].bukva == Bykva && array_flags[i].flag == 1) {
-              flag_click = 1;
-            }
-          }
-
-          //Меняем флаг буквы, если она была нажата
-          for (int i = 0; i < 32; i++) {
-            if (array_flags[i].bukva == Bykva) {
-              array_flags[i].flag = 1;
-            }
+              if (array_flags[i].bukva == Bykva) 
+              {    
+                  if (array_flags[i].flag == 1) {
+                      flag_click = 1;
+                  }
+                  //Меняем флаг буквы, если она была нажата
+                  array_flags[i].flag = 1; 
+              }        
           }
 
           //проверка буквы в слове
-          check_byk_v_slove(Bykva, slovo, len, flag);
+          check_byk_in_word(Bykva, slovo, len, flag);
 
           //если буквы нет и она раньше не нажималась, то количество
           //попыток увеличивоется
@@ -217,9 +215,9 @@ int main() {
           //цикле она нарисуется
           if (flag == 1 && flag_click == 0) {
             for (int i = 0, cord_x = slovo_cord_x - 10; i < len; i++) {
-              if (NeSlovo[i].bykva == Bykva) {
-                NeSlovo[i].letter.setPosition(cord_x, cord_y);
-                NeSlovo[i].flag = 1;
+              if (Word[i].bykva == Bykva) {
+                Word[i].letter.setPosition(cord_x, cord_y);
+                Word[i].flag = 1;
                 right_try++;
               }
               cord_x += 60;
@@ -228,8 +226,8 @@ int main() {
           //если попытки кончились, то мы выводим все слово на экран
           if (attempt > 6) {
             for (int i = 0, cord_x = slovo_cord_x - 10; i < len; i++) {
-              NeSlovo[i].flag = 1;
-              NeSlovo[i].letter.setPosition(cord_x, cord_y);
+              Word[i].flag = 1;
+              Word[i].letter.setPosition(cord_x, cord_y);
               cord_x += 60;
             }
             StatusGameFlag = 1;
@@ -277,7 +275,7 @@ int main() {
         flag = 0;       //есть ли буква в слове
         flag_click = 0; //нажималась ли ранее буква
 
-        slovo = spisok[rand() % Slov_v_Spiske];
+        slovo = list[rand() % Slov_v_Spiske];
 
         //Посчитаем длину слова
         len = 0;
@@ -294,28 +292,28 @@ int main() {
         slovo_cord_x = 495 - 30 * len;
 
         //Массив структуры слова, которая будет выводиться на экран
-        NeSlovo[max_len_slov];
+        Word[max_len_slov];
 
         //Записываем буквы нашего слова, чтобы потом загрузить их как
         //текстуру и вывести на экран
         for (int i = 0; i < len; i++) {
-          NeSlovo[i].bykva = slovo[i];
+          Word[i].bykva = slovo[i];
         }
 
         //Загружаем спрайт буквы, которая есть у нас в слове
         for (int i = 0; i < len; i++) {
           int j = 0;
           while (j < 33) {
-            if (NeSlovo[i].bykva == array_alp[j]) {
-              NeSlovo[i].letterTexture.loadFromFile(
+            if (Word[i].bykva == array_alp[j]) {
+              Word[i].letterTexture.loadFromFile(
                   path[j]); //загружаем букву из картинки
-              NeSlovo[i].letter.setTexture(NeSlovo[i].letterTexture);
-              NeSlovo[i].flag = 0; //Чтобы не выводились буквы,
+              Word[i].letter.setTexture(Word[i].letterTexture);
+              Word[i].flag = 0; //Чтобы не выводились буквы,
                                    //котрые еще не нажимались
               break;
             }
             j++;
-          }
+          } 
         }
 
         //Рестарт

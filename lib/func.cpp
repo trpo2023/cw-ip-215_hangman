@@ -1,10 +1,10 @@
 #include "header.h"
 
-void check_byk_v_slove(char Bykva, string slovo, int len, bool &flag) {
+void check_byk_in_word(char Bykva, string slovo, int len, bool &flag) {
   for (int i = 0; i < len; i++) {
     if (slovo[i] == Bykva) {
       flag = 1;
-    }
+    }   
   }
 }
 
