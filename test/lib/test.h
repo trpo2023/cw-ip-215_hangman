@@ -11,7 +11,7 @@
 using namespace sf;
 using namespace std;
 
-struct matrix_alp
+struct alp_flags
 {
     char bukva;
     bool flag;
@@ -61,7 +61,7 @@ extern "C" {
 
 #endif /* _ASSERT1_H */
 
-void check_byk_v_slove(char Bykva, string slovo, int len, bool& flag);
+void check_byk_in_word(char Bykva, string slovo, int len, bool& flag);
 void create_textur(textures& struct_texture, int n);
 void load_textur(RenderWindow& window, textures& struct_texture);
 void check_byk_cord(int pos_x, int pos_y, char& Bykva);
@@ -69,7 +69,7 @@ void draw_cross(int i, RenderWindow& window, Sprite& cross);
 void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture, int& testDrawCount);
 
 
-void test_check_byk_v_slove();
+void test_check_byk_in_word();
 void test_create_textur();
 void test_load_textur();
 void test_check_byk_cord();

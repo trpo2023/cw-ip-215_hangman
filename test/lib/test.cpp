@@ -2,32 +2,32 @@
 
 //тесты, вынести в отдельную папку и разбить на фаилы
 
-void test_check_byk_v_slove() {
+void test_check_byk_in_word() {
     int key = 1;
 
     char Bykva = 'а';
     string slovo = "паша";
     int len = slovo.length();
     bool flag = 0;
-    check_byk_v_slove(Bykva, slovo, len, flag);
+    check_byk_in_word(Bykva, slovo, len, flag);
     assert1(flag == 1, key);
 
     flag = 0;
     Bykva = '-';
-    check_byk_v_slove(Bykva, slovo, len, flag);
+    check_byk_in_word(Bykva, slovo, len, flag);
     assert1(flag == 0, key);
 
     flag = 0;
     Bykva = '3';
-    check_byk_v_slove(Bykva, slovo, len, flag);
+    check_byk_in_word(Bykva, slovo, len, flag);
     assert1(flag == 0, key);
 
     flag = 0;
     Bykva = 'г';
-    check_byk_v_slove(Bykva, slovo, 0, flag);
+    check_byk_in_word(Bykva, slovo, 0, flag);
     assert1(flag == 0, key);
 
-    cout << "TEST[1/6]   CHECK_BYK_V_SLOVE() - OK" << endl;
+    cout << "TEST[1/6]   CHECK_BYK_IN_WORD() - OK" << endl;
 }
 
 void test_create_textur() {
