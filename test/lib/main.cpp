@@ -1,13 +1,16 @@
 #include "test.h"
 
 int main() {
-    test_check_byk_in_word();
-    test_create_textur();
-    test_load_textur();
-    test_check_byk_cord();
-    test_draw_cross();
-    test_draw_gallows();
+    bool flag_test = 0;
+    int count = 0;
 
-    cout << "TEST[6/6]   ALL TESTS IS OK" << endl;
+    test_check_byk_in_word(flag_test, count);
+    test_create_textur(flag_test, count);
+    test_load_textur(flag_test, count);
+    test_check_byk_cord(flag_test, count);
+    test_draw_cross(flag_test, count);
+    test_draw_gallows(flag_test, count);
+
+    cout << "TEST[" << count << " / 6] OK" << endl;
     
 }

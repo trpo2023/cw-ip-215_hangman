@@ -1,12 +1,12 @@
+п»ї#pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <iostream> //основа
-#include <clocale> //для кирилицы
-#include <string> //для строк
+#include <iostream> //РѕСЃРЅРѕРІР°
+#include <clocale> //РґР»СЏ РєРёСЂРёР»РёС†С‹
+#include <string> //РґР»СЏ СЃС‚СЂРѕРє
 #include <unordered_map>
-#include <cassert> //для тестов
-#include <typeinfo> //узнать тип переменной
-
+#include <cassert> //РґР»СЏ С‚РµСЃС‚РѕРІ
+#include <typeinfo> //СѓР·РЅР°С‚СЊ С‚РёРї РїРµСЂРµРјРµРЅРЅРѕР№
 
 using namespace sf;
 using namespace std;
@@ -46,3 +46,4 @@ void load_textur(RenderWindow& window, textures& struct_texture);
 void check_byk_cord(int pos_x, int pos_y, char& Bykva);
 void draw_cross(int i, RenderWindow& window, Sprite& cross);
 void draw_gallows(int attempt, RenderWindow& window, textures& struct_texture, int& testDrawCount);
+

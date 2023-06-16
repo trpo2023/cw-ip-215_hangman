@@ -21,6 +21,9 @@
     <ClCompile Include="lib\func.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="lib\assert1.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -39,5 +42,8 @@
     <ClInclude Include="lib\header.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lib\dictionary.txt" />
   </ItemGroup>
 </Project>

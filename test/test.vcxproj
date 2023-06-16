@@ -142,12 +142,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lib\assert1.cpp" />
-    <ClCompile Include="lib\func.cpp" />
     <ClCompile Include="lib\main.cpp" />
     <ClCompile Include="lib\test.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="test.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -161,6 +157,9 @@
     <None Include="sfml-system-d-2.dll" />
     <None Include="sfml-window-2.dll" />
     <None Include="sfml-window-d-2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lib\test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

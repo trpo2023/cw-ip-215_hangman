@@ -145,6 +145,7 @@ clang-format.exe -style=file -i $(ProjectDir)\lib\func.cpp</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="lib\assert1.cpp" />
     <ClCompile Include="lib\func.cpp" />
     <ClCompile Include="lib\main.cpp" />
   </ItemGroup>
@@ -163,6 +164,9 @@ clang-format.exe -style=file -i $(ProjectDir)\lib\func.cpp</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\header.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lib\dictionary.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
